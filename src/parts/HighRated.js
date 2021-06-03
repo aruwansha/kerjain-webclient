@@ -1,17 +1,19 @@
 import React from "react";
 
+import Star from "assets/images/icons/star.svg";
+
 import Button from "elements/Button";
 
 export default function HighRated(props) {
   return (
     <section id="highRated" className="container">
-      <h5>Rating Tinggi</h5>
+      <h4 className="mb-3">Rating Tinggi</h4>
       <div className="container-grid">
         {props.data.map((freelancer, index) => {
           return (
             <div className={`item column-3 row-1`} key={`highRated-${index}`}>
               <div className="card card-featured">
-                <figure className="img-wrapper">
+                <figure className="img-wrapper" style={{ height: 150 }}>
                   <img
                     src={freelancer.imgUrl}
                     alt={freelancer.title}
@@ -24,7 +26,7 @@ export default function HighRated(props) {
                       <figure className="img-rounder">
                         <img
                           src={freelancer.userId.imgUrl}
-                          alt=""
+                          alt="profile"
                           className="profile-pic"
                         />
                       </figure>
@@ -40,7 +42,8 @@ export default function HighRated(props) {
                         className="text-gray-600"
                         style={{ margin: 0, fontSize: 12 }}
                       >
-                        Rating {freelancer.rating}
+                        <img src={Star} alt="icon star" style={{ width: 12 }} />{" "}
+                        {freelancer.rating}
                       </p>
                     </div>
                   </div>
@@ -50,12 +53,14 @@ export default function HighRated(props) {
                     className="stretched-link d-block text-gray-800"
                     href={`/properties/${freelancer._id}`}
                   >
-                    <h5>{freelancer.title}</h5>
+                    <h6>{freelancer.title}</h6>
                   </Button>
-                  <span className="text-gray-600">
-                    Rating {freelancer.rating}
-                  </span>
                 </div>
+                <Button
+                  type="link"
+                  className="stretched-link"
+                  href={`/properties/${freelancer._id}`}
+                ></Button>
               </div>
             </div>
           );
