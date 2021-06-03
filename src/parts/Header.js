@@ -9,7 +9,7 @@ export default function Header(props) {
     <header className="spacing-sm">
       <div className="container">
         <nav className="navbar navbar-expand-lg navbar-light">
-          <BrandIcon style={{marginRight: 30}} />
+          <BrandIcon style={{marginRight: 30, fontSize: 32}} />
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav">
               <li className="nav-item active">
