@@ -1,0 +1,91 @@
+{
+    "mostPicked":[
+        {
+            "_id": "605b5889babfe71e8432d316",
+            "userId": {
+                "name" : "Alfiyan Jihan",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 5,
+            "title": "Alfiyan Memester",
+            "imgUrl": "images/freelancer/thumbnail-2.jpeg",
+            "totalOrder": 1
+        },
+        {
+            "_id": "605b5889babfe71e8432d318",
+            "userId": {
+                "name": "Rizky Zahro",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 4,
+            "title": "Riss Design",
+            "imgUrl": "images/freelancer/thumbnail-3.jpg",
+            "totalOrder": 1
+        },
+        {
+            "_id": "605b5889babfe71e8432d312",
+            "userId": {
+                "name": "Adi Prasetyo",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 4,
+            "title": "Adis Code",
+            "imgUrl": "images/freelancer/thumbnail-1.jpg",
+            "totalOrder": 1
+        },
+        {
+            "_id": "605b5889babfe71e8432d314",
+            "userId": {
+                "name": "Galeh Desena Ramadhian",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 3,
+            "title": "Desena's English Translator",
+            "imgUrl": "images/freelancer/thumbnail-4.jpg",
+            "totalOrder": 0
+        }
+    ],
+    
+    "highRated": [
+        {
+            "_id": "605b5889babfe71e8432d312",
+            "userId": {
+                "name": "Adi Prasetyo",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 5,
+            "title": "Adis Code",
+            "imgUrl": "images/freelancer/thumbnail-1.jpg"
+        },
+        {
+            "_id": "605b5889babfe71e8432d316",
+            "userId": {
+                "name": "Alfiyan Jihan",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 4.5,
+            "title": "Alfi Memester",
+            "imgUrl": "images/freelancer/thumbnail-2.jpeg"
+        },
+        {
+            "_id": "605b5889babfe71e8432d318",
+            "userId": {
+                "name": "Rizky Zahro",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 4,
+            "title": "Riss Design",
+            "imgUrl": "images/freelancer/thumbnail-3.jpg"
+        },
+        {
+            "_id": "605b5889babfe71e8432d314",
+            "userId": {
+                "name": "Galeh Desena Ramadhian",
+                "imgUrl": "images/user/profile-picture-1.jpg"
+            },
+            "rating": 3,
+            "title": "Desena's English Translator",
+            "imgUrl": "images/freelancer/thumbnail-4.jpg"
+        }
+    ]
+}
