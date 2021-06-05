@@ -13,6 +13,39 @@
                     "rating": 4,
                     "title": "Adis Code",
                     "imgUrl": "images/freelancer/thumbnail-1.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d318",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d317",
+                        "name": "Rizky Zahro",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Riss Design",
+                    "imgUrl": "images/freelancer/thumbnail-3.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d314",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d313",
+                        "name": "Galeh Desena Ramadhian",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 3,
+                    "title": "Desenas Write & Translate",
+                    "imgUrl": "images/freelancer/thumbnail-4.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d316",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d315",
+                        "name": "Alfiyan Jihan",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 5,
+                    "title": "Alfis memes",
+                    "imgUrl": "images/freelancer/thumbnail-2.jpeg"
                 }
             ]
         },
@@ -29,6 +62,39 @@
                     "rating": 4,
                     "title": "Riss Design",
                     "imgUrl": "images/freelancer/thumbnail-3.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d314",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d313",
+                        "name": "Galeh Desena Ramadhian",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 3,
+                    "title": "Desenas Write & Translate",
+                    "imgUrl": "images/freelancer/thumbnail-4.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d316",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d315",
+                        "name": "Alfiyan Jihan",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 5,
+                    "title": "Alfis memes",
+                    "imgUrl": "images/freelancer/thumbnail-2.jpeg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d312",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d311",
+                        "name": "Adi Prasetyo",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Adis Code",
+                    "imgUrl": "images/freelancer/thumbnail-1.jpg"
                 }
             ]
         },
@@ -45,6 +111,39 @@
                     "rating": 3,
                     "title": "Desenas Write & Translate",
                     "imgUrl": "images/freelancer/thumbnail-4.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d316",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d315",
+                        "name": "Alfiyan Jihan",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 5,
+                    "title": "Alfis memes",
+                    "imgUrl": "images/freelancer/thumbnail-2.jpeg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d312",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d311",
+                        "name": "Adi Prasetyo",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Adis Code",
+                    "imgUrl": "images/freelancer/thumbnail-1.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d318",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d317",
+                        "name": "Rizky Zahro",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Riss Design",
+                    "imgUrl": "images/freelancer/thumbnail-3.jpg"
                 }
             ]
         },
@@ -61,6 +160,39 @@
                     "rating": 5,
                     "title": "Alfis memes",
                     "imgUrl": "images/freelancer/thumbnail-2.jpeg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d312",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d311",
+                        "name": "Adi Prasetyo",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Adis Code",
+                    "imgUrl": "images/freelancer/thumbnail-1.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d318",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d317",
+                        "name": "Rizky Zahro",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 4,
+                    "title": "Riss Design",
+                    "imgUrl": "images/freelancer/thumbnail-3.jpg"
+                },
+                {
+                    "_id": "605b5889babfe71e8432d314",
+                    "userId": {
+                        "_id": "605b5889babfe71e8432d313",
+                        "name": "Galeh Desena Ramadhian",
+                        "imgUrl": "images/user/profile-picture-1.jpg"
+                    },
+                    "rating": 3,
+                    "title": "Desenas Write & Translate",
+                    "imgUrl": "images/freelancer/thumbnail-4.jpg"
                 }
             ]
         }
