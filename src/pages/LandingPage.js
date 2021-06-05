@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
   render() {
     return (
       <>
-        <Header />
+        <Header {...this.props} />
         <MostPicked data={landingPage.mostPicked} />
         <HighRated data={landingPage.highRated} />
         <Footer></Footer>
