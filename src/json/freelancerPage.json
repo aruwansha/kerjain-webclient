@@ -1,0 +1,32 @@
+{
+    "_id": "605b5889babfe71e8432d312",
+    "userId": {
+        "_id": "605b5889babfe71e8432d311",
+        "name": "Adi Prasetyo",
+        "imgUrl": "images/user/profile-picture-1.jpg"
+    },
+    "rating": 4,
+    "title": "Adis Code",
+    "description": "Sedia Jasa Coding Mahasiswa",
+    "imgUrl": "images/freelancer/thumbnail-2.jpeg",
+    "serviceId": [
+        {
+            "_id": {
+                "_id": "605c3f698f15569950d6e562",
+                "title": "Paket Tugas Kuliah",
+                "description": "Mengerjakan tugas-tugas seperti membuat logo aplikasi simpel dengan output hanya di dalam console",
+                "price": 30000,
+                "imgUrl":  "images/freelancer/thumbnail-2.jpeg"
+            }
+        },
+        {
+            "_id": {
+                "_id": "60bbcf09fa070e36c44dd624",
+                "title": "Desain Logo Premiume",
+                "description": "Membuat logo yang menarik dengan kualitas yang tinggi",
+                "price": 50000,
+                "imgUrl": "images/freelancer/thumbnail-2.jpeg"
+            }
+        }
+    ]
+}
