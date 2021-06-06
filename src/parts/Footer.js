@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-4">
               <BrandIcon style={{ fontSize: 24 }} />
-              <p>
+              <p className="text-gray-800">
                 Temukan Jasa terbaik <br /> sesuai kebutuhan anda
               </p>
             </div>
