@@ -8,6 +8,8 @@ import Fade from "react-reveal/Fade";
 
 export default function Category({ data }) {
   return data.map((category, index1) => {
+    if (category.data < 1) return null;
+
     return (
       <section id="categories" className="container" key={`category-${index1}`}>
         <Fade bottom>
@@ -23,7 +25,7 @@ export default function Category({ data }) {
                     <div className="card card-featured">
                       <figure className="img-wrapper" style={{ height: 150 }}>
                         <img
-                          src={freelancer.imgUrl}
+                          src={`${process.env.REACT_APP_HOST}${freelancer.imgUrl}`}
                           alt={freelancer.title}
                           className="img-cover"
                         />
@@ -33,7 +35,7 @@ export default function Category({ data }) {
                           <div className="col-2">
                             <figure className="img-rounder">
                               <img
-                                src={freelancer.userId.imgUrl}
+                                src={`${process.env.REACT_APP_HOST}${freelancer.userId.imgUrl}`}
                                 alt="profile"
                                 className="profile-pic"
                               />
