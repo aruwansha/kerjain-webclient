@@ -22,7 +22,7 @@ export default function HighRated(props) {
                   <div className="card card-featured">
                     <figure className="img-wrapper" style={{ height: 150 }}>
                       <img
-                        src={freelancer.imgUrl}
+                        src={`${process.env.REACT_APP_HOST}${freelancer.imgUrl}`}
                         alt={freelancer.title}
                         className="img-cover"
                       />
@@ -32,9 +32,9 @@ export default function HighRated(props) {
                         <div className="col-2">
                           <figure className="img-rounder">
                             <img
-                              src={freelancer.userId.imgUrl}
+                              src={`${process.env.REACT_APP_HOST}${freelancer.userId.imgUrl}`}
                               alt="profile"
-                              className="profile-pic"
+                              className="profile-pic img-contain"
                             />
                           </figure>
                         </div>
@@ -66,6 +66,7 @@ export default function HighRated(props) {
                       >
                         <h6>{freelancer.title}</h6>
                       </Button>
+                      <p className="text-gray-500">Mulai dari Rp 50.000</p>
                     </div>
                     <Button
                       type="link"
