@@ -2,10 +2,12 @@ import React from "react";
 import Fade from "react-reveal/Fade";
 
 import { InputText } from "elements/Form";
+import { formatNumber } from "utils/formatNumber";
 
 
 export default function OrderInformation(props) {
-  const { data, orderDetail } = props;
+  const { data, checkout } = props;
+  console.log(checkout)
   return (
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
@@ -23,7 +25,7 @@ export default function OrderInformation(props) {
                         margin: "15px",
                       }}
                       className="img-thumbnail"
-                      src={orderDetail.imgUrl}
+                      src={checkout.imgUrl}
                     />
                   </div>
                 </div>
@@ -34,8 +36,9 @@ export default function OrderInformation(props) {
                       margin: "0 15px 15px",
                     }}
                   >
-                    <h5 className="mb-0">{orderDetail.title}</h5>
-                    <span className="text-gray-500">{orderDetail.title}</span>
+                    <h5 className="mb-0">{checkout.title}</h5>
+                    <p className="text-gray-600" style={{fontSize: 13}}>{checkout.description}</p>
+                    <h5 className="text-gray-800" style={{fontWeight: 600}}>{`Rp ${formatNumber(checkout.price)}`}</h5>
                   </div>
                 </div>
               </div>

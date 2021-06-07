@@ -30,7 +30,7 @@ export default function Login() {
               Login
             </Button>
             <Button
-              className="btn btn-outline-light px-4 ml-3"
+              className="btn btn-light px-4 ml-3"
               type="link"
               href="/register"
             >

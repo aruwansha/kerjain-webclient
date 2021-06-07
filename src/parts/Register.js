@@ -72,7 +72,7 @@ export default function Registe() {
         <div className="row">
           <div className="col-6" style={{ margin: "0 auto" }}>
             <Button
-              className="btn btn-outline-light px-4"
+              className="btn btn-light px-4"
               type="link"
               href="/login"
             >

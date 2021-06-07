@@ -9,12 +9,12 @@ import logoBca from "assets/images/logo-bri.png";
 import logoMandiri from "assets/images/logo-mandiri.jpg";
 
 export default function Payment(props) {
-  const { data } = props;
+  const { data, checkout } = props;
 
   const tax = formatPercent(10);
   const admin_cost = 2500;
-  const tax_total = 100000 * (parseInt(tax) / 100);
-  const subTotal = 100000;
+  const tax_total = checkout.price * (parseInt(tax) / 100);
+  const subTotal = checkout.price;
   const total = parseInt(subTotal) + tax_total + admin_cost;
 
   return (
@@ -24,9 +24,8 @@ export default function Payment(props) {
           <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
             <Fade delay={300}>
               <h5 className="mb-4">Transfer Pembayaran:</h5>
-              <p>Tax: {tax}</p>
+              <p>Pajak: {tax}</p>
               <p>Biaya Admin: Rp {formatNumber(admin_cost)}</p>
-              <p>Sub total: Rp {formatNumber(subTotal)}</p>
               <p>Total: Rp {formatNumber(total)}</p>
               <div className="row mt-4">
                 <div className="col-3 text-right">

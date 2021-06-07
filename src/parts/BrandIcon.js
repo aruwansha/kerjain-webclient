@@ -13,5 +13,5 @@ export default function BrandIcon(props) {
 }
 
 BrandIcon.propTypes = {
-  style: propTypes.string,
+  style: propTypes.object,
 };
