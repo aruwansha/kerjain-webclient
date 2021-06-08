@@ -7,7 +7,6 @@ import { formatNumber } from "utils/formatNumber";
 
 export default function OrderInformation(props) {
   const { data, checkout } = props;
-  console.log(checkout)
   return (
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
@@ -25,7 +24,7 @@ export default function OrderInformation(props) {
                         margin: "15px",
                       }}
                       className="img-thumbnail"
-                      src={checkout.imgUrl}
+                      src={`${process.env.REACT_APP_HOST}${checkout.imgUrl}`}
                     />
                   </div>
                 </div>

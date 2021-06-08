@@ -6,6 +6,9 @@ import Button from "elements/Button";
 
 import Fade from "react-reveal/Fade";
 
+import { formatNumber } from "utils/formatNumber";
+
+
 export default function HighRated(props) {
   return (
     <section id="highRated" className="container">
@@ -66,7 +69,7 @@ export default function HighRated(props) {
                       >
                         <h6>{freelancer.title}</h6>
                       </Button>
-                      <p className="text-gray-500">Mulai dari Rp 50.000</p>
+                      <p className="text-gray-500">Mulai dari Rp {formatNumber(freelancer.startFrom)}</p>
                     </div>
                     <Button
                       type="link"

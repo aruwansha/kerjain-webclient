@@ -13,7 +13,7 @@ export default function AboutFreelancer({ data }) {
           <div className="row">
             <div className="col-3">
               <img
-                src={`/${data.imgUrl}`}
+                src={`${process.env.REACT_APP_HOST}${data.imgUrl}`}
                 alt="freelancer"
                 style={{ height: 250, width: 250, borderRadius: 5 }}
                 className="img-contain img-thumbnail"
@@ -25,7 +25,7 @@ export default function AboutFreelancer({ data }) {
                 <div className="col-auto">
                   <img
                     className="rounded-circle"
-                    src={`/${data.userId.imgUrl}`}
+                    src={`${process.env.REACT_APP_HOST}${data.userId.imgUrl}`}
                     alt="tes"
                     style={{ height: 50, width: 50 }}
                   />

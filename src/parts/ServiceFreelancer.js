@@ -6,6 +6,9 @@ import propTypes from "prop-types";
 
 import Button from "elements/Button";
 
+import { formatNumber } from "utils/formatNumber";
+
+
 import Fade from "react-reveal/Fade";
 
 class ServiceFreelancer extends Component {
@@ -21,6 +24,29 @@ class ServiceFreelancer extends Component {
   };
   render() {
     const { data } = this.props;
+    if (data.serviceId.length < 1)
+      return (
+        <section className="container">
+          <Fade bottom>
+            <h3 className="mb-3" style={{ fontWeight: 600, marginBottom: 24 }}>
+              Layanan Tersedia
+            </h3>
+            <Fade>
+              <div
+                className="custom-card"
+                style={{
+                  textAlign: "center",
+                  height: 150,
+                  margin: "auto",
+                  padding: "65px",
+                }}
+              >
+               Layanan belum tersedia 
+              </div>
+            </Fade>
+          </Fade>
+        </section>
+      );
 
     return (
       <section className="container">
@@ -40,8 +66,8 @@ class ServiceFreelancer extends Component {
                   <div className="row">
                     <div className="col-3">
                       <img
-                        src={`/${item._id.imgUrl}`}
-                        alt="thumbnail"
+                        src={`${process.env.REACT_APP_HOST}${item._id.imgUrl}`}
+                        alt={`Thumbnail ${item._id.title}`}
                         style={{
                           height: 150,
                           width: 255,
@@ -59,7 +85,7 @@ class ServiceFreelancer extends Component {
                         {item._id.description}
                       </p>
                       <h6 style={{ fontSize: 18, marginBottom: 16 }}>
-                        Harga Rp {item._id.price}
+                        Harga Rp {formatNumber(item._id.price)}
                       </h6>
 
                       <Button

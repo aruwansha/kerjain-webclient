@@ -11,7 +11,7 @@ export default function Banner(props) {
       <section>
         <div className="container">
           <div className="img-wrap">
-            <img src={image} alt="banner" className="img-cover img-thumbnail" />
+            <img src={`${process.env.REACT_APP_HOST}${image}`} alt="banner" className="img-cover img-thumbnail" />
           </div>
         </div>
       </section>

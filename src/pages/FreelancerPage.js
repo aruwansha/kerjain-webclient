@@ -7,22 +7,39 @@ import ServiceFreelancer from "parts/ServiceFreelancer";
 import AboutFreelancer from "parts/AboutFreelancer";
 import Footer from "parts/Footer";
 
-import freelancerPage from "json/freelancerPage.json";
-
 import { checkoutBooking } from "store/actions/checkout";
+import { fetchPage } from "store/actions/page";
+
 
 class FreelancerPage extends Component {
+  componentDidMount() {
+    window.title = "KerjaIn | Beranda";
+    window.scroll(0, 0);
+
+    if (!this.props.page[this.props.match.params.id])
+      this.props.fetchPage(
+        `${process.env.REACT_APP_HOST}api/v1/user/freelancer/${this.props.match.params.id}`,
+        this.props.match.params.id
+      );
+  }
   render() {
+    const { page, match } = this.props;
+    if (!page[match.params.id]) return null;
+
     return (
       <>
         <Header {...this.props} />
-        <Banner image={`/${freelancerPage.imgUrl}`} />
-        <ServiceFreelancer data={freelancerPage}  startBooking={this.props.checkoutBooking}/>
-        <AboutFreelancer data={freelancerPage} />
+        <Banner image={page[match.params.id].imgUrl} />
+        <ServiceFreelancer data={page[match.params.id]}  startBooking={this.props.checkoutBooking}/>
+        <AboutFreelancer data={page[match.params.id]} />
         <Footer />
       </>
     );
   }
 }
 
-export default connect(null, { checkoutBooking })(FreelancerPage);
+const mapStateToProps = (state) => ({
+  page: state.page,
+});
+
+export default connect(mapStateToProps, { checkoutBooking, fetchPage })(FreelancerPage);

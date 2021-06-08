@@ -6,6 +6,8 @@ import Button from "elements/Button";
 
 import Fade from "react-reveal/Fade";
 
+import { formatNumber } from "utils/formatNumber";
+
 export default function Category({ data }) {
   return data.map((category, index1) => {
     if (category.data < 1) return null;
@@ -69,6 +71,8 @@ export default function Category({ data }) {
                         >
                           <h6>{freelancer.title}</h6>
                         </Button>
+                      <p className="text-gray-500">Mulai dari Rp {formatNumber(freelancer.startFrom)}</p>
+
                       </div>
                       <Button
                         type="link"
