@@ -141,10 +141,9 @@ class Checkout extends Component {
                     )}
                   <Button
                     className="btn"
-                    type="link"
                     isBlock
                     isLight
-                    href={`/freelancer/${freelancerPage._id}`}
+                    onClick={() => this.props.history.goBack()}
                   >
                     Cancel
                   </Button>

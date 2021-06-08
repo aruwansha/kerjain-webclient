@@ -81,7 +81,7 @@ Text.defaultProps = {
 
 Text.propTypes = {
   name: propTypes.string.isRequired,
-  value: propTypes.oneOfType([propTypes.number, propTypes.string]).isRequired,
+  value: propTypes.oneOfType([propTypes.number, propTypes.string]),
   onChange: propTypes.func.isRequired,
   prepend: propTypes.oneOfType([propTypes.number, propTypes.string]),
   append: propTypes.oneOfType([propTypes.number, propTypes.string]),

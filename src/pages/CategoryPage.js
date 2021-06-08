@@ -12,9 +12,9 @@ class CategoryPage extends Component {
     window.title = "KerjaIn | Beranda";
     window.scroll(0, 0);
 
-    if (!this.props.page.landingPage)
+    if (!this.props.page.categoryPage)
       this.props.fetchPage(
-        `https://kerjain-webservice.herokuapp.com/api/v1/user/category-page`,
+        `${process.env.REACT_APP_HOST}api/v1/user/category-page`,
         "categoryPage"
       );
   }

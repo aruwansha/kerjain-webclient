@@ -16,7 +16,7 @@ class LandingPage extends Component {
 
     if (!this.props.page.landingPage)
       this.props.fetchPage(
-        `https://kerjain-webservice.herokuapp.com/api/v1/user/landing-page`,
+        `${process.env.REACT_APP_HOST}api/v1/user/landing-page`,
         "landingPage"
       );
   }

@@ -16,11 +16,8 @@ export default function MostPicked(props) {
         <div className="container-grid">
           {props.data.map((freelancer, index) => {
             return (
-              <Fade bottom delay={500 * index}>
-                <div
-                  className={`item column-3 row-1`}
-                  key={`mostPicked-${index}`}
-                >
+              <Fade bottom delay={500 * index} key={`mostPicked-${index}`}>
+                <div className={`item column-3 row-1`}>
                   <div className="card card-featured">
                     <figure className="img-wrapper" style={{ height: 150 }}>
                       <img
@@ -67,7 +64,9 @@ export default function MostPicked(props) {
                       >
                         <h6>{freelancer.title}</h6>
                       </Button>
-                      <p className="text-gray-500">Mulai dari Rp {formatNumber(freelancer.startFrom)}</p>
+                      <p className="text-gray-500">
+                        Mulai dari Rp {formatNumber(freelancer.startFrom)}
+                      </p>
                     </div>
                     <Button
                       type="link"
