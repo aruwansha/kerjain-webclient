@@ -201,3 +201,11 @@ footer {
   border-radius: 5px;
   margin-bottom: 1.5em;
 }
+
+.border-right {
+  border-right: 1px solid $gray-200 !important;
+}
+
+.border-left {
+  border-left: 1px solid $gray-200 !important;
+}

@@ -33,29 +33,29 @@ export default function Header(props) {
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav">
                 <li className={`nav-item${getNavLinkClass("/")}`}>
-                  <Button className="nav-link" type="link" href="/">
+                  <Button className="nav-link border-left border-right " type="link" href="/">
                     Beranda
                   </Button>
                 </li>
                 <li className={`nav-item${getNavLinkClass("/kategori")}`}>
-                  <Button className="nav-link" type="link" href="/kategori">
+                  <Button className="nav-link border-right" type="link" href="/kategori">
                     Kategori
                   </Button>
                 </li>
               </ul>
               <ul className="navbar-nav ml-auto">
                 <li className={`nav-item`}>
-                  <Button className="nav-link" type="link" href="/" isExternal>
+                  <Button className="nav-link border-left border-right" type="link" href="/" isExternal>
                     Jadi Mitra Kami
                   </Button>
                 </li>
                 <li className={`nav-item${getNavLinkClass("/login")}`}>
-                  <Button className="nav-link" type="link" href="/login">
+                  <Button className="nav-link border-right" type="link" href="/login">
                     Login
                   </Button>
                 </li>
                 <li className={`nav-item${getNavLinkClass("/register")}`}>
-                  <Button className="nav-link" type="link" href="/register">
+                  <Button className="nav-link border-right" type="link" href="/register">
                     Register
                   </Button>
                 </li>
