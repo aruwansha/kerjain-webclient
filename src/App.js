@@ -8,6 +8,8 @@ import Checkout from "pages/Checkout";
 import LoginPage from "pages/LoginPage";
 import RegisterPage from "pages/RegisterPage";
 
+import { ToastContainer } from 'react-toastify';
+
 import "assets/scss/style.scss";
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/register" component={RegisterPage} />
       </Router>
+
+      <ToastContainer />
     </div>
   );
 }

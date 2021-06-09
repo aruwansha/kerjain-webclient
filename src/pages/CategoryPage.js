@@ -14,7 +14,7 @@ class CategoryPage extends Component {
 
     if (!this.props.page.categoryPage)
       this.props.fetchPage(
-        `${process.env.REACT_APP_HOST}api/v1/user/category-page`,
+        `/category-page`,
         "categoryPage"
       );
   }

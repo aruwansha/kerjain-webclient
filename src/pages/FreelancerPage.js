@@ -18,7 +18,7 @@ class FreelancerPage extends Component {
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `${process.env.REACT_APP_HOST}api/v1/user/freelancer/${this.props.match.params.id}`,
+        `/freelancer/${this.props.match.params.id}`,
         this.props.match.params.id
       );
   }
