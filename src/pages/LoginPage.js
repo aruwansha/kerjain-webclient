@@ -18,6 +18,8 @@ class LoginPage extends Component {
       },
     };
 
+    if (localStorage.getItem("token")) return this.props.history.push("/me")
+
     this.handleChange = this.handleChange.bind(this);
     this._login = this._login.bind(this);
   }
@@ -39,9 +41,10 @@ class LoginPage extends Component {
   };
 
   render() {
+
     return (
       <>
-        <Header isCentered />
+        <Header {...this.props} isCentered />
         <section className="container" style={{ margin: "auto" }}>
           <div className="wrapper" style={{ margin: "140px 0" }}>
             <form onSubmit={this._login}>

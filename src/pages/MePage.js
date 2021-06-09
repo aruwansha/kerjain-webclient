@@ -5,33 +5,32 @@ import Header from "parts/Header";
 
 import MostPicked from "parts/MostPicked";
 import HighRated from "parts/HighRated";
+import Me from "parts/Me";
 import Footer from "parts/Footer";
 
 import { fetchPage } from "store/actions/page";
 
-class LandingPage extends Component {
+class MePage extends Component {
   componentDidMount() {
     window.title = "KerjaIn | Beranda";
     window.scroll(0, 0);
 
-    if (localStorage.getItem("token")) return this.props.history.push("/me")
 
-    if (!this.props.page.landingPage)
-      this.props.fetchPage(
-        `/landing-page`,
-        "landingPage"
-      );
+    if (!localStorage.getItem("token")) return this.props.history.push("/")
+
+    if (!this.props.page.me) this.props.fetchPage(`/landing-page/me`, "me", localStorage.getItem("token"));
   }
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("landingPage")) return null;
+    if (!page.hasOwnProperty("me")) return null;
 
     return (
       <>
         <Header {...this.props} />
-        <MostPicked data={page.landingPage.mostPicked} />
-        <HighRated data={page.landingPage.highRated} />
+        <MostPicked data={page.me.mostPicked} />
+        <HighRated data={page.me.highRated} />
+        <Me data={page.me.category} />
         <Footer></Footer>
       </>
     );
@@ -39,8 +38,8 @@ class LandingPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  data: state.login,
   page: state.page,
-  data: state.login
 });
 
-export default connect(mapStateToProps, { fetchPage })(LandingPage);
+export default connect(mapStateToProps, { fetchPage })(MePage);

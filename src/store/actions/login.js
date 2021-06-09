@@ -13,7 +13,7 @@ export const login = (payload, props) => (dispatch) => {
           type: LOGIN,
           payload: response.data,
         });
-        props.history.push("/");
+        props.history.push("/me");
       }
     })
     .catch((error) => {
