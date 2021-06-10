@@ -53,7 +53,7 @@ export default function MostPicked(props) {
                               alt="icon star"
                               style={{ width: 12 }}
                             />{" "}
-                            {freelancer.rating}
+                            {freelancer.rating.toFixed(1)}
                           </p>
                         </div>
                       </div>

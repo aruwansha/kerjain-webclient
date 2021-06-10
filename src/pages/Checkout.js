@@ -105,7 +105,7 @@ class Checkout extends Component {
 
     return (
       <>
-        <Header isCentered />
+        <Header  {...this.props}  isCentered />
 
         <Stepper steps={steps} initialStep="Booking Information">
           {(prevStep, nextStep, CurrentStep, steps) => (
