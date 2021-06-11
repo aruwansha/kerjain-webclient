@@ -28,7 +28,7 @@ export default function Header(props) {
                 <ul className="navbar-nav">
                   <li className={`nav-item${getNavLinkClass("/me")}`}>
                     <Button
-                      className="nav-link border-left border-right "
+                      className="nav-link border-right "
                       type="link"
                       href="/me"
                     >
@@ -44,11 +44,38 @@ export default function Header(props) {
                       Kategori
                     </Button>
                   </li>
+                  <li className={`nav-item${getNavLinkClass("/permintaan")}`}>
+                    <Button
+                      className="nav-link border-right"
+                      type="link"
+                      href="/permintaan"
+                    >
+                      Permintaan
+                    </Button>
+                  </li>
+                  <li className={`nav-item${getNavLinkClass("/order")}`}>
+                    <Button
+                      className="nav-link "
+                      type="link"
+                      href="/"
+                    >
+                      Order
+                    </Button>
+                  </li>
                 </ul>
                 <ul className="navbar-nav ml-auto">
+                  <li className={`nav-item${getNavLinkClass("/chat")}`}>
+                    <Button
+                      className="nav-link border-right"
+                      type="link"
+                      href="/"
+                    >
+                      Chat
+                    </Button>
+                  </li>
                   <li className={`nav-item${getNavLinkClass("/")}`}>
                     <Button
-                      className="nav-link border-left border-right"
+                      className="nav-link border-right"
                       type="link"
                       href="/"
                     >
@@ -57,7 +84,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/login")}`}>
                     <Button
-                      className="nav-link border-right"
+                      className="nav-link"
                       type="link"
                       onClick={logout}
                       href="/"

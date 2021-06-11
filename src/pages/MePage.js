@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import Header from "parts/Header";
 
+import Request from "parts/Request";
 import MostPicked from "parts/MostPicked";
 import HighRated from "parts/HighRated";
 import Me from "parts/Me";
@@ -32,6 +33,7 @@ class MePage extends Component {
     return (
       <>
         <Header {...this.props} />
+        <Request />
         <MostPicked data={page.me.mostPicked} />
         <HighRated data={page.me.highRated} />
         <Me data={page.me.category} />
