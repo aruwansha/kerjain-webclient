@@ -6,6 +6,8 @@ import BrandIcon from "parts/BrandIcon";
 
 import Fade from "react-reveal/Fade";
 
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
+
 export default function Header(props) {
   const getNavLinkClass = (path) => {
     return props.location.pathname === path ? " active" : "";
@@ -15,7 +17,7 @@ export default function Header(props) {
     localStorage.clear();
   };
 
-  if (localStorage.getItem("token"))
+  if (getWithExpiry("name"))
     return (
       <Fade>
         <header className="spacing-sm">
@@ -50,7 +52,7 @@ export default function Header(props) {
                       type="link"
                       href="/"
                     >
-                      {localStorage.getItem("name")}
+                      {getWithExpiry("name")}
                     </Button>
                   </li>
                   <li className={`nav-item${getNavLinkClass("/login")}`}>
@@ -116,7 +118,7 @@ export default function Header(props) {
                   <Button
                     className="nav-link border-left border-right"
                     type="link"
-                    href="/"
+                    href="https://kerjain-webservice.herokuapp.com/register"
                     isExternal
                   >
                     Jadi Mitra Kami

@@ -1,12 +1,14 @@
 import { LOGIN } from "../types";
 
+import { setWithExpiry } from "utils/setExpiryLocalStorage";
+
 const initialState = null;
 
 const login = function (state = initialState, action) {
   switch (action.type) {
     case LOGIN:
-      localStorage.setItem("token", action.payload.data.token)
-      localStorage.setItem("name", action.payload.data.name)
+      setWithExpiry("name", action.payload.data.name, 3600000);
+      setWithExpiry("token", action.payload.data.token, 3600000);
       return {
         ...state,
         ...action.payload,

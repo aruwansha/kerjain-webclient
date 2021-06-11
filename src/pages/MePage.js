@@ -10,15 +10,19 @@ import Footer from "parts/Footer";
 
 import { fetchPage } from "store/actions/page";
 
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
+
+
 class MePage extends Component {
   componentDidMount() {
     window.title = "KerjaIn | Beranda";
     window.scroll(0, 0);
 
+    console.log(localStorage)
 
-    if (!localStorage.getItem("token")) return this.props.history.push("/")
+    if (!getWithExpiry("token")) return this.props.history.push("/")
 
-    if (!this.props.page.me) this.props.fetchPage(`/landing-page/me`, "me", localStorage.getItem("token"));
+    if (!this.props.page.me) this.props.fetchPage(`/landing-page/me`, "me", getWithExpiry("token"));
   }
 
   render() {

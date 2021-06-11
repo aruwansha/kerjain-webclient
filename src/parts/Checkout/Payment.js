@@ -5,9 +5,6 @@ import { InputText, InputFile } from "elements/Form";
 
 import { formatNumber, formatPercent } from "utils/formatNumber";
 
-import logoBca from "assets/images/logo-bri.png";
-import logoMandiri from "assets/images/logo-mandiri.jpg";
-
 export default function Payment(props) {
   const { data, checkout } = props;
 
@@ -27,31 +24,22 @@ export default function Payment(props) {
               <p>Pajak: {tax}</p>
               <p>Biaya Admin: Rp {formatNumber(admin_cost)}</p>
               <p>Total: Rp {formatNumber(total)}</p>
-              <div className="row mt-4">
-                <div className="col-3 text-right">
-                  <img src={logoBca} alt="bank central asia" width="60" />
-                </div>
-                <div className="col">
-                  <dl>
-                    <dd>Bank Rakyat Indonesia</dd>
-                    <dd>6425 0101 0678 530</dd>
-                    <dd>Dhimas Krisna Ahmadi</dd>
-                  </dl>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="col-3 text-right">
-                  <img src={logoMandiri} alt="mandiri" width="60" />
-                </div>
-                <div className="col">
-                  <dl>
-                    <dd>Bank Mandiri</dd>
-                    <dd>9824 0502 9465 852</dd>
-                    <dd>Ilham Febrian</dd>
-                  </dl>
-                </div>
-              </div>
+              {checkout.bank.map((bank, index) => {
+                return (
+                  <div className="row mt-4">
+                    <div className="col-3 text-right" style={{margin: "20px auto"}}>
+                      <img src={`${process.env.REACT_APP_HOST}${bank.imgUrl}`} alt={`Bank ${bank.bankName}`} width="60" />
+                    </div>
+                    <div className="col">
+                      <dl>
+                        <dd>{bank.bankName}</dd>
+                        <dd>{bank.bankAccount}</dd>
+                        <dd>{bank.accountHolder}</dd>
+                      </dl>
+                    </div>
+                  </div>
+                );
+              })}
             </Fade>
           </div>
           <div className="col-5 py-5" style={{ paddingLeft: 80 }}>

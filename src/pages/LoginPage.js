@@ -8,6 +8,11 @@ import { connect } from "react-redux";
 
 import { login } from "store/actions/login";
 
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
+
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +23,7 @@ class LoginPage extends Component {
       },
     };
 
-    if (localStorage.getItem("token")) return this.props.history.push("/me")
+    if (getWithExpiry("token")) return this.props.history.push("/me");
 
     this.handleChange = this.handleChange.bind(this);
     this._login = this._login.bind(this);
@@ -32,16 +37,21 @@ class LoginPage extends Component {
 
   _login = (event) => {
     const { data } = this.state;
-    const payload = {
-      email: data.email,
-      password: data.password,
-    };
-    this.props.login(payload, this.props)
+    if (data.email === "" || data.password2 === "") {
+      toast.error("Tolong isi dan lengkapi field!");
+
+    } else {
+      const payload = {
+        email: data.email,
+        password: data.password,
+      };
+      this.props.login(payload, this.props);
+    }
+
     event.preventDefault();
   };
 
   render() {
-
     return (
       <>
         <Header {...this.props} isCentered />

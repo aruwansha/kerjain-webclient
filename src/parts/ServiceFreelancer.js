@@ -19,6 +19,7 @@ class ServiceFreelancer extends Component {
       price: item.price,
       description: item.description,
       imgUrl: item.imgUrl,
+      bank: this.props.data.bank,
     });
     this.props.history.push("/checkout");
   };
