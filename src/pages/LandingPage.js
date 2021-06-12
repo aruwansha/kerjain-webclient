@@ -42,7 +42,6 @@ class LandingPage extends Component {
 
 const mapStateToProps = (state) => ({
   page: state.page,
-  data: state.login
 });
 
 export default connect(mapStateToProps, { fetchPage })(LandingPage);

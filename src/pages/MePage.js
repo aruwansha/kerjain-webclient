@@ -19,8 +19,6 @@ class MePage extends Component {
     window.title = "KerjaIn | Beranda";
     window.scroll(0, 0);
 
-    console.log(localStorage)
-
     if (!getWithExpiry("token")) return this.props.history.push("/")
 
     if (!this.props.page.me) this.props.fetchPage(`/landing-page/me`, "me", getWithExpiry("token"));
@@ -44,7 +42,6 @@ class MePage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  data: state.login,
   page: state.page,
 });
 

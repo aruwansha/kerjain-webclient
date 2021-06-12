@@ -57,7 +57,7 @@ export default function Header(props) {
                     <Button
                       className="nav-link "
                       type="link"
-                      href="/"
+                      href="/order"
                     >
                       Order
                     </Button>
@@ -68,16 +68,16 @@ export default function Header(props) {
                     <Button
                       className="nav-link border-right"
                       type="link"
-                      href="/"
+                      href="/chat"
                     >
                       Chat
                     </Button>
                   </li>
-                  <li className={`nav-item${getNavLinkClass("/")}`}>
+                  <li className={`nav-item${getNavLinkClass("/profil")}`}>
                     <Button
                       className="nav-link border-right"
                       type="link"
-                      href="/"
+                      href="/profil"
                     >
                       {getWithExpiry("name")}
                     </Button>
