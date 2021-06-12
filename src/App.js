@@ -9,6 +9,7 @@ import LoginPage from "pages/LoginPage";
 import Checkout from "pages/Checkout";
 import MePage from "pages/MePage";
 import ChatPage from "pages/ChatPage";
+import DetailChatPage from "pages/DetailChatPage";
 
 import { ToastContainer } from 'react-toastify';
 
@@ -26,7 +27,7 @@ function App() {
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/me" component={MePage} />
         <Route exact path="/chat" component={ChatPage} />
-
+        <Route exact path="/chat/:id" component={DetailChatPage} />
       </Router>
 
       <ToastContainer />
