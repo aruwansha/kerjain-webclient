@@ -60,7 +60,7 @@ class ChatPage extends Component {
                 <div className="card-header"></div>
                 <div className="card-body">
                   {page.chats.chats.map((chat, index) => {
-                      console.log(chat)
+                      console.log(chat.doc.isReadFreelancer)
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <div className="row">
@@ -71,7 +71,7 @@ class ChatPage extends Component {
                             >
                               {chat.doc.freelancerUserId[0].name}
                             </label>
-                            {!chat.doc.isReadFreelancer ? (
+                            {!chat.doc.isReadServiceUser ? (
                               <span className="badge badge-danger badge-counter">
                                 <i className="fa fa-xs fa-circle">o</i>
                               </span>
