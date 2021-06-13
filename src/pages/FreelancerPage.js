@@ -29,7 +29,7 @@ class FreelancerPage extends Component {
     return (
       <>
         <Header {...this.props} />
-        <Banner image={page[match.params.id].imgUrl} />
+        <Banner image="https://source.unsplash.com/random" isExternal />
         <ServiceFreelancer data={page[match.params.id]}  startBooking={this.props.checkoutBooking}/>
         <AboutFreelancer data={page[match.params.id]} />
         <Footer />

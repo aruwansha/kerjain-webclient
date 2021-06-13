@@ -15,7 +15,9 @@ import OrderInformation from "parts/Checkout/OrderInformation";
 import Payment from "parts/Checkout/Payment";
 import Completed from "parts/Checkout/Completed";
 
-import freelancerPage from "json/freelancerPage.json";
+import { submitBooking } from "store/actions/checkout";
+
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
 class Checkout extends Component {
   state = {
@@ -23,7 +25,7 @@ class Checkout extends Component {
       name: "",
       email: "",
       phone: "",
-      detailNote: "",
+      detail: "",
       proofPayment: "",
       bankName: "",
       bankHolder: "",
@@ -42,6 +44,27 @@ class Checkout extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
+  
+
+  _Submit = (nextStep) => {
+    const { data } = this.state;
+    
+    const { checkout } = this.props;
+
+    const payload = new FormData();
+    payload.append("name", data.name);
+    payload.append("email", data.email);
+    payload.append("phone", data.phone);
+    payload.append("detailNote", data.detail);
+    payload.append("serviceId", checkout.serviceId);
+    payload.append("accountHolder", data.bankHolder);
+    payload.append("bankFrom", data.bankName);
+    payload.append("image", data.proofPayment[0]);
+
+    this.props.submitBooking(payload, getWithExpiry("token")).then(() => {
+      nextStep();
+    });
+  };
 
   render() {
     const { data } = this.state;
@@ -63,7 +86,7 @@ class Checkout extends Component {
                   onClick={() => this.props.history.goBack()}
                   isLight
                 >
-                  Back
+                  Kembali
                 </Button>
               </div>
             </div>
@@ -72,14 +95,13 @@ class Checkout extends Component {
       );
 
     const steps = {
-      bookingInformation: {
+      orderInformation: {
         title: "Informasi Pemesanan",
         description: null,
         content: (
           <OrderInformation
             data={data}
             checkout={checkout}
-            orderDetail={freelancerPage}
             onChange={this.onChange}
           />
         ),
@@ -90,7 +112,6 @@ class Checkout extends Component {
         content: (
           <Payment
             data={data}
-            orderDetail={freelancerPage}
             checkout={checkout}
             onChange={this.onChange}
           />
@@ -120,10 +141,10 @@ class Checkout extends Component {
 
               <MainContent data={steps} current={CurrentStep} />
 
-              {CurrentStep === "bookingInformation" && (
+              {CurrentStep === "orderInformation" && (
                 <Controller>
                   {data.name !== "" &&
-                    data.detailNote !== "" &&
+                    data.detail !== "" &&
                     data.email !== "" &&
                     data.phone !== "" && (
                       <Fade>
@@ -135,7 +156,7 @@ class Checkout extends Component {
                           hasShadow
                           onClick={nextStep}
                         >
-                          Continue to Book
+                          Lanjut
                         </Button>
                       </Fade>
                     )}
@@ -145,7 +166,7 @@ class Checkout extends Component {
                     isLight
                     onClick={() => this.props.history.goBack()}
                   >
-                    Cancel
+                    Batal
                   </Button>
                 </Controller>
               )}
@@ -162,9 +183,9 @@ class Checkout extends Component {
                           isBlock
                           isPrimary
                           hasShadow
-                          onClick={nextStep}
+                          onClick={() => this._Submit(nextStep)}
                         >
-                          Continue to Book
+                          Sewa
                         </Button>
                       </Fade>
                     )}
@@ -175,7 +196,7 @@ class Checkout extends Component {
                     isLight
                     onClick={prevStep}
                   >
-                    Cancel
+                    Kembali
                   </Button>
                 </Controller>
               )}
@@ -188,7 +209,7 @@ class Checkout extends Component {
                     isBlock
                     isPrimary
                     hasShadow
-                    href=""
+                    href="/"
                   >
                     Back to Home
                   </Button>
@@ -206,4 +227,4 @@ const mapStateToProps = (state) => ({
   checkout: state.checkout,
 });
 
-export default connect(mapStateToProps)(Checkout);
+export default connect(mapStateToProps, {submitBooking})(Checkout);

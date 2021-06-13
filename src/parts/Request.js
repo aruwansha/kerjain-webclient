@@ -12,7 +12,7 @@ export default function Request(props) {
       <Fade bottom>
         <h4>Masukkan Request</h4>
         <div className="row">
-          <div className="col-6 pt-5">
+          <div className="col-lg-6 pt-5">
             <form action="">
               <div className="form-group">
                 <label htmlFor="">Subyek</label>
@@ -49,8 +49,8 @@ export default function Request(props) {
               </Button>
             </form>
           </div>
-          <div className="col">
-            <Banner image="https://source.unsplash.com/random" />
+          <div className="col d-none d-lg-block">
+            <Banner image="https://source.unsplash.com/random" isExternal/>
           </div>
         </div>
       </Fade>

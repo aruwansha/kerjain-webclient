@@ -1,5 +1,4 @@
 import React from "react";
-import BrandIcon from "./BrandIcon";
 import Button from "elements/Button";
 import Fade from "react-reveal/Fade";
 
@@ -9,13 +8,13 @@ export default function Footer() {
       <footer>
         <div className="container">
           <div className="row">
-            <div className="col-4">
-              <BrandIcon style={{ fontSize: 24 }} />
+            <div className="col-4 d-none d-lg-block">
+            <h5 className="text-left text-primary">Kerja<span className="text-secondary">In</span></h5>
               <p className="text-gray-800">
                 Temukan Jasa terbaik <br /> sesuai kebutuhan anda
               </p>
             </div>
-            <div className="col-4">
+            <div className="col-4 d-none d-lg-block">
               <h5 className="text-center">About Us</h5>
               <Button type="link" href="/">
                 <p className="text-center text-gray-800" style={{ margin: 0 }}>
@@ -28,10 +27,10 @@ export default function Footer() {
                 </p>
               </Button>
             </div>
-            <div className="col-4">
+            <div className="col-4 d-none d-lg-block">
               <h5 className="text-right">Contact</h5>
               <p className="text-right text-gray-800">
-                support@kerja.in <br />
+                kerjain@gmail.com <br />
                 0858 5427 0625
               </p>
             </div>

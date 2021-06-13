@@ -17,6 +17,19 @@ export default function Header(props) {
     localStorage.clear();
   };
 
+  if (props.isCentered)
+    return (
+      <Fade>
+        <header className="spacing-sm">
+          <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light">
+              <BrandIcon style={{ fontSize: 32, margin: "auto" }} />
+            </nav>
+          </div>
+        </header>
+      </Fade>
+    );
+
   if (getWithExpiry("name"))
     return (
       <Fade>
@@ -24,11 +37,22 @@ export default function Header(props) {
           <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light">
               <BrandIcon style={{ marginRight: 30, fontSize: 32 }} />
-              <div className="collapse navbar-collapse">
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className={`nav-item${getNavLinkClass("/me")}`}>
                     <Button
-                      className="nav-link border-right "
+                      className="nav-link border-left border-right border-right-none border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/me"
                     >
@@ -37,7 +61,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/kategori")}`}>
                     <Button
-                      className="nav-link border-right"
+                      className="nav-link border-left border-right border-right-none border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/kategori"
                     >
@@ -46,7 +70,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/permintaan")}`}>
                     <Button
-                      className="nav-link border-right"
+                      className="nav-link border-left border-right border-right-none border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/permintaan"
                     >
@@ -55,7 +79,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/order")}`}>
                     <Button
-                      className="nav-link "
+                      className="nav-link border-left border-right border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/order"
                     >
@@ -66,7 +90,7 @@ export default function Header(props) {
                 <ul className="navbar-nav ml-auto">
                   <li className={`nav-item${getNavLinkClass("/chat")}`}>
                     <Button
-                      className="nav-link border-right"
+                      className="nav-link border-left border-right border-right-none border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/chat"
                     >
@@ -75,7 +99,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/profil")}`}>
                     <Button
-                      className="nav-link border-right"
+                      className="nav-link border-left border-right border-right-none border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       href="/profil"
                     >
@@ -84,7 +108,7 @@ export default function Header(props) {
                   </li>
                   <li className={`nav-item${getNavLinkClass("/login")}`}>
                     <Button
-                      className="nav-link"
+                      className="nav-link border-left border-right border-top border-bottom border-top-none border-bottom-none"
                       type="link"
                       onClick={logout}
                       href="/"
@@ -100,30 +124,28 @@ export default function Header(props) {
       </Fade>
     );
 
-  if (props.isCentered)
-    return (
-      <Fade>
-        <header className="spacing-sm">
-          <div className="container">
-            <nav className="navbar navbar-expand-lg navbar-light">
-              <BrandIcon style={{ fontSize: 32, margin: "auto" }} />
-            </nav>
-          </div>
-        </header>
-      </Fade>
-    );
-
   return (
     <Fade>
       <header className="spacing-sm">
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light">
             <BrandIcon style={{ marginRight: 30, fontSize: 32 }} />
-            <div className="collapse navbar-collapse">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className={`nav-item${getNavLinkClass("/")}`}>
                   <Button
-                    className="nav-link border-left border-right "
+                    className="nav-link border-left border-right border-top border-bottom border-top-none border-bottom-none"
                     type="link"
                     href="/"
                   >
@@ -132,7 +154,7 @@ export default function Header(props) {
                 </li>
                 <li className={`nav-item${getNavLinkClass("/kategori")}`}>
                   <Button
-                    className="nav-link border-right"
+                    className="nav-link border-left border-right border-bottom border-left-none border-bottom-none"
                     type="link"
                     href="/kategori"
                   >
@@ -143,7 +165,7 @@ export default function Header(props) {
               <ul className="navbar-nav ml-auto">
                 <li className={`nav-item`}>
                   <Button
-                    className="nav-link border-left border-right"
+                    className="nav-link border-left border-right border-right-none border-bottom border-bottom-none"
                     type="link"
                     href="https://kerjain-webservice.herokuapp.com/register"
                     isExternal
@@ -153,7 +175,7 @@ export default function Header(props) {
                 </li>
                 <li className={`nav-item${getNavLinkClass("/login")}`}>
                   <Button
-                    className="nav-link border-right"
+                    className="nav-link border-left border-right border-right-none border-bottom border-bottom-none"
                     type="link"
                     href="/login"
                   >
@@ -162,7 +184,7 @@ export default function Header(props) {
                 </li>
                 <li className={`nav-item${getNavLinkClass("/register")}`}>
                   <Button
-                    className="nav-link border-right"
+                    className="nav-link border-left border-right border-bottom border-bottom-none"
                     type="link"
                     href="/register"
                   >

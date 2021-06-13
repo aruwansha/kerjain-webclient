@@ -73,9 +73,9 @@ export default function OrderInformation(props) {
 
               <label htmlFor="detail">Catatan</label>
               <InputText
-                id="detailNote"
-                name="detailNote"
-                value={data.detailNote}
+                id="detail"
+                name="detail"
+                value={data.detail}
                 onChange={props.onChange}
               />
             </Fade>
