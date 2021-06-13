@@ -1,8 +1,11 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
 
+import thumbnailDefault from "assets/images/thumbnail-default.svg";
+
 import { InputText } from "elements/Form";
 import { formatNumber } from "utils/formatNumber";
+
 
 
 export default function OrderInformation(props) {
@@ -25,6 +28,10 @@ export default function OrderInformation(props) {
                       }}
                       className="img-thumbnail"
                       src={`${process.env.REACT_APP_HOST}${checkout.imgUrl}`}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = thumbnailDefault;
+                      }}
                     />
                   </div>
                 </div>

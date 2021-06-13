@@ -5,6 +5,7 @@ import Header from "parts/Header";
 import Banner from "elements/Banner";
 import ServiceFreelancer from "parts/ServiceFreelancer";
 import AboutFreelancer from "parts/AboutFreelancer";
+import ReviewFreelancer from "parts/ReviewFreelancer";
 import Footer from "parts/Footer";
 
 import { checkoutBooking } from "store/actions/checkout";
@@ -32,6 +33,7 @@ class FreelancerPage extends Component {
         <Banner image="https://source.unsplash.com/random" isExternal />
         <ServiceFreelancer data={page[match.params.id]}  startBooking={this.props.checkoutBooking}/>
         <AboutFreelancer data={page[match.params.id]} />
+        <ReviewFreelancer data={page[match.params.id]} />
         <Footer />
       </>
     );

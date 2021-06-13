@@ -17,7 +17,7 @@ export const register = (payload, props) => (dispatch) => {
           type: REGISTER,
           payload: response.data,
         });
-        toast.info("Berhasil mendaftar silakan login!")
+        toast.success("Berhasil mendaftar silakan login!")
         props.history.push("/login");
       }
     })

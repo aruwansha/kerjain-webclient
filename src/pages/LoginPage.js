@@ -68,6 +68,7 @@ class LoginPage extends Component {
                       name="email"
                       placeholder="Masukkan email..."
                       onChange={this.handleChange}
+                      autoComplete="off"
                     />
                   </div>
                 </div>
@@ -82,6 +83,7 @@ class LoginPage extends Component {
                       name="password"
                       placeholder="Masukkan password..."
                       onChange={this.handleChange}
+                      autoComplete="off"
                     />
                   </div>
                 </div>

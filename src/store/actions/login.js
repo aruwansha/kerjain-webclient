@@ -2,6 +2,9 @@ import { LOGIN } from "../types";
 
 import axios from "configs/axios";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 export const login = (payload, props) => (dispatch) => {
   return axios
     .post(`/login`, payload, {
@@ -13,6 +16,7 @@ export const login = (payload, props) => (dispatch) => {
           type: LOGIN,
           payload: response.data,
         });
+        toast.success("Berhasil login")
         props.history.push("/me");
       }
     })

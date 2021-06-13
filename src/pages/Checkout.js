@@ -44,11 +44,10 @@ class Checkout extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
-  
 
   _Submit = (nextStep) => {
     const { data } = this.state;
-    
+
     const { checkout } = this.props;
 
     const payload = new FormData();
@@ -69,6 +68,30 @@ class Checkout extends Component {
   render() {
     const { data } = this.state;
     const { checkout } = this.props;
+
+    if (!getWithExpiry("token"))
+      return (
+        <div className="container">
+          <div
+            className="row align-items-center justify-content-center text-center"
+            style={{ height: "100vh" }}
+          >
+            <div className="col-3">
+              Eitss stop✋ <br /> Silakan login dahulu
+              <div>
+                <Button
+                  className="btn mt-5"
+                  type="button"
+                  onClick={() => this.props.history.goBack()}
+                  isLight
+                >
+                  Kembali
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
 
     if (!checkout)
       return (
@@ -110,11 +133,7 @@ class Checkout extends Component {
         title: "Pembayaran",
         description: "Ikut instruksi di bawah",
         content: (
-          <Payment
-            data={data}
-            checkout={checkout}
-            onChange={this.onChange}
-          />
+          <Payment data={data} checkout={checkout} onChange={this.onChange} />
         ),
       },
       completed: {
@@ -126,7 +145,7 @@ class Checkout extends Component {
 
     return (
       <>
-        <Header  {...this.props}  isCentered />
+        <Header {...this.props} isCentered />
 
         <Stepper steps={steps} initialStep="Booking Information">
           {(prevStep, nextStep, CurrentStep, steps) => (
@@ -227,4 +246,4 @@ const mapStateToProps = (state) => ({
   checkout: state.checkout,
 });
 
-export default connect(mapStateToProps, {submitBooking})(Checkout);
+export default connect(mapStateToProps, { submitBooking })(Checkout);
