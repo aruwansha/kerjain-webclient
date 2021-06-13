@@ -3,7 +3,6 @@ import React from "react";
 import Star from "elements/Star";
 
 import thumbnailDefault from "assets/images/thumbnail-default.svg";
-import profileDefault from "assets/images/pp-default.svg";
 
 import Fade from "react-reveal/Fade";
 
