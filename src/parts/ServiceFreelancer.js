@@ -2,12 +2,13 @@ import React, { Component } from "react";
 
 import { withRouter } from "react-router-dom";
 
+import thumbnailDefault from "assets/images/thumbnail-default.svg";
+
 import propTypes from "prop-types";
 
 import Button from "elements/Button";
 
 import { formatNumber } from "utils/formatNumber";
-
 
 import Fade from "react-reveal/Fade";
 
@@ -42,7 +43,7 @@ class ServiceFreelancer extends Component {
                   padding: "65px",
                 }}
               >
-               Layanan belum tersedia 
+                Layanan belum tersedia
               </div>
             </Fade>
           </Fade>
@@ -76,6 +77,10 @@ class ServiceFreelancer extends Component {
                           margin: 15,
                         }}
                         className="img-thumbnail"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = thumbnailDefault;
+                        }}
                       />
                     </div>
                     <div className="col" style={{ margin: "10px 20px" }}>

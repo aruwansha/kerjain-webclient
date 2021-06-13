@@ -26,7 +26,7 @@ export default function Payment(props) {
               <p>Total: Rp {formatNumber(total)}</p>
               {checkout.bank.map((bank, index) => {
                 return (
-                  <div className="row mt-4">
+                  <div className="row mt-4" key={`bank-${index}`}>
                     <div className="col-3 text-right" style={{margin: "20px auto"}}>
                       <img src={`${process.env.REACT_APP_HOST}${bank.imgUrl}`} alt={`Bank ${bank.bankName}`} width="60" />
                     </div>

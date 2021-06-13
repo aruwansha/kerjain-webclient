@@ -2,6 +2,9 @@ import React from "react";
 
 import Fade from "react-reveal/Fade";
 
+import thumbnailDefault from "assets/images/thumbnail-default.svg";
+import profileDefault from "assets/images/pp-default.svg";
+
 export default function AboutFreelancer({ data }) {
   return (
     <section className="container">
@@ -17,6 +20,10 @@ export default function AboutFreelancer({ data }) {
                 alt="freelancer"
                 style={{ height: 250, width: 250, borderRadius: 5 }}
                 className="img-contain img-thumbnail"
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = thumbnailDefault;
+                }}
               />
             </div>
             <div className="col-9 mt-4">
@@ -28,6 +35,10 @@ export default function AboutFreelancer({ data }) {
                     src={`${process.env.REACT_APP_HOST}${data.userId.imgUrl}`}
                     alt="tes"
                     style={{ height: 50, width: 50 }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = profileDefault;
+                    }}
                   />
                 </div>
                 <div className="col">

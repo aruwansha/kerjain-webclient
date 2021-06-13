@@ -2,6 +2,9 @@ import React from "react";
 
 import Star from "assets/images/icons/star.svg";
 
+import thumbnailDefault from "assets/images/thumbnail-default.svg";
+import profileDefault from "assets/images/pp-default.svg";
+
 import Button from "elements/Button";
 
 import Fade from "react-reveal/Fade";
@@ -30,6 +33,10 @@ export default function Category({ data }) {
                           src={`${process.env.REACT_APP_HOST}${freelancer.imgUrl}`}
                           alt={freelancer.title}
                           className="img-cover"
+                          onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = thumbnailDefault;
+                          }}
                         />
                       </figure>
                       <div className="meta-wrapper">
@@ -40,6 +47,10 @@ export default function Category({ data }) {
                                 src={`${process.env.REACT_APP_HOST}${freelancer.userId.imgUrl}`}
                                 alt="profile"
                                 className="profile-pic"
+                                onError={(e) => {
+                                  e.target.onerror = null;
+                                  e.target.src = profileDefault;
+                                }}
                               />
                             </figure>
                           </div>
@@ -71,8 +82,9 @@ export default function Category({ data }) {
                         >
                           <h6>{freelancer.title}</h6>
                         </Button>
-                      <p className="text-gray-500">Mulai dari Rp {formatNumber(freelancer.startFrom)}</p>
-
+                        <p className="text-gray-500">
+                          Mulai dari Rp {formatNumber(freelancer.startFrom)}
+                        </p>
                       </div>
                       <Button
                         type="link"

@@ -2,6 +2,9 @@ import React from "react";
 
 import Star from "assets/images/icons/star.svg";
 
+import thumbnailDefault from "assets/images/thumbnail-default.svg";
+import profileDefault from "assets/images/pp-default.svg";
+
 import Button from "elements/Button";
 
 import Fade from "react-reveal/Fade";
@@ -24,6 +27,10 @@ export default function HighRated(props) {
                         src={`${process.env.REACT_APP_HOST}${freelancer.imgUrl}`}
                         alt={freelancer.title}
                         className="img-cover"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = thumbnailDefault;
+                        }}
                       />
                     </figure>
                     <div className="meta-wrapper">
@@ -34,6 +41,10 @@ export default function HighRated(props) {
                               src={`${process.env.REACT_APP_HOST}${freelancer.userId.imgUrl}`}
                               alt="profile"
                               className="profile-pic img-contain"
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = profileDefault;
+                              }}
                             />
                           </figure>
                         </div>
