@@ -45,7 +45,7 @@ class DetailChatPage extends Component {
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <div className="row">
-                          <div className="col-10">
+                          <div className="col">
                             <label
                               for=""
                               className="text-primary font-weight-bold mr-1"
@@ -56,7 +56,7 @@ class DetailChatPage extends Component {
                               <i className="fa fa-xs fa-circle">o</i>
                             </span>
                           </div>
-                          <div className="col-2 text-right">
+                          <div className="col text-right">
                             <p>
                               <Time
                                 value={chat.time}
@@ -66,12 +66,12 @@ class DetailChatPage extends Component {
                           </div>
                         </div>
                         <div className="row d-flex justify-content-between">
-                          <div className="col-10">
+                          <div className="col col-lg-10">
                             <p>
                               {chat.message}
                             </p>
                           </div>
-                          <div className="col-2 text-right">
+                          <div className="col col-lg-2 text-right">
                             <form>
                               <a
                                 type="submit"
@@ -92,7 +92,7 @@ class DetailChatPage extends Component {
                   })}
                   <form action="">
                     <div className="row">
-                      <div className="col-md-11 col-10 text-left">
+                      <div className="col-lg-11 col-9 text-left">
                         <input
                           type="text"
                           className="form-control"
@@ -101,7 +101,7 @@ class DetailChatPage extends Component {
                           autoComplete="off"
                         />
                       </div>
-                      <div className="col-md-1 col-2 text-right">
+                      <div className="col-lg-1 col-3 text-right">
                         <button className="btn btn-primary" type="submit">
                           Kirim
                         </button>

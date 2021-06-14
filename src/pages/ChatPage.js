@@ -64,7 +64,7 @@ class ChatPage extends Component {
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <div className="row">
-                          <div className="col-10">
+                          <div className="col col-lg-10">
                             <label
                               for=""
                               className="text-primary font-weight-bold mr-1"
@@ -79,7 +79,7 @@ class ChatPage extends Component {
                               ""
                             )}
                           </div>
-                          <div className="col-2 text-right">
+                          <div className="col col-lg-2 text-right">
                             <p>
                               <Time
                                 value={chat.doc.time}
@@ -89,7 +89,7 @@ class ChatPage extends Component {
                           </div>
                         </div>
                         <div className="row d-flex justify-content-between">
-                          <div className="col-10">
+                          <div className="col col-lg-10">
                             <p>
                               <span className="font-weight-bold">
                                 {chat.doc.from[0].name}
@@ -97,7 +97,7 @@ class ChatPage extends Component {
                               : {chat.doc.message}
                             </p>
                           </div>
-                          <div className="col-2 text-right">
+                          <div className="col-sm-12 col-lg-2 text-right">
                             <a
                               href={`/chat/${chat.doc.freelancerUserId[0]._id}`}
                             >

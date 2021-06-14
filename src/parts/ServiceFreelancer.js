@@ -66,7 +66,7 @@ class ServiceFreelancer extends Component {
               >
                 <div className="custom-card">
                   <div className="row">
-                    <div className="col-lg-3">
+                    <div className="col-lg-3 col-sm-12 text-center">
                       <img
                         src={`${process.env.REACT_APP_HOST}${item._id.imgUrl}`}
                         alt={`Thumbnail ${item._id.title}`}
@@ -76,14 +76,14 @@ class ServiceFreelancer extends Component {
                           borderRadius: 5,
                           margin: 15,
                         }}
-                        className="img-thumbnail d-none d-lg-block"
+                        className="img-thumbnail"
                         onError={(e) => {
                           e.target.onerror = null;
                           e.target.src = thumbnailDefault;
                         }}
                       />
                     </div>
-                    <div className="col-lg-9" style={{ margin: "10px 20px" }}>
+                    <div className="col " style={{ margin: "10px 20px" }}>
                       <h5 style={{ fontSize: 22, margin: "16px 0 4px 0" }}>
                         {item._id.title}
                       </h5>
@@ -96,7 +96,6 @@ class ServiceFreelancer extends Component {
 
                       <Button
                         className="btn"
-                        hasShadow
                         isPrimary
                         onClick={() => {
                           this.startBooking(item._id);

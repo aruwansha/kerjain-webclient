@@ -10,14 +10,13 @@ export default function Completed() {
           <div className="col">
             <img
               src={CompletedIllustration}
-              className="img-fluid mb-4"
+              className="img-fluid mb-4 h-done"
               alt="completed"
-              style={{height: 300}}
             />
-            <p className="text-gray-600">
+            {/* <p className="text-gray-600">
               We will message you later once the transaction has been
               accepted
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

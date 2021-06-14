@@ -2,8 +2,6 @@ import React from "react";
 
 import Star from "elements/Star";
 
-import thumbnailDefault from "assets/images/thumbnail-default.svg";
-
 import Fade from "react-reveal/Fade";
 
 import Carousel from "react-multi-carousel";
@@ -25,6 +23,7 @@ export default function ReviewFreelancer({ data }) {
           centerMode={false}
           className=""
           containerClass="container-with-dots"
+          removeArrowOnDeviceType = 'mobile, desktop'
           dotListClass=""
           draggable
           focusOnSelect={false}
@@ -68,20 +67,9 @@ export default function ReviewFreelancer({ data }) {
           {data.review.map((review, index) => {
             return (
               <div className="row" key={`review-${index}`}>
-                <div className="col-lg-10 col-sm-12">
+                <div className="col-lg-10 col-sm-12 mr-2">
                   <div className="card card-featured">
-                    <figure className="img-wrapper" style={{ height: 150 }}>
-                      <img
-                        src={`${process.env.REACT_APP_HOST}}`}
-                        alt=""
-                        className="img-cover"
-                        onError={(e) => {
-                          e.target.onerror = null;
-                          e.target.src = thumbnailDefault;
-                        }}
-                      />
-                    </figure>
-                    <div className="meta-wrapper">
+                   <div className="meta-wrapper">
                       <div className="row">
                         <div className="col">
                           <p

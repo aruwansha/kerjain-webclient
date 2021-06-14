@@ -76,7 +76,7 @@ class Checkout extends Component {
             className="row align-items-center justify-content-center text-center"
             style={{ height: "100vh" }}
           >
-            <div className="col-3">
+            <div className="col-lg-3">
               Eitss stop✋ <br /> Silakan login dahulu
               <div>
                 <Button
@@ -100,7 +100,7 @@ class Checkout extends Component {
             className="row align-items-center justify-content-center text-center"
             style={{ height: "100vh" }}
           >
-            <div className="col-3">
+            <div className="col-lg-3">
               Eitss stop✋ <br /> pilih layanan dulu
               <div>
                 <Button

@@ -14,7 +14,7 @@ export default function OrderInformation(props) {
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
         <div className="row justify-content-center align-items-center">
-          <div className="col-5 border-right py-5" style={{ paddingRight: 80 }}>
+          <div className="col-lg-5 border-right py-custom pd-right-50 pd-left-50" style={{ paddingRight: 80 }}>
             <Fade delay={300}>
               <div className="custom-card">
                 <div className="row">
@@ -26,7 +26,7 @@ export default function OrderInformation(props) {
                         borderRadius: 5,
                         margin: "15px",
                       }}
-                      className="img-thumbnail"
+                      className="img-thumbnail width-285 mg-custom"
                       src={`${process.env.REACT_APP_HOST}${checkout.imgUrl}`}
                       onError={(e) => {
                         e.target.onerror = null;
@@ -50,7 +50,7 @@ export default function OrderInformation(props) {
               </div>
             </Fade>
           </div>
-          <div className="col-5 py-5" style={{ paddingLeft: 80 }}>
+          <div className="col-lg-5 py-custom pd-right-50 pd-left-50" style={{ paddingLeft: 80 }}>
           <Fade delay={600}>
               <label htmlFor="name">Nama Lengkap</label>
               <InputText
