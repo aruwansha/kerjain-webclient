@@ -52,9 +52,13 @@ class DetailChatPage extends Component {
                             >
                               {chat.from.name}
                             </label>
-                            <span className="badge badge-danger badge-counter">
-                              <i className="fa fa-xs fa-circle">o</i>
-                            </span>
+                            {!chat.isReadServiceUser ? (
+                              <span className="badge badge-danger badge-counter">
+                                <i className="fa fa-xs fa-circle">o</i>
+                              </span>
+                            ) : (
+                              ""
+                            )}
                           </div>
                           <div className="col text-right">
                             <p>

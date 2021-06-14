@@ -8,6 +8,8 @@ import RegisterPage from "pages/RegisterPage";
 import LoginPage from "pages/LoginPage";
 import Checkout from "pages/Checkout";
 import MePage from "pages/MePage";
+import RequestPage from "pages/RequestPage";
+import OrderPage from "pages/OrderPage";
 import ChatPage from "pages/ChatPage";
 import DetailChatPage from "pages/DetailChatPage";
 
@@ -26,6 +28,8 @@ function App() {
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/checkout" component={Checkout} />
         <Route exact path="/me" component={MePage} />
+        <Route exact path="/permintaan" component={RequestPage} />
+        <Route exact path="/order" component={OrderPage} />
         <Route exact path="/chat" component={ChatPage} />
         <Route exact path="/chat/:id" component={DetailChatPage} />
       </Router>
