@@ -103,40 +103,49 @@ class Request extends Component {
                   </select>
                 </div>
                 {data.categoryId !== "" && (
-                  <div className="form-group">
-                    <label htmlFor="">Subyek</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="subject"
-                      placeholder="Masukkan subyek..."
-                      onChange={this.handleChange}
-                    />
-                  </div>
+                  <Fade bottom>
+                    <div className="form-group">
+                      <label htmlFor="">Subyek</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="subject"
+                        placeholder="Masukkan subyek..."
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                      />
+                    </div>
+                  </Fade>
                 )}
                 {data.subject !== "" && (
-                  <div className="form-group">
-                    <label htmlFor="">Deskripsi</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="description"
-                      placeholder="Masukkan deskripsi..."
-                      onChange={this.handleChange}
-                    />
-                  </div>
+                  <Fade bottom>
+                    <div className="form-group">
+                      <label htmlFor="">Deskripsi</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="description"
+                        placeholder="Masukkan deskripsi..."
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                      />
+                    </div>
+                  </Fade>
                 )}
                 {data.description !== "" && (
-                  <div className="form-group">
-                    <label htmlFor="">Maksimal Dana</label>
-                    <input
-                      type="text"
-                      className="form-control"
-                      name="budget"
-                      placeholder="Masukkan maksimal pengeluaran..."
-                      onChange={this.handleChange}
-                    />
-                  </div>
+                  <Fade bottom>
+                    <div className="form-group">
+                      <label htmlFor="">Budget</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="budget"
+                        placeholder="Masukkan maksimal pengeluaran..."
+                        onChange={this.handleChange}
+                        autoComplete="off"
+                      />
+                    </div>
+                  </Fade>
                 )}
                 {data.budget !== "" && (
                   <Fade>

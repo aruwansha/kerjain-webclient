@@ -14,19 +14,19 @@ export default function AboutFreelancer({ data }) {
         </h3>
         <Fade bottom delay={500}>
           <div className="row">
-            <div className="col-3">
+            <div className="col-lg-4">
               <img
                 src={`${process.env.REACT_APP_HOST}${data.imgUrl}`}
                 alt="freelancer"
-                style={{ height: 250, width: 250, borderRadius: 5 }}
-                className="img-contain img-thumbnail"
+                style={{ height: 250, width: 360, borderRadius: 5 }}
+                className="img-contain img-thumbnail d-none d-lg-block"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src = thumbnailDefault;
                 }}
               />
             </div>
-            <div className="col-9 mt-4">
+            <div className="col-lg-8 mt-4">
               <h5 className="mt-2">{data.title}</h5>
               <div className="row">
                 <div className="col-auto">
