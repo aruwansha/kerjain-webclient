@@ -16,7 +16,9 @@ export const login = (payload, props) => (dispatch) => {
           type: LOGIN,
           payload: response.data,
         });
-        toast.success("Berhasil login")
+        toast.success("Berhasil login", {
+          position: toast.POSITION.BOTTOM_CENTER
+        })
         props.history.push("/me");
       }
     })

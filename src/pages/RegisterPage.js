@@ -25,6 +25,7 @@ class RegisterPage extends Component {
         password2: "",
         categoryId: "",
       },
+      loading: false,
     };
 
     if (getWithExpiry("token")) return this.props.history.push("/me");
@@ -50,11 +51,14 @@ class RegisterPage extends Component {
       data.password2 === "" ||
       data.categoryId === ""
     ) {
-      toast.error("Tolong isi dan lengkapi field!");
-
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     } else {
       if (data.password1 !== data.password2) {
-        toast.error("Password harus sama!");
+        toast.error("Password harus sama!", {
+          position: toast.POSITION.BOTTOM_CENTER
+        });
       } else {
         const fullname = `${data.firstname} ${data.lastname}`;
         const payload = {
@@ -68,14 +72,25 @@ class RegisterPage extends Component {
     }
     event.preventDefault();
   };
+
+  loader = () => {
+    this.setState({ loading: true });
+
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  };
+
   render() {
+    const { loading } = this.state;
+
     return (
       <>
         <Header {...this.props} isCentered />
         <section className="container" style={{ marginBottom: 80 }}>
           <div className="wrapper" style={{ margin: "50px 0" }}>
             <div className="row">
-              <div className="col-lg-6" style={{ margin: "0 auto" }}>
+              <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                 <div className="form-group">
                   <label htmlFor="">Nama Depan</label>
                   <input
@@ -91,7 +106,7 @@ class RegisterPage extends Component {
             </div>
             <form onSubmit={this._register}>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Nama Belakang</label>
                     <input
@@ -106,7 +121,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Email</label>
                     <input
@@ -121,7 +136,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Password</label>
                     <input
@@ -136,7 +151,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Ulang Password</label>
                     <input
@@ -151,7 +166,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Kategori yang dipiih</label>
                     <select
@@ -180,7 +195,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <Button
                     className="btn btn-light px-4"
                     type="link"
@@ -188,8 +203,20 @@ class RegisterPage extends Component {
                   >
                     Login
                   </Button>
-                  <Button className="btn px-4 ml-3" type="submit" isPrimary>
-                    Register
+                  <Button
+                    className="btn px-4 ml-3"
+                    type="submit"
+                    onClick={this.loader}
+                    disabled={loading}
+                    isPrimary
+                  >
+                    {loading && (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        style={{ margin: "0 1.5em" }}
+                      ></span>
+                    )}
+                    {!loading && <span>Register</span>}
                   </Button>
                 </div>
               </div>

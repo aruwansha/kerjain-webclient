@@ -25,7 +25,6 @@ class RequestPage extends Component {
   }
   render() {
     const { page } = this.props;
-    console.log(page);
     if (!page.hasOwnProperty("request")) return null;
     return (
       <>

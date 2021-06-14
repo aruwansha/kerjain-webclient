@@ -16,7 +16,9 @@ export const request = (payload, token) => (dispatch) => {
           type: REQUEST,
           payload: response.data,
         });
-        toast.success("Berhasil request")
+        toast.success("Berhasil membuat permintaan, silakan menunggu", {
+          position: toast.POSITION.BOTTOM_CENTER
+        })
       }
     })
     .catch((error) => {

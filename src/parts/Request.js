@@ -39,14 +39,15 @@ class Request extends Component {
 
   _request = (event) => {
     const { data } = this.state;
-    console.log(data);
     if (
       data.categoryId === "" ||
       data.subject === "" ||
       data.description === "" ||
       data.budget === ""
     ) {
-      toast.error("Tolong isi dan lengkapi field!");
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     } else {
       const payload = {
         categoryId: data.categoryId,

@@ -12,12 +12,13 @@ export const register = (payload, props) => (dispatch) => {
     })
     .then((response) => {
       if (response.data) {
-          console.log(response)
         dispatch({
           type: REGISTER,
           payload: response.data,
         });
-        toast.success("Berhasil mendaftar silakan login!")
+        toast.success("Berhasil mendaftar silakan login!", {
+          position: toast.POSITION.BOTTOM_CENTER,
+        });
         props.history.push("/login");
       }
     })

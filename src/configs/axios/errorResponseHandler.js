@@ -7,7 +7,9 @@ function errorResponseHandler(error) {
     if (error.response) {
       message = error.response.data;
 
-      toast.error(message);
+      toast.error(message) , {
+        position: toast.POSITION.BOTTOM_CENTER
+      };
 
       return Promise.reject(error);
     }

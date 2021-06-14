@@ -8,7 +8,6 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 export default function ReviewFreelancer({ data }) {
-  console.log(data);
   return (
     <section id="ReviewFreelancer" className="container">
       <Fade bottom>

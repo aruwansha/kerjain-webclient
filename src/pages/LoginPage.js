@@ -21,6 +21,7 @@ class LoginPage extends Component {
         email: "",
         password: "",
       },
+      loading: false,
     };
 
     if (getWithExpiry("token")) return this.props.history.push("/me");
@@ -38,8 +39,9 @@ class LoginPage extends Component {
   _login = (event) => {
     const { data } = this.state;
     if (data.email === "" || data.password2 === "") {
-      toast.error("Tolong isi dan lengkapi field!");
-
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     } else {
       const payload = {
         email: data.email,
@@ -51,7 +53,17 @@ class LoginPage extends Component {
     event.preventDefault();
   };
 
+  loader = () => {
+    this.setState({ loading: true });
+
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  };
+
   render() {
+    const { loading } = this.state;
+
     return (
       <>
         <Header {...this.props} isCentered />
@@ -59,7 +71,7 @@ class LoginPage extends Component {
           <div className="wrapper" style={{ margin: "140px 0" }}>
             <form onSubmit={this._login}>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Email</label>
                     <input
@@ -74,7 +86,7 @@ class LoginPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Password</label>
                     <input
@@ -89,9 +101,21 @@ class LoginPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-6" style={{ margin: "0 auto" }}>
-                  <Button className="btn px-4" type="submit" isPrimary>
-                    Login
+                <div className="col-lg-6 pd-right-50 pd-left-50" style={{ margin: "0 auto" }}>
+                  <Button
+                    className="btn px-4"
+                    type="submit"
+                    onClick={this.loader}
+                    disabled={loading}
+                    isPrimary
+                  >
+                    {loading && (
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        style={{ margin: "0 0.8em" }}
+                      ></span>
+                    )}
+                    {!loading && <span>Login</span>}
                   </Button>
                   <Button
                     className="btn btn-light px-4 ml-3"

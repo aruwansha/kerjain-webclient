@@ -50,7 +50,9 @@ class DetailChatPage extends Component {
   _chat = (event) => {
     const { data } = this.state;
     if (data.message === "") {
-      toast.error("Isi dulu fieldnya!");
+      toast.error("Tolong isi fieldnya!", {
+        position: toast.POSITION.BOTTOM_CENTER
+      });
     } else {
       const payload = {
         message: data.message,
@@ -66,7 +68,6 @@ class DetailChatPage extends Component {
 
   render() {
     const { page, match } = this.props;
-    console.log(page);
     if (!page[match.params.id]) return null;
 
     if (page[match.params.id].length === 0)
