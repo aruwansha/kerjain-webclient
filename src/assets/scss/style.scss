@@ -204,19 +204,21 @@ footer {
 }
 
 @media (min-width: 768px) {
-  .border-right-none {
-    border-right: none !important;
-  }
-
-  .border-left-none {
-    border-left: none !important;
-  }
-
   .border-top-none {
     border-top: none !important;
   }
 
   .border-bottom-none {
     border-bottom: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .border-right-none {
+    border-right: none !important;
+  }
+
+  .border-left-none {
+    border-left: none !important;
   }
 }

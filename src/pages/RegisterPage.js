@@ -75,7 +75,7 @@ class RegisterPage extends Component {
         <section className="container" style={{ marginBottom: 80 }}>
           <div className="wrapper" style={{ margin: "50px 0" }}>
             <div className="row">
-              <div className="col-6" style={{ margin: "0 auto" }}>
+              <div className="col-lg-6" style={{ margin: "0 auto" }}>
                 <div className="form-group">
                   <label htmlFor="">Nama Depan</label>
                   <input
@@ -91,7 +91,7 @@ class RegisterPage extends Component {
             </div>
             <form onSubmit={this._register}>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Nama Belakang</label>
                     <input
@@ -106,7 +106,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Email</label>
                     <input
@@ -121,7 +121,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Password</label>
                     <input
@@ -136,7 +136,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Ulang Password</label>
                     <input
@@ -151,7 +151,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Kategori yang dipiih</label>
                     <select
@@ -180,7 +180,7 @@ class RegisterPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <Button
                     className="btn btn-light px-4"
                     type="link"

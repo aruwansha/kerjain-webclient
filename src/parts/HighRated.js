@@ -16,11 +16,11 @@ export default function HighRated(props) {
     <section id="highRated" className="container">
       <Fade bottom>
         <h4 className="mb-3">Rating Tinggi</h4>
-        <div className="container-grid">
+        <div className="row">
           {props.data.map((freelancer, index) => {
             return (
               <Fade bottom delay={500 * index} key={`highRated-${index}`}>
-                <div className={`item column-3 row-1`}>
+                <div className={`col-lg-3 mb-4`}>
                   <div className="card card-featured">
                     <figure className="img-wrapper" style={{ height: 150 }}>
                       <img

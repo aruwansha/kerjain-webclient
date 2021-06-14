@@ -59,7 +59,7 @@ class LoginPage extends Component {
           <div className="wrapper" style={{ margin: "140px 0" }}>
             <form onSubmit={this._login}>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Email</label>
                     <input
@@ -74,7 +74,7 @@ class LoginPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <div className="form-group">
                     <label htmlFor="">Password</label>
                     <input
@@ -89,7 +89,7 @@ class LoginPage extends Component {
                 </div>
               </div>
               <div className="row">
-                <div className="col-6" style={{ margin: "0 auto" }}>
+                <div className="col-lg-6" style={{ margin: "0 auto" }}>
                   <Button className="btn px-4" type="submit" isPrimary>
                     Login
                   </Button>

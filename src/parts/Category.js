@@ -19,12 +19,12 @@ export default function Category({ data }) {
       <section id="categories" className="container" key={`category-${index1}`}>
         <Fade bottom>
           <h4 className="mb-3">{category.name}</h4>
-          <div className="container-grid">
+          <div className="row">
             {category.data.map((freelancer, index) => {
               return (
                 <Fade bottom delay={500 * index}>
                   <div
-                    className={`item column-3 row-1`}
+                    className={`col-lg-3 mb-4`}
                     key={`highRated-${index}`}
                   >
                     <div className="card card-featured">
