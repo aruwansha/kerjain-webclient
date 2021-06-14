@@ -8,6 +8,7 @@ import Footer from "parts/Footer";
 import { fetchPage } from "store/actions/page";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
+import Button from "elements/Button";
 
 class ChatPage extends Component {
   componentDidMount() {
@@ -17,7 +18,7 @@ class ChatPage extends Component {
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (!this.props.page.chats)
-      this.props.fetchPage(`/chats/get`, "chats", getWithExpiry("token"));
+      this.props.fetchPage(`/chat/get`, "chats", getWithExpiry("token"));
   }
 
   render() {
@@ -58,7 +59,10 @@ class ChatPage extends Component {
             <div className="col">
               <div className="card">
                 <div className="card-header"></div>
-                <div className="card-body">
+                <div
+                  className="card-body"
+                  style={{ height: 500, overflow: "auto" }}
+                >
                   {page.chats.chats.map((chat, index) => {
                     return (
                       <div className="form-group" key={`key-${index}`}>
@@ -97,11 +101,12 @@ class ChatPage extends Component {
                             </p>
                           </div>
                           <div className="col-sm-12 col-lg-2 text-right">
-                            <a
+                            <Button
+                              type="link"
                               href={`/chat/${chat.doc.freelancerUserId[0]._id}`}
                             >
                               Balas
-                            </a>
+                            </Button>
                             <form>
                               <a
                                 type="submit"

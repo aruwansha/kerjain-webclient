@@ -5,43 +5,134 @@ import Time from "react-time-format";
 import Header from "parts/Header";
 import Footer from "parts/Footer";
 
+import Button from "elements/Button";
+
 import { fetchPage } from "store/actions/page";
+
+import { chat } from "store/actions/chat";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
 class DetailChatPage extends Component {
-  componentDidMount() {
-    window.title = "KerjaIn | Beranda";
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        message: "",
+      },
+    };
+
+    window.title = "KerjaIn | Detail Chat";
     window.scroll(0, 0);
-    console.log(this.params);
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `/chats/get/${this.props.match.params.id}`,
+        `/chat/get/${this.props.match.params.id}`,
         this.props.match.params.id,
         getWithExpiry("token")
       );
+
+    this.handleChange = this.handleChange.bind(this);
+    this._chat = this._chat.bind(this);
   }
+
+  handleChange(event) {
+    this.setState({
+      data: { ...this.state.data, [event.target.name]: event.target.value },
+    });
+  }
+
+  _chat = (event) => {
+    const { data } = this.state;
+    if (data.message === "") {
+      toast.error("Isi dulu fieldnya!");
+    } else {
+      const payload = {
+        message: data.message,
+      };
+      this.props.chat(
+        payload,
+        this.props.match.params.id,
+        getWithExpiry("token")
+      );
+    }
+    event.preventDefault();
+  };
+
   render() {
     const { page, match } = this.props;
+    console.log(page);
     if (!page[match.params.id]) return null;
+
+    if (page[match.params.id].length === 0)
+      return (
+        <>
+          <Header {...this.props} />
+          <div className="container">
+            <h4 className="mb-3">Detail Chat</h4>
+            <div className="row">
+              <div className="col">
+                <div className="card" style={{ height: 300 }}>
+                  <div className="card-header"></div>
+                  <div className="card-body">
+                    <div className="d-flex justify-content-center">
+                      <p
+                        className="text-gray-600"
+                        style={{ marginTop: 90, marginBottom: 80 }}
+                      >
+                        Belum Ada Chat Masuk
+                      </p>
+                    </div>
+                    <form onSubmit={this._chat}>
+                      <div className="row">
+                        <div className="col-lg-11 col-9 text-left">
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Tulis pesan..."
+                            name="message"
+                            onChange={this.handleChange}
+                            autoComplete="off"
+                          />
+                        </div>
+                        <div className="col-lg-1 col-3 text-right">
+                          <Button className="btn btn-primary" type="submit">
+                            Kirim
+                          </Button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <Footer></Footer>
+        </>
+      );
 
     return (
       <>
         <Header {...this.props} />
         <div className="container">
-          <h4 className="mb-3">Chat </h4>
+          <h4 className="mb-3">Chat</h4>
           <div className="row">
             <div className="col">
               <div className="card">
                 <div className="card-header"></div>
-                <div className="card-body">
+                <div
+                  className="card-body"
+                  style={{ height: 500, overflow: "auto" }}
+                >
                   {/* <div className="d-flex justify-content-center">
                     <p className="text-gray-600" style={{marginTop: 90}}>Belum Ada Chat Masuk</p>
                   </div> */}
-                  {page[match.params.id].chats.map((chat, index) => {
+                  {page[match.params.id].map((chat, index) => {
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <div className="row">
@@ -71,9 +162,7 @@ class DetailChatPage extends Component {
                         </div>
                         <div className="row d-flex justify-content-between">
                           <div className="col col-lg-10">
-                            <p>
-                              {chat.message}
-                            </p>
+                            <p>{chat.message}</p>
                           </div>
                           <div className="col col-lg-2 text-right">
                             <form>
@@ -94,7 +183,7 @@ class DetailChatPage extends Component {
                       </div>
                     );
                   })}
-                  <form action="">
+                  <form onSubmit={this._chat}>
                     <div className="row">
                       <div className="col-lg-11 col-9 text-left">
                         <input
@@ -102,13 +191,14 @@ class DetailChatPage extends Component {
                           className="form-control"
                           placeholder="Tulis pesan..."
                           name="message"
+                          onChange={this.handleChange}
                           autoComplete="off"
                         />
                       </div>
                       <div className="col-lg-1 col-3 text-right">
-                        <button className="btn btn-primary" type="submit">
+                        <Button className="btn btn-primary" type="submit">
                           Kirim
-                        </button>
+                        </Button>
                       </div>
                     </div>
                   </form>
@@ -125,6 +215,7 @@ class DetailChatPage extends Component {
 
 const mapStateToProps = (state) => ({
   page: state.page,
+  data: state.chat,
 });
 
-export default connect(mapStateToProps, { fetchPage })(DetailChatPage);
+export default connect(mapStateToProps, { fetchPage, chat })(DetailChatPage);
