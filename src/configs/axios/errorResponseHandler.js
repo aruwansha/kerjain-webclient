@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.min.css';
+import "react-toastify/dist/ReactToastify.min.css";
 
 function errorResponseHandler(error) {
   if (error) {
@@ -7,9 +7,7 @@ function errorResponseHandler(error) {
     if (error.response) {
       message = error.response.data;
 
-      toast.error(message) , {
-        position: toast.POSITION.BOTTOM_CENTER
-      };
+      toast.error(message, { position: toast.POSITION.BOTTOM_CENTER });
 
       return Promise.reject(error);
     }
