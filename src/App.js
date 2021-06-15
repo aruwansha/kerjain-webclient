@@ -11,7 +11,8 @@ import MePage from "pages/MePage";
 import RequestPage from "pages/RequestPage";
 import OrderPage from "pages/OrderPage";
 import ChatPage from "pages/ChatPage";
-import DetailChatPage from "pages/DetailChatPage";
+import ChatDetailPage from "pages/ChatDetailPage";
+import OrderDetailPage from "pages/OrderDetailPage";
 
 import { ToastContainer } from 'react-toastify';
 
@@ -30,8 +31,9 @@ function App() {
         <Route exact path="/me" component={MePage} />
         <Route exact path="/permintaan" component={RequestPage} />
         <Route exact path="/order" component={OrderPage} />
+        <Route exact path="/order/:id" component={OrderDetailPage} />
         <Route exact path="/chat" component={ChatPage} />
-        <Route exact path="/chat/:id" component={DetailChatPage} />
+        <Route exact path="/chat/:id" component={ChatDetailPage} />
       </Router>
 
       <ToastContainer />

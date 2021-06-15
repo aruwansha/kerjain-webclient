@@ -85,8 +85,9 @@ class Request extends Component {
                     className="form-control"
                     onChange={this.handleChange}
                     value={this.state.categoryId}
+                    defaultValue={'DEFAULT'}
                   >
-                    <option value="" selected disabled>
+                    <option value="DEFAULT" disabled>
                       Pilih kategori...
                     </option>
                     <option value="605b580db4a8e60af44d4530">

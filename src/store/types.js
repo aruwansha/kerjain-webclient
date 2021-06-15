@@ -8,4 +8,6 @@ export const CHAT = "CHAT";
 
 export const REQUEST = "REQUEST";
 
+export const REVIEW = "REVIEW";
+
 export const CHECKOUT_BOOKING = "CHECKOUT_BOOKING";

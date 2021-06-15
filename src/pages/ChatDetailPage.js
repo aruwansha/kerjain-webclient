@@ -16,7 +16,7 @@ import { getWithExpiry } from "utils/setExpiryLocalStorage";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-class DetailChatPage extends Component {
+class ChatDetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -219,4 +219,4 @@ const mapStateToProps = (state) => ({
   data: state.chat,
 });
 
-export default connect(mapStateToProps, { fetchPage, chat })(DetailChatPage);
+export default connect(mapStateToProps, { fetchPage, chat })(ChatDetailPage);

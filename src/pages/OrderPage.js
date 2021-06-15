@@ -13,6 +13,8 @@ import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
 import { formatNumber } from "utils/formatNumber";
 
+import Button from "elements/Button";
+
 class OrderPage extends Component {
   componentDidMount() {
     document.title = "KerjaIn | Order";
@@ -51,9 +53,9 @@ class OrderPage extends Component {
                         <td>{order.serviceId.title}</td>
                         <td>Rp {formatNumber(order.total)}</td>
                         <td>
-                          <a href="/" className="btn btn-primary btn-sm">
+                          <Button href={`order/${order._id}`} type="link" className="btn btn-primary btn-sm">
                             Detail
-                          </a>
+                          </Button>
                         </td>
                       </tr>
                     );
