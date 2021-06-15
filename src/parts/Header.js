@@ -60,22 +60,22 @@ export default function Header(props) {
                       Beranda
                     </Button>
                   </li>
-                  <li className={`nav-item${getNavLinkClass("/kategori")}`}>
+                  <li className={`nav-item${getNavLinkClass("/category")}`}>
                     <Button
                       className="nav-link border-right border-left-none border-right-none border-bottom border-top-none border-bottom-none"
                       type="link"
-                      href="/kategori"
+                      href="/category"
                     >
                       Kategori
                     </Button>
                   </li>
-                  <li className={`nav-item${getNavLinkClass("/permintaan")}`}>
+                  <li className={`nav-item${getNavLinkClass("/request")}`}>
                     <Button
                       className="nav-link border-right border-right-none border-bottom border-top-none border-bottom-none"
                       type="link"
-                      href="/permintaan"
+                      href="/request"
                     >
-                      Permintaan
+                      Request
                     </Button>
                   </li>
                   <li className={`nav-item${getNavLinkClass("/order")}`}>
@@ -154,11 +154,11 @@ export default function Header(props) {
                     Beranda
                   </Button>
                 </li>
-                <li className={`nav-item${getNavLinkClass("/kategori")}`}>
+                <li className={`nav-item${getNavLinkClass("/category")}`}>
                   <Button
                     className="nav-link border-right border-bottom border-left-none border-right-none border-bottom-none"
                     type="link"
-                    href="/kategori"
+                    href="/category"
                   >
                     Kategori
                   </Button>

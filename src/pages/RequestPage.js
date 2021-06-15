@@ -7,6 +7,8 @@ import Header from "parts/Header";
 import Banner from "elements/Banner";
 import Footer from "parts/Footer";
 
+import Button from "elements/Button";
+
 import { fetchPage } from "store/actions/page";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
@@ -15,7 +17,7 @@ import { formatNumber } from "utils/formatNumber";
 
 class RequestPage extends Component {
   componentDidMount() {
-    document.title = "KerjaIn | Permintaan";
+    document.title = "KerjaIn | Request";
     window.scroll(0, 0);
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
@@ -32,7 +34,7 @@ class RequestPage extends Component {
         <Banner image="https://source.unsplash.com/random" isExternal />
         <Fade bottom>
           <section className="container">
-            <h4>Daftar Permintaan Anda:</h4>
+            <h4>Daftar Request:</h4>
             <Fade>
               <table className="table table-hover">
                 <thead>
@@ -51,9 +53,9 @@ class RequestPage extends Component {
                         <td>{request.requestDescription}</td>
                         <td>Rp {formatNumber(request.requestBudget)}</td>
                         <td>
-                          <a href="/" className="btn btn-primary btn-sm">
+                          <Button href={`/request/${request._id}`} type="link" className="btn btn-primary btn-sm">
                             Detail
-                          </a>
+                          </Button>
                         </td>
                       </tr>
                     );

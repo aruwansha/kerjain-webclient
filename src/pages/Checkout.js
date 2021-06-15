@@ -26,6 +26,7 @@ class Checkout extends Component {
       email: "",
       phone: "",
       detail: "",
+      total: "",
       proofPayment: "",
       bankName: "",
       bankHolder: "",
@@ -50,11 +51,18 @@ class Checkout extends Component {
 
     const { checkout } = this.props;
 
+    const tax = 10;
+    const admin_cost = 2500;
+    const tax_total = checkout.price * (tax / 100);
+    const subTotal = checkout.price;
+    const total = parseInt(subTotal) + tax_total + admin_cost;
+
     const payload = new FormData();
     payload.append("name", data.name);
     payload.append("email", data.email);
     payload.append("phone", data.phone);
     payload.append("detailNote", data.detail);
+    payload.append("total", total);
     payload.append("serviceId", checkout.serviceId);
     payload.append("accountHolder", data.bankHolder);
     payload.append("bankFrom", data.bankName);

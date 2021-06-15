@@ -107,12 +107,12 @@ class Request extends Component {
                 {data.categoryId !== "" && (
                   <Fade bottom>
                     <div className="form-group">
-                      <label htmlFor="">Subyek</label>
+                      <label htmlFor="">Judul</label>
                       <input
                         type="text"
                         className="form-control"
                         name="subject"
-                        placeholder="Masukkan subyek..."
+                        placeholder="Masukkan judul..."
                         onChange={this.handleChange}
                         autoComplete="off"
                       />

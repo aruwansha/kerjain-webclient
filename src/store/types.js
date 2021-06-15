@@ -10,4 +10,6 @@ export const REQUEST = "REQUEST";
 
 export const REVIEW = "REVIEW";
 
+export const FREELANCER = "FREELANCER";
+
 export const CHECKOUT_BOOKING = "CHECKOUT_BOOKING";
