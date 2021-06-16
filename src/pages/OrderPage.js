@@ -50,10 +50,15 @@ class OrderPage extends Component {
                     return (
                       <tr key={`row-${index}`}>
                         <th scope="row">{index + 1}</th>
-                        <td>{order.serviceId.title}</td>
+                        {order.requestId && <td>{order.requestId.requestSubject}</td>}
+                        {order.serviceId && <td>{order.serviceId.title}</td>}
                         <td>Rp {formatNumber(order.total)}</td>
                         <td>
-                          <Button href={`order/${order._id}`} type="link" className="btn btn-primary btn-sm">
+                          <Button
+                            href={`order/${order._id}`}
+                            type="link"
+                            className="btn btn-primary btn-sm"
+                          >
                             Detail
                           </Button>
                         </td>

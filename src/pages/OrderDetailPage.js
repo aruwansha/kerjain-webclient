@@ -98,6 +98,7 @@ class OrderDetailPage extends Component {
                   style={{ height: 500, overflow: "auto" }}
                 >
                   {page[match.params.id].map((order, index) => {
+                    console.log(order)
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <h5>Informasi Order</h5>
@@ -121,7 +122,10 @@ class OrderDetailPage extends Component {
                             <tr>
                               <td>Judul</td>
                               <td>:</td>
-                              <td>{order.serviceId.title}</td>
+                              <td>
+                                {order.service[0] && order.service[0].title}
+                                {order.request[0] && order.request[0].requestSubject}
+                              </td>
                             </tr>
                             <tr>
                               <td>Total Bayar</td>

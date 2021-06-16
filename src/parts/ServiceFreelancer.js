@@ -116,7 +116,6 @@ class ServiceFreelancer extends Component {
 }
 
 ServiceFreelancer.propTypes = {
-  itemDetails: propTypes.object,
   startBooking: propTypes.func,
 };
 

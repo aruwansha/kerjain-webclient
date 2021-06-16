@@ -15,7 +15,7 @@ import OrderInformation from "parts/Checkout/OrderInformation";
 import Payment from "parts/Checkout/Payment";
 import Completed from "parts/Checkout/Completed";
 
-import { submitBooking } from "store/actions/checkout";
+import { submitBookingService, submitBookingRequest } from "store/actions/checkout";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
@@ -58,19 +58,35 @@ class Checkout extends Component {
     const total = parseInt(subTotal) + tax_total + admin_cost;
 
     const payload = new FormData();
-    payload.append("name", data.name);
-    payload.append("email", data.email);
-    payload.append("phone", data.phone);
-    payload.append("detailNote", data.detail);
-    payload.append("total", total);
-    payload.append("serviceId", checkout.serviceId);
-    payload.append("accountHolder", data.bankHolder);
-    payload.append("bankFrom", data.bankName);
-    payload.append("image", data.proofPayment[0]);
+    if (checkout.serviceId) {
+      payload.append("name", data.name);
+      payload.append("email", data.email);
+      payload.append("phone", data.phone);
+      payload.append("detailNote", data.detail);
+      payload.append("total", total);
+      payload.append("serviceId", checkout.serviceId);
+      payload.append("accountHolder", data.bankHolder);
+      payload.append("bankFrom", data.bankName);
+      payload.append("image", data.proofPayment[0]);
+      this.props.submitBookingService(payload, getWithExpiry("token")).then(() => {
+        nextStep();
+      });
+    }
+    if (checkout.requestId) {
+      payload.append("name", data.name);
+      payload.append("email", data.email);
+      payload.append("phone", data.phone);
+      payload.append("detailNote", data.detail);
+      payload.append("total", total);
+      payload.append("requestId", checkout.requestId);
+      payload.append("accountHolder", data.bankHolder);
+      payload.append("bankFrom", data.bankName);
+      payload.append("image", data.proofPayment[0]);
+      this.props.submitBookingRequest(payload, getWithExpiry("token")).then(() => {
+        nextStep();
+      });
+    }
 
-    this.props.submitBooking(payload, getWithExpiry("token")).then(() => {
-      nextStep();
-    });
   };
 
   render() {
@@ -254,4 +270,4 @@ const mapStateToProps = (state) => ({
   checkout: state.checkout,
 });
 
-export default connect(mapStateToProps, { submitBooking })(Checkout);
+export default connect(mapStateToProps, { submitBookingService, submitBookingRequest })(Checkout);

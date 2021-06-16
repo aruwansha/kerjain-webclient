@@ -2,14 +2,20 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Time from "react-time-format";
 
+import { withRouter } from "react-router-dom";
+
 import Header from "parts/Header";
 import Footer from "parts/Footer";
 
 import Button from "elements/Button";
 
+import propTypes from "prop-types";
+
 import { fetchPage } from "store/actions/page";
 
 import { pick_freelancer } from "store/actions/freelancer";
+
+import { checkoutBooking } from "store/actions/checkout";
 
 import { formatNumber } from "utils/formatNumber";
 
@@ -46,15 +52,27 @@ class RequestDetailPage extends Component {
     });
   }
 
-  _pick_freelancer = (id) => {
+  _pick_freelancer = (id, budget) => {
     const payload = {
       freelancerId: id,
+      finalBudget: budget,
     };
     this.props.pick_freelancer(
       payload,
       this.props.match.params.id,
       getWithExpiry("token")
     );
+  };
+
+  startBooking = (request, bank) => {
+    this.props.checkoutBooking({
+      requestId: request._id,
+      title: request.requestSubject,
+      price: request.finalBudget,
+      description: request.requestDescription,
+      bank: bank,
+    });
+    this.props.history.push("/checkout");
   };
 
   render() {
@@ -74,7 +92,7 @@ class RequestDetailPage extends Component {
                   className="card-body"
                   style={{ height: 500, overflow: "auto" }}
                 >
-                  {page[match.params.id].map((request, index) => {
+                  {page[match.params.id].request.map((request, index) => {
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <h5>Informasi Request</h5>
@@ -105,7 +123,26 @@ class RequestDetailPage extends Component {
                               <td>:</td>
                               <td>Rp {formatNumber(request.requestBudget)}</td>
                             </tr>
+                            {request.finalBudget && (
+                              <tr>
+                                <td>Total Bayar</td>
+                                <td>:</td>
+                                <td>
+                                  Rp {formatNumber(request.finalBudget)}
+                                </td>
+                              </tr>
+                            )}
                           </tbody>
+                          {request.freelancerId && (
+                            <Button
+                              className="btn btn-primary btn-sm"
+                              onClick={() => {
+                                this.startBooking(request, page[match.params.id].bank);
+                              }}
+                            >
+                              Bayar
+                            </Button>
+                          )}
                         </table>
                         <hr />
                         {!request.freelancerId && (
@@ -136,7 +173,8 @@ class RequestDetailPage extends Component {
                                             type="button"
                                             onClick={() =>
                                               this._pick_freelancer(
-                                                requestBid._id
+                                                requestBid.freelancerId,
+                                                requestBid.bid
                                               )
                                             }
                                             className="btn btn-primary btn-sm"
@@ -166,10 +204,16 @@ class RequestDetailPage extends Component {
   }
 }
 
+RequestDetailPage.propTypes = {
+  startBooking: propTypes.func,
+};
+
 const mapStateToProps = (state) => ({
   page: state.page,
 });
 
-export default connect(mapStateToProps, { fetchPage, pick_freelancer })(
-  RequestDetailPage
-);
+export default connect(mapStateToProps, {
+  fetchPage,
+  pick_freelancer,
+  checkoutBooking,
+})(withRouter(RequestDetailPage));
