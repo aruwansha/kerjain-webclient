@@ -125,7 +125,7 @@ class RequestDetailPage extends Component {
                             </tr>
                             {request.finalBudget && (
                               <tr>
-                                <td>Total Bayar</td>
+                                <td>Harga Akhir</td>
                                 <td>:</td>
                                 <td>
                                   Rp {formatNumber(request.finalBudget)}

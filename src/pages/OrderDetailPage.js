@@ -10,7 +10,7 @@ import Button from "elements/Button";
 
 import { fetchPage } from "store/actions/page";
 
-import { review } from "store/actions/review";
+import { confirm, review } from "store/actions/order";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
@@ -53,6 +53,16 @@ class OrderDetailPage extends Component {
       description: event.target.value,
     });
   }
+
+  _confirm = () => {
+    this.setState({
+      submitted: true,
+    });
+    const payload = {
+      orderId: this.props.match.params.id,
+    };
+    this.props.confirm(payload, getWithExpiry("token"));
+  };
 
   _review = (event) => {
     this.setState({
@@ -98,7 +108,6 @@ class OrderDetailPage extends Component {
                   style={{ height: 500, overflow: "auto" }}
                 >
                   {page[match.params.id].map((order, index) => {
-                    console.log(order)
                     return (
                       <div className="form-group" key={`key-${index}`}>
                         <h5>Informasi Order</h5>
@@ -124,7 +133,8 @@ class OrderDetailPage extends Component {
                               <td>:</td>
                               <td>
                                 {order.service[0] && order.service[0].title}
-                                {order.request[0] && order.request[0].requestSubject}
+                                {order.request[0] &&
+                                  order.request[0].requestSubject}
                               </td>
                             </tr>
                             <tr>
@@ -154,6 +164,23 @@ class OrderDetailPage extends Component {
                             </tr>
                           </tbody>
                         </table>
+                        { order.payments.status === "paid" && order.work && !submitted && (
+                          <div>
+                            <img
+                              src={`${process.env.REACT_APP_HOST}${order.work}`}
+                              alt="tes"
+                              className="img-thumbnail"
+                              style={{ height: 300 }}
+                            />{" "}
+                            <br />
+                            <Button
+                              className="btn btn-primary btn-sm mt-2"
+                              onClick={this._confirm}
+                            >
+                              Konfirmasi
+                            </Button>
+                          </div>
+                        )}
                         <hr />
                         <h5>Informasi Pembayaran</h5>
                         <table>
@@ -262,4 +289,6 @@ const mapStateToProps = (state) => ({
   page: state.page,
 });
 
-export default connect(mapStateToProps, { fetchPage, review })(OrderDetailPage);
+export default connect(mapStateToProps, { fetchPage, review, confirm })(
+  OrderDetailPage
+);

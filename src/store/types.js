@@ -8,7 +8,7 @@ export const CHAT = "CHAT";
 
 export const REQUEST = "REQUEST";
 
-export const REVIEW = "REVIEW";
+export const ORDER = "ORDER";
 
 export const FREELANCER = "FREELANCER";
 
