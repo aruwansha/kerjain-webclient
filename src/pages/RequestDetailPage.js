@@ -152,7 +152,7 @@ class RequestDetailPage extends Component {
                                 <tr>
                                   <th scope="col">No</th>
                                   <th scope="col">Nama Freelancer</th>
-                                  <th scope="col">Budget</th>
+                                  <th scope="col">Tawaran Harga</th>
                                   <th scope="col">Rating</th>
                                   <th scope="col">Aksi</th>
                                 </tr>
