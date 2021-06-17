@@ -78,7 +78,6 @@ class RequestDetailPage extends Component {
   render() {
     const { page, match } = this.props;
     if (!page[match.params.id]) return null;
-
     return (
       <>
         <Header {...this.props} />
@@ -133,7 +132,8 @@ class RequestDetailPage extends Component {
                               </tr>
                             )}
                           </tbody>
-                          {request.freelancerId && !request.request[0].requestId && (
+                          {request.freelancerId ? (
+                            !request.request[0] && 
                             <Button
                               className="btn btn-primary btn-sm"
                               onClick={() => {
@@ -142,7 +142,7 @@ class RequestDetailPage extends Component {
                             >
                               Bayar
                             </Button>
-                          )}
+                          ) : ""}
                         </table>
                         <hr />
                         {!request.freelancerId && (
