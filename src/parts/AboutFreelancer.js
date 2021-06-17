@@ -2,6 +2,8 @@ import React from "react";
 
 import Fade from "react-reveal/Fade";
 
+import Button from "elements/Button";
+
 import thumbnailDefault from "assets/images/thumbnail-default.svg";
 import profileDefault from "assets/images/pp-default.svg";
 
@@ -47,6 +49,9 @@ export default function AboutFreelancer({ data }) {
                 </div>
               </div>
               <p className="mt-2">{data.description}</p>
+              <Button type="link" href={`/chat/${data.userId._id}`} className="btn btn-primary btn-sm">
+                Hubungi
+              </Button>
             </div>
           </div>
         </Fade>

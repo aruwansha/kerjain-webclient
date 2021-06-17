@@ -65,7 +65,7 @@ export default function ReviewFreelancer({ data }) {
         >
           {data.review.map((review, index) => {
             return (
-              <div className="row" key={`review-${index}`}>
+              <div className="row noselect" key={`review-${index}`}>
                 <div className="col-lg-10 col-sm-12 mr-2">
                   <div className="card card-featured"  style={{height: 230}}>
                    <div className="meta-wrapper">

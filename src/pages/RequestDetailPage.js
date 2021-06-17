@@ -133,7 +133,7 @@ class RequestDetailPage extends Component {
                               </tr>
                             )}
                           </tbody>
-                          {request.freelancerId && (
+                          {request.freelancerId && !request.request[0].requestId && (
                             <Button
                               className="btn btn-primary btn-sm"
                               onClick={() => {
