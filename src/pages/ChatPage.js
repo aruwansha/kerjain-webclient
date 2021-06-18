@@ -6,6 +6,7 @@ import Header from "parts/Header";
 import Footer from "parts/Footer";
 
 import { fetchPage } from "store/actions/page";
+import { deleteAllChat } from "store/actions/chat";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 import Button from "elements/Button";
@@ -20,6 +21,10 @@ class ChatPage extends Component {
     if (!this.props.page.chats)
       this.props.fetchPage(`/chat/get`, "chats", getWithExpiry("token"));
   }
+
+  _delete = (id) => {
+    this.props.deleteAllChat(id, getWithExpiry("token"));
+  };
 
   render() {
     const { page } = this.props;
@@ -107,15 +112,16 @@ class ChatPage extends Component {
                             >
                               Balas
                             </Button>
-                            <form>
-                              <a
-                                type="submit"
-                                href={`/chat/${chat.doc.freelancerUserId[0]._id}`}
-                                className="text-danger"
-                              >
-                                Hapus
-                              </a>
-                            </form>
+                            <br />
+                            <a
+                              onClick={() => {
+                                this._delete(chat.doc.freelancerUserId[0]._id);
+                              }}
+                              href="/chat"
+                              className="text-danger"
+                            >
+                              Hapus
+                            </a>
                           </div>
                         </div>
                         <div className="row d-flex">
@@ -140,4 +146,4 @@ const mapStateToProps = (state) => ({
   page: state.page,
 });
 
-export default connect(mapStateToProps, { fetchPage })(ChatPage);
+export default connect(mapStateToProps, { fetchPage, deleteAllChat })(ChatPage);

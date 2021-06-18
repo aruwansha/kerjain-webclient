@@ -9,7 +9,7 @@ import Button from "elements/Button";
 
 import { fetchPage } from "store/actions/page";
 
-import { chat } from "store/actions/chat";
+import { chat, deleteChat } from "store/actions/chat";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
@@ -51,7 +51,7 @@ class ChatDetailPage extends Component {
     const { data } = this.state;
     if (data.message === "") {
       toast.error("Tolong isi fieldnya!", {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
       });
     } else {
       const payload = {
@@ -64,6 +64,10 @@ class ChatDetailPage extends Component {
       );
     }
     event.preventDefault();
+  };
+
+  _delete = (id) => {
+    this.props.deleteChat(id, getWithExpiry("token"));
   };
 
   render() {
@@ -166,15 +170,13 @@ class ChatDetailPage extends Component {
                             <p>{chat.message}</p>
                           </div>
                           <div className="col col-lg-2 text-right">
-                            <form>
-                              <a
-                                type="submit"
-                                href={`/chat/${chat.freelancerUserId}`}
-                                className="text-danger"
-                              >
-                                Hapus
-                              </a>
-                            </form>
+                            <a
+                              onClick={()=> {this._delete(chat._id)}}
+                              href={`/chat/${chat.freelancerUserId}`}
+                              className="text-danger"
+                            >
+                              Hapus
+                            </a>
                           </div>
                         </div>
                         <div className="row d-flex">
@@ -219,4 +221,6 @@ const mapStateToProps = (state) => ({
   data: state.chat,
 });
 
-export default connect(mapStateToProps, { fetchPage, chat })(ChatDetailPage);
+export default connect(mapStateToProps, { fetchPage, chat, deleteChat })(
+  ChatDetailPage
+);
