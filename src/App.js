@@ -14,6 +14,7 @@ import OrderPage from "pages/OrderPage";
 import OrderDetailPage from "pages/OrderDetailPage";
 import ChatPage from "pages/ChatPage";
 import ChatDetailPage from "pages/ChatDetailPage";
+import ProfilePage from "pages/ProfilePage";
 
 import { ToastContainer } from 'react-toastify';
 
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/order/:id" component={OrderDetailPage} />
         <Route exact path="/chat" component={ChatPage} />
         <Route exact path="/chat/:id" component={ChatDetailPage} />
+        <Route exact path="/profile" component={ProfilePage} />
       </Router>
 
       <ToastContainer />

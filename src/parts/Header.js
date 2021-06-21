@@ -98,11 +98,11 @@ export default function Header(props) {
                       Chat
                     </Button>
                   </li>
-                  <li className={`nav-item${getNavLinkClass("/profil")}`}>
+                  <li className={`nav-item${getNavLinkClass("/profile")}`}>
                     <Button
                       className="nav-link border-right border-right-none border-bottom border-top-none border-bottom-none"
                       type="link"
-                      href="/profil"
+                      href="/profile"
                     >
                       {getWithExpiry("name")}
                     </Button>

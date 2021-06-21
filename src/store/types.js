@@ -12,4 +12,6 @@ export const ORDER = "ORDER";
 
 export const FREELANCER = "FREELANCER";
 
+export const PROFILE = "PROFILE"
+
 export const CHECKOUT_BOOKING = "CHECKOUT_BOOKING";

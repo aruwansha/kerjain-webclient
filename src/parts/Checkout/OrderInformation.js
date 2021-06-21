@@ -56,7 +56,7 @@ export default function OrderInformation(props) {
               <InputText
                 id="name"
                 name="name"
-                value={data.firstName}
+                value={data.name}
                 onChange={props.onChange}
               />
 

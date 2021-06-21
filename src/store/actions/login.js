@@ -12,14 +12,18 @@ export const login = (payload, props) => (dispatch) => {
     })
     .then((response) => {
       if (response.data) {
-        dispatch({
-          type: LOGIN,
-          payload: response.data,
-        });
-        toast.success("Berhasil login", {
-          position: toast.POSITION.BOTTOM_CENTER
-        })
-        props.history.push("/me");
+        if (response.data.data) {
+          dispatch({
+            type: LOGIN,
+            payload: response.data,
+          });
+          toast.success("Berhasil login", {
+            position: toast.POSITION.BOTTOM_CENTER,
+          });
+          props.history.push("/me");
+        } else {
+          window.location.replace("https://kerjain-webservice.herokuapp.com/");
+        }
       }
     })
     .catch((error) => {
