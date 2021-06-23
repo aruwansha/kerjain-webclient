@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const register = (payload, props) => (dispatch) => {
   return axios
-    .post(`/register`, payload, {
+    .post(`user/register`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded" },
     })
     .then((response) => {

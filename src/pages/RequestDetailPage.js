@@ -37,7 +37,7 @@ class RequestDetailPage extends Component {
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `/request/${this.props.match.params.id}`,
+        `user/request/${this.props.match.params.id}`,
         this.props.match.params.id,
         getWithExpiry("token")
       );

@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const pick_freelancer = (payload, params, token) => (dispatch) => {
   return axios
-    .put(`/request/${params}`, payload, {
+    .put(`user/request/${params}`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded", "x-access-token": token },
     })
     .then((response) => {

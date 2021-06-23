@@ -9,13 +9,13 @@ export const checkoutBooking = (payload ) => (dispatch) => {
 };
 
 export const submitBookingService = (payload, token) => () => {
-  return axios.post(`/order/service`, payload, {
+  return axios.post(`user/order/service`, payload, {
     headers: { "x-access-token": token, contentType: "multipart/form-data" },
   });
 };
 
 export const submitBookingRequest = (payload, token) => () => {
-  return axios.post(`/order/request`, payload, {
+  return axios.post(`user/order/request`, payload, {
     headers: { "x-access-token": token, contentType: "multipart/form-data" },
   });
 };

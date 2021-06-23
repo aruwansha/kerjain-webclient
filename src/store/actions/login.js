@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const login = (payload, props) => (dispatch) => {
   return axios
-    .post(`/login`, payload, {
+    .post(`login`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded" },
     })
     .then((response) => {

@@ -32,7 +32,7 @@ class ChatDetailPage extends Component {
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `/chat/get/${this.props.match.params.id}`,
+        `user/chat/get/${this.props.match.params.id}`,
         this.props.match.params.id,
         getWithExpiry("token")
       );
@@ -63,12 +63,27 @@ class ChatDetailPage extends Component {
         getWithExpiry("token")
       );
     }
+    toast.success("Pesan terkirim", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+    this.message.value = "";
     event.preventDefault();
   };
 
   _delete = (id) => {
     this.props.deleteChat(id, getWithExpiry("token"));
+    toast.error("Pesan berhasil dihapus", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
   };
+
+  componentDidUpdate() {
+    this.props.fetchPage(
+      `user/chat/get/${this.props.match.params.id}`,
+      this.props.match.params.id,
+      getWithExpiry("token")
+    );
+  }
 
   render() {
     const { page, match } = this.props;
@@ -102,13 +117,12 @@ class ChatDetailPage extends Component {
                             placeholder="Tulis pesan..."
                             name="message"
                             onChange={this.handleChange}
+                            ref={(el) => (this.message = el)}
                             autoComplete="off"
                           />
                         </div>
                         <div className="col-lg-1 col-3 text-right">
-                          <Button className="btn btn-primary" type="submit">
-                            Kirim
-                          </Button>
+                          <Button className="btn btn-primary">Kirim</Button>
                         </div>
                       </div>
                     </form>
@@ -125,7 +139,7 @@ class ChatDetailPage extends Component {
       <>
         <Header {...this.props} />
         <div className="container">
-          <h4 className="mb-3">Chat</h4>
+          <h4 className="mb-3">Detail Chat</h4>
           <div className="row">
             <div className="col">
               <div className="card">
@@ -134,9 +148,6 @@ class ChatDetailPage extends Component {
                   className="card-body"
                   style={{ height: 500, overflow: "auto" }}
                 >
-                  {/* <div className="d-flex justify-content-center">
-                    <p className="text-gray-600" style={{marginTop: 90}}>Belum Ada Chat Masuk</p>
-                  </div> */}
                   {page[match.params.id].map((chat, index) => {
                     return (
                       <div className="form-group" key={`key-${index}`}>
@@ -171,8 +182,10 @@ class ChatDetailPage extends Component {
                           </div>
                           <div className="col col-lg-2 text-right">
                             <a
-                              onClick={()=> {this._delete(chat._id)}}
-                              href={`/chat/${chat.freelancerUserId}`}
+                              onClick={() => {
+                                this._delete(chat._id);
+                              }}
+                              href="#/"
                               className="text-danger"
                             >
                               Hapus
@@ -195,13 +208,12 @@ class ChatDetailPage extends Component {
                           placeholder="Tulis pesan..."
                           name="message"
                           onChange={this.handleChange}
+                          ref={(el) => (this.message = el)}
                           autoComplete="off"
                         />
                       </div>
                       <div className="col-lg-1 col-3 text-right">
-                        <Button className="btn btn-primary" type="submit">
-                          Kirim
-                        </Button>
+                        <Button className="btn btn-primary">Kirim</Button>
                       </div>
                     </div>
                   </form>

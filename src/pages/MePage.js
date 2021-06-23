@@ -21,7 +21,7 @@ class MePage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/")
 
-    if (!this.props.page.me) this.props.fetchPage(`/landing-page/me`, "me", getWithExpiry("token"));
+    if (!this.props.page.me) this.props.fetchPage(`user/landing-page/me`, "me", getWithExpiry("token"));
   }
 
   render() {

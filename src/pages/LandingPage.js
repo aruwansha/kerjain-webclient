@@ -20,7 +20,7 @@ class LandingPage extends Component {
     if (getWithExpiry("token")) return this.props.history.push("/me")
     if (!this.props.page.landingPage)
       this.props.fetchPage(
-        `/landing-page`,
+        `user/landing-page`,
         "landingPage"
       );
   }

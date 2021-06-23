@@ -23,7 +23,7 @@ class RequestPage extends Component {
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (!this.props.page.request)
-      this.props.fetchPage(`/request/get`, "request", getWithExpiry("token"));
+      this.props.fetchPage(`user/request/get`, "request", getWithExpiry("token"));
   }
   render() {
     const { page } = this.props;

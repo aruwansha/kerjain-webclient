@@ -36,7 +36,7 @@ class ProfilePage extends Component {
 
     if (!this.props.page.profilePage)
       this.props.fetchPage(
-        `/profile/get`,
+        `user/profile/get`,
         "profilePage",
         getWithExpiry("token")
       );

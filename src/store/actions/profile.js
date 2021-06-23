@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const edit_profile = (payload, token) => (dispatch) => {
   return axios
-    .put(`/profile/update`, payload, {
+    .put(`user/profile/update`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded", "x-access-token": token },
     })
     .then((response) => {

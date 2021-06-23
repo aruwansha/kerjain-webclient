@@ -14,7 +14,7 @@ class CategoryPage extends Component {
 
     if (!this.props.page.categoryPage)
       this.props.fetchPage(
-        `/category-page`,
+        `user/category-page`,
         "categoryPage"
       );
   }

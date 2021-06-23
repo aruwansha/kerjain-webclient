@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 export const confirm = (payload, token) => (dispatch) => {
   return axios
-    .put(`/order/confirm`, payload, {
+    .put(`/user/order/confirm`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded", "x-access-token": token },
     })
     .then((response) => {
@@ -28,7 +28,7 @@ export const confirm = (payload, token) => (dispatch) => {
 
 export const review = (payload, params, token) => (dispatch) => {
   return axios
-    .post(`/review/add/${params}`, payload, {
+    .post(`user/review/add/${params}`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded", "x-access-token": token },
     })
     .then((response) => {

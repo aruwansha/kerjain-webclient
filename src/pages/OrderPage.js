@@ -23,7 +23,7 @@ class OrderPage extends Component {
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (!this.props.page.order)
-      this.props.fetchPage(`/order/get`, "order", getWithExpiry("token"));
+      this.props.fetchPage(`user/order/get`, "order", getWithExpiry("token"));
   }
   render() {
     const { page } = this.props;

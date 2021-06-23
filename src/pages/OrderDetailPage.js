@@ -33,7 +33,7 @@ class OrderDetailPage extends Component {
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `/order/get/${this.props.match.params.id}`,
+        `user/order/get/${this.props.match.params.id}`,
         this.props.match.params.id,
         getWithExpiry("token")
       );

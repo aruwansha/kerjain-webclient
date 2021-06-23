@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Time from "react-time-format";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import Header from "parts/Header";
 import Footer from "parts/Footer";
@@ -19,12 +21,20 @@ class ChatPage extends Component {
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (!this.props.page.chats)
-      this.props.fetchPage(`/chat/get`, "chats", getWithExpiry("token"));
+      this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
   }
 
   _delete = (id) => {
     this.props.deleteAllChat(id, getWithExpiry("token"));
+    toast.success("Pesan berhasil dihapus", {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+    this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
   };
+
+  componentDidUpdate() {
+    this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
+  }
 
   render() {
     const { page } = this.props;
@@ -117,7 +127,7 @@ class ChatPage extends Component {
                               onClick={() => {
                                 this._delete(chat.doc.freelancerUserId[0]._id);
                               }}
-                              href="/chat"
+                              href="#/"
                               className="text-danger"
                             >
                               Hapus
