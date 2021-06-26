@@ -4,8 +4,8 @@ import Time from "react-time-format";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import Header from "parts/Header";
-import Footer from "parts/Footer";
+import Header from "parts/service_user/Header";
+import Footer from "parts/service_user/Footer";
 
 import { fetchPage } from "store/actions/page";
 import { deleteAllChat } from "store/actions/chat";

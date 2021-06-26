@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Header from "parts/Header";
+import Header from "parts/service_user/Header";
 
-import MostPicked from "parts/MostPicked";
-import HighRated from "parts/HighRated";
-import Footer from "parts/Footer";
+import MostPicked from "parts/service_user/MostPicked";
+import HighRated from "parts/service_user/HighRated";
+import Footer from "parts/service_user/Footer";
 
 import { fetchPage } from "store/actions/page";
 

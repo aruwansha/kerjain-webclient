@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Header from "parts/Header";
+import Header from "parts/service_user/Header";
 
 import Button from "elements/Button";
 

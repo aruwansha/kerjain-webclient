@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Header from "parts/Header";
-import Category from "parts/Category";
-import Footer from "parts/Footer";
+import Header from "parts/service_user/Header";
+import Category from "parts/service_user/Category";
+import Footer from "parts/service_user/Footer";
 
 import { fetchPage } from "store/actions/page";
 

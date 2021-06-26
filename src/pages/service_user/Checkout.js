@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Fade from "react-reveal/Fade";
 import { connect } from "react-redux";
 
-import Header from "parts/Header";
+import Header from "parts/service_user/Header";
 import Button from "elements/Button";
 import Stepper, {
   Numbering,
@@ -11,9 +11,9 @@ import Stepper, {
   Controller,
 } from "elements/Stepper";
 
-import OrderInformation from "parts/Checkout/OrderInformation";
-import Payment from "parts/Checkout/Payment";
-import Completed from "parts/Checkout/Completed";
+import OrderInformation from "parts/service_user/Checkout/OrderInformation";
+import Payment from "parts/service_user/Checkout/Payment";
+import Completed from "parts/service_user/Checkout/Completed";
 
 import { submitBookingService, submitBookingRequest } from "store/actions/checkout";
 

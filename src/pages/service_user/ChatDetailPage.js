@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Time from "react-time-format";
 
-import Header from "parts/Header";
-import Footer from "parts/Footer";
+import Header from "parts/service_user/Header";
+import Footer from "parts/service_user/Footer";
 
 import Button from "elements/Button";
 

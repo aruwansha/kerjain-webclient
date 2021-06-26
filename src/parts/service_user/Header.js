@@ -2,7 +2,7 @@ import React from "react";
 
 import Button from "elements/Button";
 
-import BrandIcon from "parts/BrandIcon";
+import BrandIcon from "parts/service_user/BrandIcon";
 
 import Fade from "react-reveal/Fade";
 

@@ -20,9 +20,12 @@ export const login = (payload, props) => (dispatch) => {
           toast.success("Berhasil login", {
             position: toast.POSITION.BOTTOM_CENTER,
           });
-          props.history.push("/me");
-        } else {
-          window.location.replace("https://kerjain-webservice.herokuapp.com/");
+          if (response.data.data.level === "service_user") {
+            props.history.push("/me");
+          } else{
+            props.history.push("/freelancer");
+
+          }
         }
       }
     })

@@ -8,6 +8,7 @@ const login = function (state = initialState, action) {
   switch (action.type) {
     case LOGIN:
       setWithExpiry("name", action.payload.data.name, 3600000);
+      setWithExpiry("level", action.payload.data.level, 3600000);
       setWithExpiry("token", action.payload.data.token, 3600000);
       return {
         ...state,

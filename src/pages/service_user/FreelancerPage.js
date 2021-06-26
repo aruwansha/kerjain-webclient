@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import Header from "parts/Header";
+import Header from "parts/service_user/Header";
 import Banner from "elements/Banner";
-import ServiceFreelancer from "parts/ServiceFreelancer";
-import AboutFreelancer from "parts/AboutFreelancer";
-import ReviewFreelancer from "parts/ReviewFreelancer";
-import Footer from "parts/Footer";
+import ServiceFreelancer from "parts/service_user/ServiceFreelancer";
+import AboutFreelancer from "parts/service_user/AboutFreelancer";
+import ReviewFreelancer from "parts/service_user/ReviewFreelancer";
+import Footer from "parts/service_user/Footer";
 
 import { checkoutBooking } from "store/actions/checkout";
 import { fetchPage } from "store/actions/page";
