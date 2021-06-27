@@ -22,12 +22,24 @@ class OrderPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.order)
       this.props.fetchPage(`user/order/get`, "order", getWithExpiry("token"));
   }
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("order")) return null;
+    if (!page.hasOwnProperty("order"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
     return (
       <>
         <Header {...this.props} />
@@ -50,7 +62,9 @@ class OrderPage extends Component {
                     return (
                       <tr key={`row-${index}`}>
                         <th scope="row">{index + 1}</th>
-                        {order.requestId && <td>{order.requestId.requestSubject}</td>}
+                        {order.requestId && (
+                          <td>{order.requestId.requestSubject}</td>
+                        )}
                         {order.serviceId && <td>{order.serviceId.title}</td>}
                         <td>Rp {formatNumber(order.total)}</td>
                         <td>

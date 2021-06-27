@@ -4,8 +4,7 @@ import Button from "elements/Button";
 
 import { formatNumber } from "utils/formatNumber";
 
-export default function RequestContent(props) {
-  const page = props.data;
+export default function RequestContent({data}) {
   return (
     <div className="container-fluid">
       <h1 className="h3 mb-4 text-gray-800">Daftar Request</h1>
@@ -17,7 +16,7 @@ export default function RequestContent(props) {
               className="table table-bordered text-center"
               id="dataTable"
               width="100%"
-              cellspacing="0"
+              cellSpacing="0"
             >
               <thead>
                 <tr>
@@ -30,7 +29,7 @@ export default function RequestContent(props) {
               </thead>
 
               <tbody>
-                {page.requests.map((request, index) => {
+                {data.requests.map((request, index) => {
                   return (
                     <tr key={`request-${index}`}>
                       <td>{index + 1}</td>

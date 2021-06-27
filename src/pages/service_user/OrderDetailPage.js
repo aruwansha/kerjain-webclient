@@ -26,10 +26,14 @@ class OrderDetailPage extends Component {
       submitted: false,
     };
 
-    window.title = "KerjaIn | Detail Order";
+    document.title = "KerjaIn | Detail Order";
     window.scroll(0, 0);
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
+
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
@@ -92,7 +96,15 @@ class OrderDetailPage extends Component {
   render() {
     const { page, match } = this.props;
     const { submitted } = this.state;
-    if (!page[match.params.id]) return null;
+    if (!page[match.params.id])
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     return (
       <>
@@ -164,23 +176,25 @@ class OrderDetailPage extends Component {
                             </tr>
                           </tbody>
                         </table>
-                        { order.payments.status === "paid" && order.work && !submitted && (
-                          <div>
-                            <img
-                              src={`${process.env.REACT_APP_HOST}${order.work}`}
-                              alt="tes"
-                              className="img-thumbnail"
-                              style={{ height: 300 }}
-                            />{" "}
-                            <br />
-                            <Button
-                              className="btn btn-primary btn-sm mt-2"
-                              onClick={this._confirm}
-                            >
-                              Konfirmasi
-                            </Button>
-                          </div>
-                        )}
+                        {order.payments.status === "paid" &&
+                          order.work &&
+                          !submitted && (
+                            <div>
+                              <img
+                                src={`${process.env.REACT_APP_HOST}${order.work}`}
+                                alt="tes"
+                                className="img-thumbnail"
+                                style={{ height: 300 }}
+                              />{" "}
+                              <br />
+                              <Button
+                                className="btn btn-primary btn-sm mt-2"
+                                onClick={this._confirm}
+                              >
+                                Konfirmasi
+                              </Button>
+                            </div>
+                          )}
                         <hr />
                         <h5>Informasi Pembayaran</h5>
                         <table>

@@ -16,14 +16,11 @@ class ChatPage extends Component {
     document.title = "Freelancer | Chat";
     window.scroll(0, 0);
 
-    if (!getWithExpiry("token")) return this.props.history.push("/");
+    if (!getWithExpiry("token") && !getWithExpiry("level") === "freelancer")
+      return this.props.history.push("/");
 
     if (!this.props.page.chats)
-      this.props.fetchPage(
-        `freelancer/chats`,
-        "chats",
-        getWithExpiry("token")
-      );
+      this.props.fetchPage(`freelancer/chats`, "chats", getWithExpiry("token"));
   }
 
   componentDidUpdate() {
@@ -32,7 +29,16 @@ class ChatPage extends Component {
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("chats")) return null;
+    if (!page.hasOwnProperty("chats"))
+      return (
+        <>
+          <div className="loader-sm" style={{ left: "58%" }}></div>
+          <div className="d-none d-md-block d-large-block">
+            <div className="loader" style={{ marginLeft: 90 }}></div>
+          </div>
+        </>
+      );
+
     return <ChatContent data={page} />;
   }
 }

@@ -35,6 +35,10 @@ class RequestDetailPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
         `user/request/${this.props.match.params.id}`,
@@ -77,7 +81,15 @@ class RequestDetailPage extends Component {
 
   render() {
     const { page, match } = this.props;
-    if (!page[match.params.id]) return null;
+    if (!page[match.params.id])
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
     return (
       <>
         <Header {...this.props} />
@@ -126,23 +138,25 @@ class RequestDetailPage extends Component {
                               <tr>
                                 <td>Harga Akhir</td>
                                 <td>:</td>
-                                <td>
-                                  Rp {formatNumber(request.finalBudget)}
-                                </td>
+                                <td>Rp {formatNumber(request.finalBudget)}</td>
                               </tr>
                             )}
                           </tbody>
-                          {request.freelancerId ? (
-                            !request.request[0] && 
-                            <Button
-                              className="btn btn-primary btn-sm"
-                              onClick={() => {
-                                this.startBooking(request, page[match.params.id].bank);
-                              }}
-                            >
-                              Bayar
-                            </Button>
-                          ) : ""}
+                          {request.freelancerId
+                            ? !request.request[0] && (
+                                <Button
+                                  className="btn btn-primary btn-sm"
+                                  onClick={() => {
+                                    this.startBooking(
+                                      request,
+                                      page[match.params.id].bank
+                                    );
+                                  }}
+                                >
+                                  Bayar
+                                </Button>
+                              )
+                            : ""}
                         </table>
                         <hr />
                         {!request.freelancerId && (

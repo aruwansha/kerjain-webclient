@@ -4,8 +4,7 @@ import Time from "react-time-format";
 import Button from "elements/Button";
 import { formatNumber } from "utils/formatNumber";
 
-export default function OrderContent(props) {
-  const page = props.data;
+export default function OrderContent({data}) {
   return (
     <div className="container-fluid">
       <div className="card mt-2 mb-4">
@@ -16,7 +15,7 @@ export default function OrderContent(props) {
               className="table table-bordered text-center"
               id="dataTable"
               width="100%"
-              cellspacing="0"
+              cellSpacing="0"
             >
               <thead>
                 <tr>
@@ -30,9 +29,9 @@ export default function OrderContent(props) {
               </thead>
 
               <tbody>
-                {page.orders.orderId.map((order, index) => {
+                {data.orders.orderId.map((order, index) => {
                   return (
-                    <tr>
+                    <tr key={`order-${index}`}>
                       <td>{index + 1}</td>
                       <td>
                         <Time value={order.orderDate} format="YYYY/MM/DD" />

@@ -107,7 +107,7 @@ export default function Header(props) {
                       {getWithExpiry("name")}
                     </Button>
                   </li>
-                  <li className={`nav-item${getNavLinkClass("/")}`}>
+                  <li className={`nav-item`}>
                     <Button
                       className="nav-link border-right border-right-none border-bottom border-top-none border-bottom-none"
                       type="link"
@@ -143,7 +143,7 @@ export default function Header(props) {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-            <hr className="mb-0" />
+              <hr className="mb-0" />
               <ul className="navbar-nav">
                 <li className={`nav-item${getNavLinkClass("/")}`}>
                   <Button

@@ -21,7 +21,7 @@ export default function ServiceUser() {
     <>
       <Route exact path="/" component={LandingPage} />
       <Route path="/category" component={CategoryPage} />
-      <Route exact path="/freelancer/:id" component={FreelancerPage} />
+      <Route exact path="/freelancer-detail/:id" component={FreelancerPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="/checkout" component={Checkout} />
       <Route exact path="/me" component={MePage} />

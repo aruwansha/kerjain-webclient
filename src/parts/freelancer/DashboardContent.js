@@ -1,7 +1,6 @@
 import React from "react";
 
-export default function DashboardContent(props) {
-  const page = props.data;
+export default function DashboardContent({data}) {
   return (
     <div className="container-fluid">
       <h1 className="h3 mb-4 text-gray-800">Dashboard</h1>
@@ -15,7 +14,7 @@ export default function DashboardContent(props) {
                     Order
                   </div>
                   <div className="h5 mb-0 font-weight-bold text-gray-800">
-                    {page.dashboard.total_order}
+                    {data.dashboard.total_order}
                   </div>
                 </div>
                 <div className="col-auto">
@@ -36,7 +35,7 @@ export default function DashboardContent(props) {
                   <div className="row no-gutters align-items-center">
                     <div className="col-auto">
                       <div className="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                        {page.dashboard.total_service}
+                        {data.dashboard.total_service}
                       </div>
                     </div>
                   </div>

@@ -18,6 +18,10 @@ class OrderPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "freelancer") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.orders)
       this.props.fetchPage(
         `freelancer/orders`,
@@ -28,7 +32,15 @@ class OrderPage extends Component {
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("orders")) return null;
+    if (!page.hasOwnProperty("orders"))
+      return (
+        <>
+          <div className="loader-sm" style={{ left: "58%" }}></div>
+          <div className="d-none d-md-block d-large-block">
+            <div className="loader" style={{ marginLeft: 90 }}></div>
+          </div>
+        </>
+      );
     return <OrderContent data={page} />;
   }
 }

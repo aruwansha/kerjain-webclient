@@ -15,7 +15,10 @@ import OrderInformation from "parts/service_user/Checkout/OrderInformation";
 import Payment from "parts/service_user/Checkout/Payment";
 import Completed from "parts/service_user/Checkout/Completed";
 
-import { submitBookingService, submitBookingRequest } from "store/actions/checkout";
+import {
+  submitBookingService,
+  submitBookingRequest,
+} from "store/actions/checkout";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
@@ -43,6 +46,7 @@ class Checkout extends Component {
   };
 
   componentDidMount() {
+    document.title = "KerjaIn | Checkout";
     window.scroll(0, 0);
   }
 
@@ -68,9 +72,11 @@ class Checkout extends Component {
       payload.append("accountHolder", data.bankHolder);
       payload.append("bankFrom", data.bankName);
       payload.append("image", data.proofPayment[0]);
-      this.props.submitBookingService(payload, getWithExpiry("token")).then(() => {
-        nextStep();
-      });
+      this.props
+        .submitBookingService(payload, getWithExpiry("token"))
+        .then(() => {
+          nextStep();
+        });
     }
     if (checkout.requestId) {
       payload.append("name", data.name);
@@ -82,11 +88,12 @@ class Checkout extends Component {
       payload.append("accountHolder", data.bankHolder);
       payload.append("bankFrom", data.bankName);
       payload.append("image", data.proofPayment[0]);
-      this.props.submitBookingRequest(payload, getWithExpiry("token")).then(() => {
-        nextStep();
-      });
+      this.props
+        .submitBookingRequest(payload, getWithExpiry("token"))
+        .then(() => {
+          nextStep();
+        });
     }
-
   };
 
   render() {
@@ -116,6 +123,10 @@ class Checkout extends Component {
           </div>
         </div>
       );
+
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
 
     if (!checkout)
       return (
@@ -270,4 +281,7 @@ const mapStateToProps = (state) => ({
   checkout: state.checkout,
 });
 
-export default connect(mapStateToProps, { submitBookingService, submitBookingRequest })(Checkout);
+export default connect(mapStateToProps, {
+  submitBookingService,
+  submitBookingRequest,
+})(Checkout);

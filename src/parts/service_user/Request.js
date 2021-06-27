@@ -74,7 +74,7 @@ class Request extends Component {
     return (
       <section id="request" className="container">
         <Fade bottom>
-          <h4>Masukkan Request</h4>
+          <h4>Buat Requestmu</h4>
           <div className="row">
             <div className="col-lg-6 pt-5">
               <form onSubmit={this._request}>

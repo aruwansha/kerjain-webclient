@@ -13,20 +13,36 @@ import { fetchPage } from "store/actions/page";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
-
 class MePage extends Component {
   componentDidMount() {
-    window.title = "KerjaIn | Beranda";
+    document.title = "KerjaIn | Solusi Kebutuhan Anda";
     window.scroll(0, 0);
 
-    if (!getWithExpiry("token")) return this.props.history.push("/")
+    if (!getWithExpiry("token")) return this.props.history.push("/");
 
-    if (!this.props.page.me) this.props.fetchPage(`user/landing-page/me`, "me", getWithExpiry("token"));
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
+    if (!this.props.page.me)
+      this.props.fetchPage(
+        `user/landing-page/me`,
+        "me",
+        getWithExpiry("token")
+      );
   }
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("me")) return null;
+    if (!page.hasOwnProperty("me"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     return (
       <>

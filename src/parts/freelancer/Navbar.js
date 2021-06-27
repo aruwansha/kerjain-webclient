@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faEdit,
+  faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
-export default function navbar() {
+import profileDefault from "assets/images/pp-default.svg";
+
+export default function Navbar() {
+  const initialState = {};
+  const [setstate] = useState(initialState);
+
   const logout = () => {
     localStorage.clear();
+    setstate(initialState);
   };
+
   return (
     <>
       <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -13,7 +26,7 @@ export default function navbar() {
           id="sidebarToggleTop"
           className="btn btn-link d-md-none rounded-circle mr-3"
         >
-          <i className="fa fa-bars"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faBars} />
         </button>
 
         <ul className="navbar-nav ml-auto">
@@ -32,6 +45,11 @@ export default function navbar() {
               <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                 {getWithExpiry("name")}
               </span>
+              <img
+                className="img-profile rounded-circle"
+                alt="profile"
+                src={profileDefault}
+              ></img>
             </a>
             <div
               className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -43,7 +61,10 @@ export default function navbar() {
                 data-toggle="modal"
                 data-target="#changePasswordModal"
               >
-                <i className="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i>
+                <FontAwesomeIcon
+                  className="fa-fw mr-2 text-gray-400"
+                  icon={faEdit}
+                />
                 Edit Password
               </a>
               <a
@@ -52,7 +73,10 @@ export default function navbar() {
                 data-toggle="modal"
                 data-target="#logoutModal"
               >
-                <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <FontAwesomeIcon
+                  className="fa-fw mr-2 text-gray-400"
+                  icon={faSignOutAlt}
+                />
                 Logout
               </a>
             </div>

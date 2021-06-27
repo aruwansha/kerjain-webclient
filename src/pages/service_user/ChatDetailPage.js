@@ -25,10 +25,14 @@ class ChatDetailPage extends Component {
       },
     };
 
-    window.title = "KerjaIn | Detail Chat";
+    document.title = "KerjaIn | Detail Chat";
     window.scroll(0, 0);
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
+
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
@@ -87,7 +91,15 @@ class ChatDetailPage extends Component {
 
   render() {
     const { page, match } = this.props;
-    if (!page[match.params.id]) return null;
+    if (!page[match.params.id])
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     if (page[match.params.id].length === 0)
       return (
@@ -159,13 +171,6 @@ class ChatDetailPage extends Component {
                             >
                               {chat.from.name}
                             </label>
-                            {!chat.isReadServiceUser ? (
-                              <span className="badge badge-danger badge-counter">
-                                <i className="fa fa-xs fa-circle">o</i>
-                              </span>
-                            ) : (
-                              ""
-                            )}
                           </div>
                           <div className="col text-right">
                             <p>

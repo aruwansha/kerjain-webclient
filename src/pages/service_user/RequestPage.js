@@ -22,12 +22,28 @@ class RequestPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.request)
-      this.props.fetchPage(`user/request/get`, "request", getWithExpiry("token"));
+      this.props.fetchPage(
+        `user/request/get`,
+        "request",
+        getWithExpiry("token")
+      );
   }
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("request")) return null;
+    if (!page.hasOwnProperty("request"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
     return (
       <>
         <Header {...this.props} />
@@ -53,7 +69,11 @@ class RequestPage extends Component {
                         <td>{request.requestDescription}</td>
                         <td>Rp {formatNumber(request.requestBudget)}</td>
                         <td>
-                          <Button href={`/request/${request._id}`} type="link" className="btn btn-primary btn-sm">
+                          <Button
+                            href={`/request/${request._id}`}
+                            type="link"
+                            className="btn btn-primary btn-sm"
+                          >
                             Detail
                           </Button>
                         </td>

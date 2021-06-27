@@ -23,7 +23,7 @@ export default function RequestDetailContent(props) {
             <div className="row">
               <div className="col">
                 <div className="form-group">
-                  <label for="inputName">Nama Penyewa</label>
+                  <label htmlFor="inputName">Nama Penyewa</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -33,7 +33,7 @@ export default function RequestDetailContent(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputEmail">Email</label>
+                  <label htmlFor="inputEmail">Email</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -43,7 +43,7 @@ export default function RequestDetailContent(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputPhone">No. HP</label>
+                  <label htmlFor="inputPhone">No. HP</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -53,7 +53,7 @@ export default function RequestDetailContent(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputPhone">Subyek Pesanan</label>
+                  <label htmlFor="inputPhone">Subyek Pesanan</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -64,7 +64,7 @@ export default function RequestDetailContent(props) {
                 </div>
 
                 <div className="form-group">
-                  <label for="inputPhone">Deskripsi Pesanan</label>
+                  <label htmlFor="inputPhone">Deskripsi Pesanan</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -74,7 +74,7 @@ export default function RequestDetailContent(props) {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputPhone">Budget Pesanan</label>
+                  <label htmlFor="inputPhone">Budget Pesanan</label>
                   <input
                     type="text"
                     className="form-control input-disabled"
@@ -95,7 +95,7 @@ export default function RequestDetailContent(props) {
                     >
                       <div className="modal-body">
                         <div className="form-group">
-                          <label for="inputServiceTitle">Nominal</label>
+                          <label htmlFor="inputServiceTitle">Nominal</label>
                           <input
                             type="number"
                             className="form-control"

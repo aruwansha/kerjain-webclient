@@ -34,6 +34,10 @@ class ProfilePage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.profilePage)
       this.props.fetchPage(
         `user/profile/get`,
@@ -89,7 +93,15 @@ class ProfilePage extends Component {
     const { loading } = this.state;
 
     const { page } = this.props;
-    if (!page.hasOwnProperty("profilePage")) return null;
+    if (!page.hasOwnProperty("profilePage"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     return (
       <>

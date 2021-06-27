@@ -4,9 +4,8 @@ import Time from "react-time-format";
 
 import Button from "elements/Button";
 
-export default function ChatContent(props) {
-  const page = props.data;
-  if (page.chats.message === "no chat yet")
+export default function ChatContent({data}) {
+  if (data.chats.message === "no chat yet")
     return (
       <>
         <div className="container">
@@ -39,13 +38,13 @@ export default function ChatContent(props) {
               className="card-body"
               style={{ height: 500, overflow: "auto" }}
             >
-              {page.chats.chats.map((chat, index) => {
+              {data.chats.chats.map((chat, index) => {
                 return (
                   <div className="form-group" key={`key-${index}`}>
                     <div className="row">
                       <div className="col col-lg-10">
                         <label
-                          for=""
+                          htmlFor=""
                           className="text-primary font-weight-bold mr-1"
                         >
                           {chat.doc.serviceUserId[0].name}

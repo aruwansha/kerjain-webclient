@@ -20,6 +20,10 @@ class ChatPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "service_user") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.chats)
       this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
   }
@@ -38,7 +42,15 @@ class ChatPage extends Component {
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("chats")) return null;
+    if (!page.hasOwnProperty("chats"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     if (page.chats.message === "no chat yet")
       return (
@@ -89,13 +101,6 @@ class ChatPage extends Component {
                             >
                               {chat.doc.freelancerUserId[0].name}
                             </label>
-                            {!chat.doc.isReadServiceUser ? (
-                              <span className="badge badge-danger badge-counter">
-                                <i className="fa fa-xs fa-circle">o</i>
-                              </span>
-                            ) : (
-                              ""
-                            )}
                           </div>
                           <div className="col col-lg-2 text-right">
                             <p>

@@ -72,7 +72,7 @@ export default function HighRated(props) {
                       <Button
                         type="link"
                         className="stretched-link d-block text-gray-800"
-                        href={`/freelancer/${freelancer._id}`}
+                        href={`/freelancer-detail/${freelancer._id}`}
                       >
                         <h6>{freelancer.title}</h6>
                       </Button>
@@ -83,7 +83,7 @@ export default function HighRated(props) {
                     <Button
                       type="link"
                       className="stretched-link"
-                      href={`/freelancer/${freelancer._id}`}
+                      href={`/freelancer-detail/${freelancer._id}`}
                     ></Button>
                   </div>
                 </div>

@@ -9,18 +9,23 @@ import { fetchPage } from "store/actions/page";
 
 class CategoryPage extends Component {
   componentDidMount() {
-    window.title = "KerjaIn | Beranda";
+    document.title = "KerjaIn | Kategori";
     window.scroll(0, 0);
 
     if (!this.props.page.categoryPage)
-      this.props.fetchPage(
-        `user/category-page`,
-        "categoryPage"
-      );
+      this.props.fetchPage(`user/category-page`, "categoryPage");
   }
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("categoryPage")) return null;
+    if (!page.hasOwnProperty("categoryPage"))
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     return (
       <>

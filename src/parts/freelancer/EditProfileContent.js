@@ -3,9 +3,7 @@ import React from "react";
 import profileDefault from "assets/images/pp-default.svg";
 import thumbnailDefault from "assets/images/thumbnail-default.svg";
 
-export default function EditProfileContent(props) {
-  const page = props.data;
-  console.log(page);
+export default function EditProfileContent({data}) {
   return (
     <div className="container-fluid">
       <h1 className="h3 mb-4 text-gray-800">Profile</h1>
@@ -62,58 +60,58 @@ export default function EditProfileContent(props) {
               <form
                 action="/freelancer/profile/<%= freelancer.userId.id %>/personal?_method=PUT"
                 method="post"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <div className="form-group">
-                  <label for="inputName">Nama Depan</label>
+                  <label htmlFor="inputName">Nama Depan</label>
                   <input
                     type="text"
                     className="form-control"
                     name="firstname"
-                    defaultValue={page.profile.userId.name.split(" ")[0]}
+                    defaultValue={data.profile.userId.name.split(" ")[0]}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputName">Nama Belakang</label>
+                  <label htmlFor="inputName">Nama Belakang</label>
                   <input
                     type="text"
                     className="form-control"
                     name="lastname"
-                    value={page.profile.userId.name.split(" ")[1]}
+                    defaultValue={data.profile.userId.name.split(" ")[1]}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputEmail">Email</label>
+                  <label htmlFor="inputEmail">Email</label>
                   <input
                     type="text"
                     className="form-control"
                     name="email"
-                    value={page.profile.userId.email}
+                    defaultValue={data.profile.userId.email}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputAddress">Alamat</label>
+                  <label htmlFor="inputAddress">Alamat</label>
                   <input
                     type="text"
                     className="form-control"
                     name="address"
-                    value={page.profile.userId.address}
+                    defaultValue={data.profile.userId.address}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputPhone">Nomer Telepon</label>
+                  <label htmlFor="inputPhone">Nomer Telepon</label>
                   <input
                     type="number"
                     className="form-control"
                     name="phone"
-                    value={page.profile.userId.phone}
+                    defaultValue={data.profile.userId.phone}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputPhone">Foto Profil</label>
+                  <label htmlFor="inputPhone">Foto Profil</label>
                   <br />
                   <img
-                    src={`${process.env.REACT_APP_HOST}${page.profile.userId.imgUrl}`}
+                    src={`${process.env.REACT_APP_HOST}${data.profile.userId.imgUrl}`}
                     alt=""
                     width="200"
                     height="200"
@@ -150,43 +148,43 @@ export default function EditProfileContent(props) {
               <form
                 action="/freelancer/profile/<%= freelancer._id %>/service?_method=PUT"
                 method="post"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <div className="form-group">
-                  <label for="inputTitle">Judul</label>
+                  <label htmlFor="inputTitle">Judul</label>
                   <input
                     type="text"
                     className="form-control"
                     name="title"
-                    value={page.profile.title}
+                    defaultValue={data.profile.title}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputDescription">Deskripsi</label>
+                  <label htmlFor="inputDescription">Deskripsi</label>
                   <input
                     type="text"
                     className="form-control"
                     name="description"
-                    value={page.profile.description}
+                    defaultValue={data.profile.description}
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputCategory">Kategori</label>
+                  <label htmlFor="inputCategory">Kategori</label>
                   <select
                     name="categoryId"
                     id="category"
                     className="form-control"
                   >
-                    <option value={page.profile.categoryId.name}>
-                      {page.profile.categoryId.name}
+                    <option defaultValue={data.profile.categoryId.name}>
+                      {data.profile.categoryId.name}
                     </option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label for="image">Gambar</label>
+                  <label htmlFor="image">Gambar</label>
                   <br />
                   <img
-                    src={`${process.env.REACT_APP_HOST}${page.profile.imgUrl}`}
+                    src={`${process.env.REACT_APP_HOST}${data.profile.imgUrl}`}
                     alt=""
                     width="200"
                     height="200"
@@ -225,32 +223,32 @@ export default function EditProfileContent(props) {
                 method="post"
               >
                 <div className="form-group">
-                  <label for="inputBankName">Nama Bank</label>
+                  <label htmlFor="inputBankName">Nama Bank</label>
                   <input
                     type="text"
                     className="form-control"
                     name="bankName"
-                    value={page.profile.bankName}
+                    defaultValue={data.profile.bankName}
                     placeholder="Enter Bank Name"
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputbankAccount">Rekening Bank</label>
+                  <label htmlFor="inputbankAccount">Rekening Bank</label>
                   <input
                     type="text"
                     className="form-control"
                     name="bankAccount"
-                    value={page.profile.bankAccount}
+                    defaultValue={data.profile.bankAccount}
                     placeholder="Enter bank Account"
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputAccountHolder">Pemilik Rekening</label>
+                  <label htmlFor="inputAccountHolder">Pemilik Rekening</label>
                   <input
                     type="text"
                     className="form-control"
                     name="accountHolder"
-                    value={page.profile.accountHolder}
+                    defaultValue={data.profile.accountHolder}
                     placeholder="Enter Bank Name"
                   />
                 </div>

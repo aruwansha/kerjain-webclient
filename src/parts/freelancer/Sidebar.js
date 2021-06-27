@@ -1,4 +1,13 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faTachometerAlt,
+  faHandshake,
+  faBriefcase,
+  faComments,
+  faShoppingCart,
+  faCog,
+} from "@fortawesome/free-solid-svg-icons";
 
 import Button from "elements/Button";
 
@@ -21,7 +30,7 @@ export default function sidebar() {
 
       <li className="nav-item">
         <Button type="link" className="nav-link" href="/freelancer">
-          <i className="fas fa-fw fa-tachometer-alt"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faTachometerAlt} />
           <span>Dasbor</span>
         </Button>
       </li>
@@ -32,29 +41,28 @@ export default function sidebar() {
 
       <li className="nav-item">
         <Button type="link" className="nav-link" href="/freelancer/service">
-          <i className="fas fa-fw fa-handshake"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faHandshake} />
           <span>Layanan Milikmu</span>
         </Button>
       </li>
 
       <li className="nav-item">
         <Button type="link" className="nav-link" href="/freelancer/request">
-          <i className="fas fa-fw fa-briefcase"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faBriefcase} />
           <span>Request Tersedia</span>
         </Button>
       </li>
 
       <li className="nav-item">
         <Button type="link" className="nav-link" href="/freelancer/chat">
-          <i className="far fa-fw fa-comments"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faComments} />
           <span>Chat</span>
-          {/* <span className="badge badge-danger badge-counter"></span> */}
         </Button>
       </li>
 
       <li className="nav-item">
         <Button type="link" className="nav-link" href="/freelancer/order">
-          <i className="fas fa-fw fa-shopping-cart"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faShoppingCart} />
           <span>Orderan</span>
         </Button>
       </li>
@@ -65,7 +73,6 @@ export default function sidebar() {
 
       <li className="nav-item">
         <a
-          Button
           type="link"
           href="#/"
           className="nav-link collapsed cursor-pointer noselect"
@@ -74,7 +81,7 @@ export default function sidebar() {
           aria-expanded="true"
           aria-controls="collapseTwo"
         >
-          <i className="fas fa-fw fa-cog"></i>
+          <FontAwesomeIcon className="fa-fw mr-1" icon={faCog} />
           <span>Pengaturan</span>
         </a>
         <div

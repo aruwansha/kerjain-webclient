@@ -29,7 +29,7 @@ export default function ServiceContent(props) {
                   <div className="card border-left-primary shadow h-100 py-2">
                     <div className="card-body">
                       <div className="row no-gutters align-items-center">
-                        <div className="col-3 mr-2">
+                        <div className="col-lg-3 col-sm-12 mr-2">
                           <img
                             src={`${process.env.REACT_APP_HOST}${service.imgUrl}`}
                             alt={service.title}
@@ -119,44 +119,44 @@ export default function ServiceContent(props) {
             <form
               action="/freelancer/service/add"
               method="POST"
-              enctype="multipart/form-data"
+              encType="multipart/form-data"
             >
               <div className="modal-body">
                 <div className="form-group">
-                  <label for="inputServiceTitle">Judul</label>
+                  <label htmlFor="inputServiceTitle">Judul</label>
                   <input
                     type="text"
                     className="form-control"
                     name="title"
                     placeholder="Masukkan nama layanan..."
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputServiceDescription">Deskripsi</label>
+                  <label htmlFor="inputServiceDescription">Deskripsi</label>
                   <input
                     type="text"
                     className="form-control"
                     name="description"
                     placeholder="Masukkan deskripsi layanan..."
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputAccountHolder">Harga</label>
+                  <label htmlFor="inputAccountHolder">Harga</label>
                   <input
                     type="number"
                     className="form-control"
                     name="price"
                     placeholder="Masukkan harga layanan..."
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                   />
                 </div>
                 <div className="form-group">
-                  <label for="inputImgUrl">Gambar</label>
+                  <label htmlFor="inputImgUrl">Gambar</label>
                   <input
                     type="file"
                     className="form-control-file"
@@ -209,44 +209,44 @@ export default function ServiceContent(props) {
               <form
                 action="/freelancer/service/edit?_method=PUT"
                 method="POST"
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <div className="modal-body">
                   <div className="form-group">
-                    <label for="inputServiceTitle">Judul</label>
+                    <label htmlFor="inputServiceTitle">Judul</label>
                     <input
                       type="text"
                       className="form-control service-title"
                       name="title"
                       placeholder="Masukkan judul layanan..."
                       required
-                      autocomplete="off"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="form-group">
-                    <label for="inputServiceDescription">Deskripsi</label>
+                    <label htmlFor="inputServiceDescription">Deskripsi</label>
                     <input
                       type="text"
                       className="form-control service-description"
                       name="description"
                       placeholder="Masukkan deskripsi layanan..."
                       required
-                      autocomplete="off"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="form-group">
-                    <label for="inputPrice">Harga</label>
+                    <label htmlFor="inputPrice">Harga</label>
                     <input
                       type="number"
                       className="form-control service-price"
                       name="price"
                       placeholder="Masukkan harga layanan..."
                       required
-                      autocomplete="off"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="form-group">
-                    <label for="inputImgUrl">Gambar</label>
+                    <label htmlFor="inputImgUrl">Gambar</label>
                     <input
                       type="file"
                       className="form-control-file"

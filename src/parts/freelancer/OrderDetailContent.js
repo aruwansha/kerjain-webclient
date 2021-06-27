@@ -2,8 +2,7 @@ import React from "react";
 import { formatNumber } from "utils/formatNumber";
 import Button from "elements/Button";
 
-export default function OrderDetailContent(props) {
-  const page = props.data;
+export default function OrderDetailContent({ data }) {
   return (
     <div className="container-fluid">
       <h1 className="h3 mb-4 text-gray-800">Detail Order</h1>
@@ -19,16 +18,16 @@ export default function OrderDetailContent(props) {
         </div>
         <div className="card-body">
           <div className="row">
-            {page.order.payments.status === "paid" ?? (
+            {data.order.payments.status === "paid" ?? (
               <div className="col-md-4">
                 <div className="row ml-1">
                   <form
-                    action="/freelancer/order/<%= page.order.id %>/upload?_method=PUT"
+                    action="/freelancer/order/<%= data.order.id %>/upload?_method=PUT"
                     method="POST"
                     enctype="multipart/form-data"
                   >
                     <div className="form-group">
-                      <label for="">Upload Bukti Pengerjaan:</label>
+                      <label htmlFor="">Upload Bukti Pengerjaan:</label>
                       <input
                         type="file"
                         name="image"
@@ -48,76 +47,75 @@ export default function OrderDetailContent(props) {
 
             <div className="col">
               <div className="form-group">
-                <label for="inputName">Nama Penyewa</label>
+                <label htmlFor="inputName">Nama Penyewa</label>
                 <input
                   type="text"
                   className="form-control input-disabled"
                   name="name"
-                  value={page.serviceUser.name}
+                  defaultValue={data.serviceUser.name}
                   readOnly
                 />
               </div>
               <div className="form-group">
-                <label for="inputEmail">Email</label>
+                <label htmlFor="inputEmail">Email</label>
                 <input
                   type="text"
                   className="form-control input-disabled"
                   name="email"
-                  value={page.serviceUser.email}
+                  defaultValue={data.serviceUser.email}
                   readOnly
                 />
               </div>
               <div className="form-group">
-                <label for="inputPhone">No. HP</label>
+                <label htmlFor="inputPhone">No. HP</label>
                 <input
                   type="text"
                   className="form-control input-disabled"
                   name="phone"
-                  value={page.serviceUser.phone}
+                  defaultValue={data.serviceUser.phone}
                   readOnly
                 />
               </div>
               <div className="form-group">
-                <label for="inputService">Pesanan</label>
+                <label htmlFor="inputService">Pesanan</label>
                 <input
                   type="text"
                   className="form-control input-disabled mb-2"
                   name="service"
-                  value={` ${
-                    page.order.serviceId
-                      ? page.order.serviceId.title
-                      : page.order.requestId.requestSubject
+                  defaultValue={` ${
+                    data.order.serviceId
+                      ? data.order.serviceId.title
+                      : data.order.requestId.requestSubject
                   } - Rp  ${formatNumber(
-                    page.order.serviceId
-                      ? page.order.serviceId.price
-                      : page.order.requestId.finalBudget
+                    data.order.serviceId
+                      ? data.order.serviceId.price
+                      : data.order.requestId.finalBudget
                   )}`}
                   readOnly
                 />
               </div>
               <div className="form-group">
-                <label for="inputService">Detail Pesanan</label>
+                <label htmlFor="inputService">Detail Pesanan</label>
                 <textarea
                   className="form-control input-disabled mb-2"
                   name="service"
                   rows="3"
                   readOnly
-                >
-                  {page.order.detailNote}
-                </textarea>
+                  defaultValue={data.order.detailNote}
+                ></textarea>
               </div>
               <div className="form-group">
-                <label for="inputStatus">Status</label>
+                <label htmlFor="inputStatus">Status</label>
                 <input
                   type="text"
                   className="form-control input-disabled"
                   name="status"
-                  value={
-                    page.order.payments.status === "finished"
+                  defaultValue={
+                    data.order.payments.status === "finished"
                       ? "Selesai"
-                      : page.order.payments.status === "paid"
+                      : data.order.payments.status === "paid"
                       ? "Menunggu Konfirmasi Admin"
-                      : page.order.payments.status === "unpaid"
+                      : data.order.payments.status === "unpaid"
                       ? "Menunggu Pembayaran"
                       : "undefined"
                   }
@@ -125,12 +123,12 @@ export default function OrderDetailContent(props) {
                 />
               </div>
               <div className="form-group">
-                <label for="inputTotal">Total</label>
+                <label htmlFor="inputTotal">Total</label>
                 <input
                   type="text"
                   className="form-control input-disabled"
                   name="total"
-                  value={`Rp ${formatNumber(page.order.total)}`}
+                  defaultValue={`Rp ${formatNumber(data.order.total)}`}
                   readOnly
                 />
               </div>

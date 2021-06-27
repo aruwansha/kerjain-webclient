@@ -18,6 +18,9 @@ class RequestPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "freelancer") {
+      return this.props.history.push("/");
+    }
     if (!this.props.page.requests)
       this.props.fetchPage(
         `freelancer/requests`,
@@ -28,7 +31,15 @@ class RequestPage extends Component {
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("requests")) return null;
+    if (!page.hasOwnProperty("requests"))
+      return (
+        <>
+          <div className="loader-sm" style={{ left: "58%" }}></div>
+          <div className="d-none d-md-block d-large-block">
+            <div className="loader" style={{ marginLeft: 90 }}></div>
+          </div>
+        </>
+      );
     return <RequestContent data={page} />;
   }
 }

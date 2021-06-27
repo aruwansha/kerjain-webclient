@@ -18,6 +18,10 @@ class DashboardPage extends Component {
 
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
+    if (getWithExpiry("level") !== "freelancer") {
+      return this.props.history.push("/");
+    }
+
     if (!this.props.page.dashboard)
       this.props.fetchPage(
         `freelancer/dashboard`,
@@ -28,7 +32,15 @@ class DashboardPage extends Component {
 
   render() {
     const { page } = this.props;
-    if (!page.hasOwnProperty("dashboard")) return null;
+    if (!page.hasOwnProperty("dashboard"))
+      return (
+        <>
+          <div className="loader-sm" style={{ left: "58%" }}></div>
+          <div className="d-none d-md-block d-large-block">
+            <div className="loader"  style={{ marginLeft: 90 }}></div>
+          </div>
+        </>
+      );
     return <DashboardContent data={page} />;
   }
 }

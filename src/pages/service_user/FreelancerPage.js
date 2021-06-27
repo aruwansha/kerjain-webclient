@@ -11,10 +11,9 @@ import Footer from "parts/service_user/Footer";
 import { checkoutBooking } from "store/actions/checkout";
 import { fetchPage } from "store/actions/page";
 
-
 class FreelancerPage extends Component {
   componentDidMount() {
-    window.title = "KerjaIn | Beranda";
+    document.title = "KerjaIn | Detail Freelancer";
     window.scroll(0, 0);
 
     if (!this.props.page[this.props.match.params.id])
@@ -25,13 +24,24 @@ class FreelancerPage extends Component {
   }
   render() {
     const { page, match } = this.props;
-    if (!page[match.params.id]) return null;
+    if (!page[match.params.id])
+      return (
+        <>
+          <div className="loader-sm"></div>
+          <div className="d-none d-md-block d-lg-block">
+            <div className="loader"></div>
+          </div>
+        </>
+      );
 
     return (
       <>
         <Header {...this.props} />
         <Banner image="https://source.unsplash.com/random" isExternal />
-        <ServiceFreelancer data={page[match.params.id]}  startBooking={this.props.checkoutBooking}/>
+        <ServiceFreelancer
+          data={page[match.params.id]}
+          startBooking={this.props.checkoutBooking}
+        />
         <AboutFreelancer data={page[match.params.id]} />
         <ReviewFreelancer data={page[match.params.id]} />
         <Footer />
@@ -44,4 +54,6 @@ const mapStateToProps = (state) => ({
   page: state.page,
 });
 
-export default connect(mapStateToProps, { checkoutBooking, fetchPage })(FreelancerPage);
+export default connect(mapStateToProps, { checkoutBooking, fetchPage })(
+  FreelancerPage
+);
