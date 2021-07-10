@@ -125,7 +125,7 @@ class Checkout extends Component {
       );
 
     if (getWithExpiry("level") !== "service_user") {
-      return this.props.history.push("/");
+      return this.props.history.push("/freelancer");
     }
 
     if (!checkout)

@@ -23,7 +23,7 @@ class OrderPage extends Component {
     if (!getWithExpiry("token")) return this.props.history.push("/");
 
     if (getWithExpiry("level") !== "service_user") {
-      return this.props.history.push("/");
+      return this.props.history.push("/freelancer");
     }
 
     if (!this.props.page.order)
