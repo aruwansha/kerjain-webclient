@@ -48,7 +48,7 @@ class ChatDetailPage extends Component {
           </div>
         </>
       );
-    return <ChatDetailContent data={page[match.params.id]} />;
+    return <ChatDetailContent fetchdata={page[match.params.id]} />;
   }
 }
 

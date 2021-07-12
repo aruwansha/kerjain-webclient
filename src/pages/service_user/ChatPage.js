@@ -25,19 +25,19 @@ class ChatPage extends Component {
     }
 
     if (!this.props.page.chats)
-      this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
+      this.props.fetchPage(`user/chats`, "chats", getWithExpiry("token"));
   }
 
   _delete = (id) => {
-    this.props.deleteAllChat(id, getWithExpiry("token"));
+    this.props.deleteAllChat("user", id, getWithExpiry("token"));
     toast.success("Pesan berhasil dihapus", {
       position: toast.POSITION.BOTTOM_CENTER,
     });
-    this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
+    this.props.fetchPage(`user/chats`, "chats", getWithExpiry("token"));
   };
 
   componentDidUpdate() {
-    this.props.fetchPage(`user/chat/get`, "chats", getWithExpiry("token"));
+    this.props.fetchPage(`user/chats`, "chats", getWithExpiry("token"));
   }
 
   render() {

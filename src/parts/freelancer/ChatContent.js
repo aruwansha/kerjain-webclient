@@ -1,10 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import Time from "react-time-format";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+
+// action
+import { deleteAllChat } from "store/actions/chat";
+
+// utilities
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
 import Button from "elements/Button";
 
-export default function ChatContent({data}) {
+export default function ChatContent({ data }) {
+  const dispatch = useDispatch();
+
+  const _delete = (id) => {
+    dispatch(deleteAllChat("freelancer", id, getWithExpiry("token")));
+    toast.success(id, {
+      position: toast.POSITION.BOTTOM_CENTER,
+    });
+  };
+
   if (data.chats.message === "no chat yet")
     return (
       <>
@@ -78,7 +94,7 @@ export default function ChatContent({data}) {
                         <br />
                         <a
                           onClick={() => {
-                            this._delete(chat.doc.serviceUserId[0]._id);
+                            _delete(chat.doc.serviceUserId[0]._id);
                           }}
                           href="#/"
                           className="text-danger"

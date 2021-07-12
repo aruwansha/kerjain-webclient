@@ -2,9 +2,9 @@ import { CHAT } from "../types";
 
 import axios from "configs/axios";
 
-export const chat = (payload, params, token) => (dispatch) => {
+export const chat = (role, id, payload, token) => (dispatch) => {
   return axios
-    .post(`user/chat/add/${params}`, payload, {
+    .post(`${role}/chat/${id}`, payload, {
       headers: {
         contentType: "application/x-www-form-urlencoded",
         "x-access-token": token,
@@ -23,14 +23,14 @@ export const chat = (payload, params, token) => (dispatch) => {
     });
 };
 
-export const deleteAllChat = (params, token) => (dispatch) => {
-  axios.delete(`user/chat/delete/${params}`, {
+export const deleteAllChat = (role, id, token) => (dispatch) => {
+  axios.delete(`${role}/chats/${id}`, {
     headers: { "x-access-token": token },
   });
 };
 
-export const deleteChat = (params, token) => (dispatch) => {
-  axios.delete(`user/chat/get/delete/${params}`, {
+export const deleteChat = (role, id, token) => (dispatch) => {
+  axios.delete(`${role}/chats/detail/${id}`, {
     headers: { "x-access-token": token },
   });
 };

@@ -36,7 +36,7 @@ class ChatDetailPage extends Component {
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
-        `user/chat/get/${this.props.match.params.id}`,
+        `user/chats/${this.props.match.params.id}`,
         this.props.match.params.id,
         getWithExpiry("token")
       );
@@ -62,8 +62,9 @@ class ChatDetailPage extends Component {
         message: data.message,
       };
       this.props.chat(
-        payload,
+        "user",
         this.props.match.params.id,
+        payload,
         getWithExpiry("token")
       );
     }
@@ -75,7 +76,7 @@ class ChatDetailPage extends Component {
   };
 
   _delete = (id) => {
-    this.props.deleteChat(id, getWithExpiry("token"));
+    this.props.deleteChat("user", id, getWithExpiry("token"));
     toast.error("Pesan berhasil dihapus", {
       position: toast.POSITION.BOTTOM_CENTER,
     });
@@ -83,7 +84,7 @@ class ChatDetailPage extends Component {
 
   componentDidUpdate() {
     this.props.fetchPage(
-      `user/chat/get/${this.props.match.params.id}`,
+      `user/chats/${this.props.match.params.id}`,
       this.props.match.params.id,
       getWithExpiry("token")
     );
