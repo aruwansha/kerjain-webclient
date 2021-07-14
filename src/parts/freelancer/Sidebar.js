@@ -72,36 +72,15 @@ export default function sidebar() {
       <div className="sidebar-heading">Pengaturan</div>
 
       <li className="nav-item">
-        <a
+        <Button
           type="link"
-          href="#/"
-          className="nav-link collapsed cursor-pointer noselect"
-          data-toggle="collapse"
-          data-target="#collapseTwo"
-          aria-expanded="true"
-          aria-controls="collapseTwo"
+          className="nav-link"
+          href="/freelancer/setting/edit-profile"
         >
           <FontAwesomeIcon className="fa-fw mr-1" icon={faCog} />
-          <span>Pengaturan</span>
-        </a>
-        <div
-          id="collapseTwo"
-          className="collapse"
-          aria-labelledby="headingTwo"
-          data-parent="#accordionSidebar"
-        >
-          <div className="bg-white py-2 collapse-inner rounded">
-            <Button
-              type="link"
-              className="collapse-item text-secondary"
-              href="/freelancer/setting/edit-profile"
-            >
-              Edit Profil
-            </Button>
-          </div>
-        </div>
+          <span>Edit Profil</span>
+        </Button>
       </li>
-
       <div className="text-center d-none d-md-inline">
         <button className="rounded-circle border-0" id="sidebarToggle"></button>
       </div>
