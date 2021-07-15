@@ -1,10 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-import Button from 'elements/Button'
+// action
+import { addBid, editBid } from "store/actions/freelancer/bid";
+
+// utilities
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
+
+import Button from "elements/Button";
 import { formatNumber } from "utils/formatNumber";
 
 export default function RequestDetailContent(props) {
   const page = props.data;
+
+  const dispatch = useDispatch();
+
+  const [postBid, setPostBid] = useState({
+    nominal: "",
+  });
+
+  const handlePostBid = (e) => {
+    setPostBid({ ...postBid, [e.target.name]: e.target.value });
+  };
+
+  const add_bid = () => {
+    if (postBid.nominal === undefined) {
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else {
+      const payload = {
+        id: page.request._id,
+        nominal: postBid.nominal,
+      };
+      dispatch(addBid(payload, getWithExpiry("token")));
+    }
+  };
+
+  const [putBid, setPutBid] = useState({
+    nominal: "",
+  });
+
+  const handlePutBid = (e) => {
+    setPutBid({ ...putBid, [e.target.name]: e.target.value });
+  };
+
+  const edit_bid = () => {
+    if (putBid.nominal === undefined) {
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else {
+      const payload = {
+        id: page.request_bid._id,
+        nominal: putBid.nominal,
+      };
+      dispatch(editBid(payload, getWithExpiry("token")));
+    }
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -89,10 +144,7 @@ export default function RequestDetailContent(props) {
                 {page.request_bid ? (
                   <>
                     <h5>Status Bid Saya</h5>
-                    <form
-                      action="/freelancer/request/bid?_method=PUT"
-                      method="POST"
-                    >
+                    <form>
                       <div className="modal-body">
                         <div className="form-group">
                           <label htmlFor="inputServiceTitle">Nominal</label>
@@ -103,15 +155,10 @@ export default function RequestDetailContent(props) {
                             placeholder={`Rp ${formatNumber(
                               page.request_bid.bid
                             )}`}
+                            onChange={handlePutBid}
                           />
                         </div>
                         <div className="modal-footer">
-                          <input
-                            type="hidden"
-                            name="id"
-                            defaultValue=" requestBid._id "
-                            className="id"
-                          />
                           <a
                             href="/freelancer/request"
                             className="btn btn-secondary btn-sm mr-2"
@@ -119,7 +166,8 @@ export default function RequestDetailContent(props) {
                             Kembali
                           </a>
                           <button
-                            type="submit"
+                            type="button"
+                            onClick={edit_bid}
                             className="btn btn-primary btn-sm"
                           >
                             Ubah
@@ -136,18 +184,78 @@ export default function RequestDetailContent(props) {
                     >
                       Kembali
                     </a>
-                    <a
+                    <button
                       type="button"
                       href="#/"
-                      data-id=" request._id "
-                      className="btn btn-primary btn-sm button-add"
+                      data-toggle="modal"
+                      data-target="#addModal"
+                      className="btn btn-primary btn-sm"
                     >
                       Ikut
-                    </a>
+                    </button>
                   </div>
                 )}
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className="modal fade"
+        id="addModal"
+        tabIndex="-1"
+        role="dialog"
+        aria-labelledby="modalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="modalLabel">
+                Ikuti Permintaan
+              </h5>
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="/freelancer/request/bid" method="POST">
+              <div className="modal-body">
+                <div className="form-group">
+                  <label htmlFor="inputServiceTitle">Nominal</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    name="nominal"
+                    placeholder="Masukkan nominal..."
+                    onChange={handlePostBid}
+                    required
+                  />
+                </div>
+                <div className="modal-footer">
+                  <button
+                    type="button"
+                    className="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Keluar
+                  </button>
+                  <button
+                    type="button"
+                    onClick={add_bid}
+                    className="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    Ikuti
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
