@@ -1,9 +1,126 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+// action
+import {
+  addService,
+  deleteService,
+  editService,
+} from "store/actions/freelancer/service";
+
+// utilities
+import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
 import thumbnailDefault from "assets/images/thumbnail-default.svg";
 import { formatNumber } from "utils/formatNumber";
 
 export default function ServiceContent(props) {
+  const dispatch = useDispatch();
+
+  const [postService, setPostService] = useState({
+    title: "",
+    description: "",
+    price: "",
+  });
+
+  const [postServiceImg, setPostServiceImg] = useState({
+    selectedFile: null,
+  });
+
+  const handlePostService = (e) => {
+    setPostService({ ...postService, [e.target.name]: e.target.value });
+  };
+
+  const onFilePostService = (event) => {
+    setPostServiceImg({ selectedFile: event.target.files[0] });
+  };
+
+  const add_service = () => {
+    if (
+      postService.title === undefined ||
+      postService.description === undefined ||
+      postService.price === undefined ||
+      !postServiceImg.selectedFile
+    ) {
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else {
+      const payload = new FormData();
+      payload.append("title", postService.title);
+      payload.append("description", postService.description);
+      payload.append("price", postService.price);
+      if (postServiceImg.selectedFile) {
+        payload.append(
+          "image",
+          postServiceImg.selectedFile,
+          postServiceImg.selectedFile.name
+        );
+        dispatch(addService(payload, getWithExpiry("token")));
+      }
+    }
+  };
+
+  const [serviceId, setServiceId] = useState({
+    id: "",
+  });
+
+  const [putService, setPutService] = useState({
+    title: "",
+    description: "",
+    price: "",
+  });
+
+  const [putServiceImg, setPutServiceImg] = useState({
+    selectedFile: null,
+  });
+
+  const handlePutService = (e) => {
+    setPutService({ ...putService, [e.target.name]: e.target.value });
+  };
+
+  const onFilePutService = (event) => {
+    setPutServiceImg({ selectedFile: event.target.files[0] });
+  };
+
+  // const id = useRef(null);
+
+  const edit_service = (id) => {
+    if (typeof id === "string") {
+      setServiceId({ id: id });
+    }
+    if (
+      putService.title === undefined ||
+      putService.description === undefined ||
+      putService.price === undefined
+    ) {
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else {
+      const payload = new FormData();
+      payload.append("id", serviceId.id);
+      payload.append("title", putService.title);
+      payload.append("description", putService.description);
+      payload.append("price", putService.price);
+      if (putServiceImg.selectedFile) {
+        payload.append(
+          "image",
+          putServiceImg.selectedFile,
+          putServiceImg.selectedFile.name
+        );
+        dispatch(editService(payload, getWithExpiry("token")));
+      } else {
+        dispatch(editService(payload, getWithExpiry("token")));
+      }
+    }
+  };
+
+  const delete_service = (id) => {
+    dispatch(deleteService(id, getWithExpiry("token")));
+  };
+
   return (
     <>
       <div className="container-fluid">
@@ -58,13 +175,16 @@ export default function ServiceContent(props) {
                           </div>
                         </div>
                         <div className="col-auto">
+                          <input
+                            type="hidden"
+                            defaultValue={service._id}
+                            name="id"
+                            // ref={id}
+                          />
                           <a
                             href="#/"
                             type="button"
-                            data-id="<%= service[i].id %>"
-                            data-title="<%= service[i].title %>"
-                            data-description="<%= service[i].description %>"
-                            data-price="<%= service[i].price %>"
+                            onClick={(e) => edit_service(service._id)}
                             data-toggle="modal"
                             data-target="#editModal"
                             className="btn btn-warning btn-sm text-white  d-flex justify-content-center mb-2"
@@ -74,9 +194,9 @@ export default function ServiceContent(props) {
                           <a
                             href="#/"
                             type="button"
-                            data-id="<%= service[i].id %>"
-                            data-toggle="modal"
-                            data-target="#deleteModal"
+                            onClick={() => {
+                              delete_service(service._id);
+                            }}
                             className="btn btn-danger btn-sm button-delete d-flex justify-content-center mb-0"
                           >
                             Hapus
@@ -116,11 +236,7 @@ export default function ServiceContent(props) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form
-              action="/freelancer/service/add"
-              method="POST"
-              encType="multipart/form-data"
-            >
+            <form>
               <div className="modal-body">
                 <div className="form-group">
                   <label htmlFor="inputServiceTitle">Judul</label>
@@ -129,6 +245,7 @@ export default function ServiceContent(props) {
                     className="form-control"
                     name="title"
                     placeholder="Masukkan nama layanan..."
+                    onChange={handlePostService}
                     autoComplete="off"
                     required
                   />
@@ -140,6 +257,7 @@ export default function ServiceContent(props) {
                     className="form-control"
                     name="description"
                     placeholder="Masukkan deskripsi layanan..."
+                    onChange={handlePostService}
                     autoComplete="off"
                     required
                   />
@@ -151,6 +269,7 @@ export default function ServiceContent(props) {
                     className="form-control"
                     name="price"
                     placeholder="Masukkan harga layanan..."
+                    onChange={handlePostService}
                     autoComplete="off"
                     required
                   />
@@ -161,6 +280,7 @@ export default function ServiceContent(props) {
                     type="file"
                     className="form-control-file"
                     name="image"
+                    onChange={onFilePostService}
                     required
                   />
                 </div>
@@ -170,9 +290,14 @@ export default function ServiceContent(props) {
                     className="btn btn-secondary"
                     data-dismiss="modal"
                   >
-                    Close
+                    Keluar
                   </button>
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="button"
+                    onClick={add_service}
+                    data-dismiss="modal"
+                    className="btn btn-primary"
+                  >
                     Tambah
                   </button>
                 </div>
@@ -206,11 +331,7 @@ export default function ServiceContent(props) {
               </button>
             </div>
             <div className="modal-body">
-              <form
-                action="/freelancer/service/edit?_method=PUT"
-                method="POST"
-                encType="multipart/form-data"
-              >
+              <form>
                 <div className="modal-body">
                   <div className="form-group">
                     <label htmlFor="inputServiceTitle">Judul</label>
@@ -219,6 +340,7 @@ export default function ServiceContent(props) {
                       className="form-control service-title"
                       name="title"
                       placeholder="Masukkan judul layanan..."
+                      onChange={handlePutService}
                       required
                       autoComplete="off"
                     />
@@ -230,6 +352,7 @@ export default function ServiceContent(props) {
                       className="form-control service-description"
                       name="description"
                       placeholder="Masukkan deskripsi layanan..."
+                      onChange={handlePutService}
                       required
                       autoComplete="off"
                     />
@@ -241,6 +364,7 @@ export default function ServiceContent(props) {
                       className="form-control service-price"
                       name="price"
                       placeholder="Masukkan harga layanan..."
+                      onChange={handlePutService}
                       required
                       autoComplete="off"
                     />
@@ -251,6 +375,7 @@ export default function ServiceContent(props) {
                       type="file"
                       className="form-control-file"
                       name="image"
+                      onChange={onFilePutService}
                     />
                   </div>
                   <div className="modal-footer">
@@ -260,9 +385,13 @@ export default function ServiceContent(props) {
                       className="btn btn-secondary"
                       data-dismiss="modal"
                     >
-                      Close
+                      Keluar
                     </button>
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="button"
+                      onClick={edit_service}
+                      className="btn btn-primary"
+                    >
                       Edit
                     </button>
                   </div>
@@ -273,7 +402,7 @@ export default function ServiceContent(props) {
         </div>
       </div>
       {/* delete modal */}
-      <div
+      {/* <div
         className="modal fade"
         id="deleteModal"
         tabIndex="-1"
@@ -297,13 +426,10 @@ export default function ServiceContent(props) {
               </button>
             </div>
             <div className="modal-body">
-              <form
-                action="/freelancer/service/delete?_method=DELETE"
-                method="POST"
-              >
+              <form>
                 <div className="form-group">Pilih "Hapus" jika anda yakin.</div>
                 <div className="modal-footer">
-                  <input type="hidden" name="id" className="id" />
+                  <input type="text" name="id" className="id" />
                   <button
                     type="button"
                     className="btn btn-secondary"
@@ -311,7 +437,11 @@ export default function ServiceContent(props) {
                   >
                     Batalkan
                   </button>
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="button"
+                    onClick={delete_service}
+                    className="btn btn-primary"
+                  >
                     Hapus
                   </button>
                 </div>
@@ -319,7 +449,7 @@ export default function ServiceContent(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -53,7 +53,7 @@ export default function EditProfileContent({ data }) {
     } else {
       const payload = new FormData();
       payload.append("firstname", personal.firstname);
-      payload.append("lastname", personal.lastname);
+      payload.append("lastname", personal.lastname)
       payload.append("email", personal.email);
       payload.append("address", personal.address);
       payload.append("phone", personal.phone);
