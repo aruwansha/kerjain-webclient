@@ -29,6 +29,15 @@ class OrderPage extends Component {
     if (!this.props.page.order)
       this.props.fetchPage(`user/order/get`, "order", getWithExpiry("token"));
   }
+
+  componentDidUpdate() { // kudu di refresh
+    this.props.fetchPage(
+      `user/order/get`,
+      "order",
+      getWithExpiry("token")
+    );
+  }
+
   render() {
     const { page } = this.props;
     if (!page.hasOwnProperty("order"))

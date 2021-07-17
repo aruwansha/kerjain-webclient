@@ -79,13 +79,13 @@ class RequestDetailPage extends Component {
     this.props.history.push("/checkout");
   };
 
-  // componentDidUpdate() {
-  //   this.props.fetchPage(
-  //     `user/request/${this.props.match.params.id}`,
-  //     this.props.match.params.id,
-  //     getWithExpiry("token")
-  //   );
-  // }
+  componentDidUpdate() { // kudu di refresh
+    this.props.fetchPage(
+      `user/request/${this.props.match.params.id}`,
+      this.props.match.params.id,
+      getWithExpiry("token")
+    );
+  }
 
   render() {
     const { page, match } = this.props;

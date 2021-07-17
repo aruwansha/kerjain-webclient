@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { toast } from 'react-toastify'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -8,15 +11,49 @@ import {
 
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
+import { editPassword } from "store/actions/freelancer/password";
+
 import profileDefault from "assets/images/pp-default.svg";
 
+
 export default function Navbar() {
+  const dispatch = useDispatch();
   const initialState = {};
   const [setstate] = useState(initialState);
 
   const logout = () => {
     localStorage.clear();
     setstate(initialState);
+  };
+
+  const [password, setPassword] = useState({
+    old_password:"", password1:"", password2:""
+  });
+
+  const handlePassword = (e) => {
+    setPassword({...password, [e.target.name]:e.target.value })
+  };
+
+  const edit_password = () => {
+    if (
+      password.old_password === "" ||
+      password.password1 === "" ||
+      password.password2 === "" 
+    ) {
+      toast.error("Tolong isi dan lengkapi field!", {position:toast.POSITION.BOTTOM_CENTER});
+    }
+    else if (
+      password.password1 !== password.password2
+    ) {
+      toast.error("Tolong isi password baru yang sama!", {position:toast.POSITION.BOTTOM_CENTER});
+    }
+    else {
+      const payload = {
+        old_password: password.old_password,
+        new_password: password.password1
+      }
+      dispatch(editPassword(payload,getWithExpiry("token")));
+    }
   };
 
   return (
@@ -149,7 +186,7 @@ export default function Navbar() {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form action="/change-password?_method=PUT" method="POST">
+            <form>
               <div className="modal-body">
                 <div className="form-group">
                   <label htmlFor="inputServiceTitle">Password Lama</label>
@@ -158,6 +195,7 @@ export default function Navbar() {
                     className="form-control"
                     name="old_password"
                     placeholder="Masukkan password lama..."
+                    onChange={handlePassword}
                     autoComplete="off"
                     required
                   />
@@ -169,6 +207,7 @@ export default function Navbar() {
                     className="form-control"
                     name="password1"
                     placeholder="Masukkan password baru..."
+                    onChange={handlePassword}
                     autoComplete="off"
                     required
                   />
@@ -182,6 +221,7 @@ export default function Navbar() {
                     className="form-control"
                     name="password2"
                     placeholder="Masukkan kembali password baru..."
+                    onChange={handlePassword}
                     autoComplete="off"
                     required
                   />
@@ -194,7 +234,7 @@ export default function Navbar() {
                   >
                     Batal
                   </button>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="button" onClick={edit_password} className="btn btn-primary" data-dismiss="modal">
                     Ubah
                   </button>
                 </div>

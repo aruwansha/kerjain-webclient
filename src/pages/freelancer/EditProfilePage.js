@@ -30,6 +30,14 @@ class EditProfilePage extends Component {
       );
   }
 
+  componentDidUpdate() { // kudu di refresh
+    this.props.fetchPage(
+      `freelancer/profile`,
+      "profile",
+      getWithExpiry("token")
+    );
+  }
+
   render() {
     const { page } = this.props;
     if (!page.hasOwnProperty("profile"))
