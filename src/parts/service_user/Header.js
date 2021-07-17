@@ -169,8 +169,7 @@ export default function Header(props) {
                   <Button
                     className="nav-link border-left border-right border-left-none border-right-none border-bottom border-bottom-none"
                     type="link"
-                    href="https://kerjain-webservice.herokuapp.com/register"
-                    isExternal
+                    href="/register/freelancer"
                   >
                     Jadi Mitra Kami
                   </Button>

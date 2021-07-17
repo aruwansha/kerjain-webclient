@@ -11,7 +11,6 @@ import { register } from "store/actions/register";
 import { getWithExpiry } from "utils/setExpiryLocalStorage";
 
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.min.css";
 
 class RegisterPage extends Component {
   constructor(props) {
@@ -230,7 +229,7 @@ class RegisterPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  login: state.login,
+  register: state.register,
 });
 
 export default connect(mapStateToProps, { register })(RegisterPage);

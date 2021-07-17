@@ -15,7 +15,6 @@ import OrderPage from "pages/freelancer/OrderPage";
 import OrderDetailPage from "pages/freelancer/OrderDetailPage";
 import EditProfilePage from "pages/freelancer/EditProfilePage";
 
-
 export default function Freelancer() {
   return (
     <>
@@ -24,15 +23,21 @@ export default function Freelancer() {
         render={({ match: { url } }) => (
           <>
             <FreelancerLayout>
-              <Route path={`${url}/`} component={DashboardPage} exact />
+              <Route exact path={`${url}/`} component={DashboardPage} />
               <Route path={`${url}/service`} component={ServicePage} />
               <Route exact path={`${url}/request`} component={RequestPage} />
-              <Route path={`${url}/request/:id`} component={RequestDetailPage} />
+              <Route
+                path={`${url}/request/:id`}
+                component={RequestDetailPage}
+              />
               <Route exact path={`${url}/chat`} component={ChatPage} />
               <Route path={`${url}/chat/:id`} component={ChatDetailPage} />
               <Route exact path={`${url}/order`} component={OrderPage} />
               <Route path={`${url}/order/:id`} component={OrderDetailPage} />
-              <Route path={`${url}/setting/edit-profile`} component={EditProfilePage} />
+              <Route
+                path={`${url}/setting/edit-profile`}
+                component={EditProfilePage}
+              />
             </FreelancerLayout>
           </>
         )}

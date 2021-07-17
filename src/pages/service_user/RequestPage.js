@@ -66,7 +66,7 @@ class RequestPage extends Component {
                     return (
                       <tr key={`row-${index}`}>
                         <th scope="row">{index + 1}</th>
-                        <td>{request.requestDescription}</td>
+                        <td>{request.requestSubject}</td>
                         <td>Rp {formatNumber(request.requestBudget)}</td>
                         <td>
                           <Button

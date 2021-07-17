@@ -79,6 +79,14 @@ class RequestDetailPage extends Component {
     this.props.history.push("/checkout");
   };
 
+  // componentDidUpdate() {
+  //   this.props.fetchPage(
+  //     `user/request/${this.props.match.params.id}`,
+  //     this.props.match.params.id,
+  //     getWithExpiry("token")
+  //   );
+  // }
+
   render() {
     const { page, match } = this.props;
     if (!page[match.params.id])
@@ -167,7 +175,6 @@ class RequestDetailPage extends Component {
                                   <th scope="col">No</th>
                                   <th scope="col">Nama Freelancer</th>
                                   <th scope="col">Tawaran Harga</th>
-                                  <th scope="col">Rating</th>
                                   <th scope="col">Aksi</th>
                                 </tr>
                               </thead>
@@ -177,11 +184,12 @@ class RequestDetailPage extends Component {
                                     return (
                                       <tr key={`row-${index}`}>
                                         <th scope="row">{index + 1}</th>
-                                        <td>{request.freelancer[0].name}</td>
+                                        <td>
+                                          {requestBid.name}
+                                        </td>
                                         <td>
                                           Rp {formatNumber(requestBid.bid)}
                                         </td>
-                                        <td>{request.rating.toFixed(1)}</td>
                                         <td>
                                           <Button
                                             type="button"
