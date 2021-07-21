@@ -5,7 +5,7 @@ import axios from "configs/axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-export const edit_profile = (payload, token) => (dispatch) => {
+export const editProfile = (payload, token) => (dispatch) => {
   return axios
     .put(`user/profile/update`, payload, {
       headers: { contentType: "application/x-www-form-urlencoded", "x-access-token": token },

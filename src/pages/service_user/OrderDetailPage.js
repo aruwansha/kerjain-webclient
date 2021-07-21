@@ -150,10 +150,16 @@ class OrderDetailPage extends Component {
                               </td>
                             </tr>
                             <tr>
+                              <td>Nama Freelancer</td>
+                              <td>:</td>
+                              <td>{order.fu[0].name}</td>
+                            </tr>
+                            <tr>
                               <td>Total Bayar</td>
                               <td>:</td>
                               <td>{order.total}</td>
                             </tr>
+
                             <tr>
                               <td>Nama Pemesan</td>
                               <td>:</td>

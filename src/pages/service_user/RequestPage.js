@@ -58,6 +58,7 @@ class RequestPage extends Component {
                     <th scope="col">No</th>
                     <th scope="col">Judul</th>
                     <th scope="col">Budget</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -68,6 +69,11 @@ class RequestPage extends Component {
                         <th scope="row">{index + 1}</th>
                         <td>{request.requestSubject}</td>
                         <td>Rp {formatNumber(request.requestBudget)}</td>
+                        <td>
+                          {request.freelancerId
+                            ? "Selesai"
+                            : "Perlu tindakan anda"}
+                        </td>
                         <td>
                           <Button
                             href={`/request/${request._id}`}

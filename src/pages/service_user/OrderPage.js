@@ -30,12 +30,9 @@ class OrderPage extends Component {
       this.props.fetchPage(`user/order/get`, "order", getWithExpiry("token"));
   }
 
-  componentDidUpdate() { // kudu di refresh
-    this.props.fetchPage(
-      `user/order/get`,
-      "order",
-      getWithExpiry("token")
-    );
+  componentDidUpdate() {
+    // kudu di refresh
+    this.props.fetchPage(`user/order/get`, "order", getWithExpiry("token"));
   }
 
   render() {
@@ -63,6 +60,7 @@ class OrderPage extends Component {
                     <th scope="col">No</th>
                     <th scope="col">Judul Layanan</th>
                     <th scope="col">Total</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Aksi</th>
                   </tr>
                 </thead>
@@ -76,6 +74,15 @@ class OrderPage extends Component {
                         )}
                         {order.serviceId && <td>{order.serviceId.title}</td>}
                         <td>Rp {formatNumber(order.total)}</td>
+                        <td>
+                          {order.payments.status === "finished"
+                            ? "Selesai"
+                            : order.payments.status === "paid"
+                            ? "Dalam Proses Pengerjaan"
+                            : order.payments.status === "unpaid"
+                            ? "Menunggu Konfirmasi Admin"
+                            : "undefined"}
+                        </td>
                         <td>
                           <Button
                             href={`order/${order._id}`}

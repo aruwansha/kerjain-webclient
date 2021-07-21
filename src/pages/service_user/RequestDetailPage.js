@@ -79,7 +79,8 @@ class RequestDetailPage extends Component {
     this.props.history.push("/checkout");
   };
 
-  componentDidUpdate() { // kudu di refresh
+  componentDidUpdate() {
+    // kudu di refresh
     this.props.fetchPage(
       `user/request/${this.props.match.params.id}`,
       this.props.match.params.id,
@@ -179,34 +180,43 @@ class RequestDetailPage extends Component {
                                 </tr>
                               </thead>
                               <tbody>
-                                {request.requestBidId.map(
-                                  (requestBid, index) => {
-                                    return (
-                                      <tr key={`row-${index}`}>
-                                        <th scope="row">{index + 1}</th>
-                                        <td>
-                                          {requestBid.name}
-                                        </td>
-                                        <td>
-                                          Rp {formatNumber(requestBid.bid)}
-                                        </td>
-                                        <td>
-                                          <Button
-                                            type="button"
-                                            onClick={() =>
-                                              this._pick_freelancer(
-                                                requestBid.freelancerId,
-                                                requestBid.bid
-                                              )
-                                            }
-                                            className="btn btn-primary btn-sm"
-                                          >
-                                            Pilih
-                                          </Button>
-                                        </td>
-                                      </tr>
-                                    );
-                                  }
+                                {request.requestBidId.length > 0 ? (
+                                  request.requestBidId.map(
+                                    (requestBid, index) => {
+                                      return (
+                                        <tr key={`row-${index}`}>
+                                          <th scope="row">{index + 1}</th>
+                                          <td>{requestBid.name}</td>
+                                          <td>
+                                            Rp {formatNumber(requestBid.bid)}
+                                          </td>
+                                          <td>
+                                            <Button
+                                              type="button"
+                                              onClick={() =>
+                                                this._pick_freelancer(
+                                                  requestBid.freelancerId,
+                                                  requestBid.bid
+                                                )
+                                              }
+                                              className="btn btn-primary btn-sm"
+                                            >
+                                              Pilih
+                                            </Button>
+                                          </td>
+                                        </tr>
+                                      );
+                                    }
+                                  )
+                                ) : (
+                                  <tr>
+                                    <td
+                                      colSpan={4}
+                                      style={{ textAlign: "center" }}
+                                    >
+                                      Belum ada tawaran masuk..
+                                    </td>
+                                  </tr>
                                 )}
                               </tbody>
                             </table>
