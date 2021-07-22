@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -15,7 +15,6 @@ import { editPassword } from "store/actions/freelancer/password";
 
 import profileDefault from "assets/images/pp-default.svg";
 
-
 export default function Navbar() {
   const dispatch = useDispatch();
   const initialState = {};
@@ -27,32 +26,34 @@ export default function Navbar() {
   };
 
   const [password, setPassword] = useState({
-    old_password:"", password1:"", password2:""
+    old_password: "",
+    password1: "",
+    password2: "",
   });
 
   const handlePassword = (e) => {
-    setPassword({...password, [e.target.name]:e.target.value })
+    setPassword({ ...password, [e.target.name]: e.target.value });
   };
 
   const edit_password = () => {
     if (
       password.old_password === "" ||
       password.password1 === "" ||
-      password.password2 === "" 
+      password.password2 === ""
     ) {
-      toast.error("Tolong isi dan lengkapi field!", {position:toast.POSITION.BOTTOM_CENTER});
-    }
-    else if (
-      password.password1 !== password.password2
-    ) {
-      toast.error("Tolong isi password baru yang sama!", {position:toast.POSITION.BOTTOM_CENTER});
-    }
-    else {
+      toast.error("Tolong isi dan lengkapi field!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else if (password.password1 !== password.password2) {
+      toast.error("Tolong isi password baru yang sama!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+    } else {
       const payload = {
         old_password: password.old_password,
-        new_password: password.password1
-      }
-      dispatch(editPassword(payload,getWithExpiry("token")));
+        new_password: password.password1,
+      };
+      dispatch(editPassword(payload, getWithExpiry("token")));
     }
   };
 
@@ -85,7 +86,11 @@ export default function Navbar() {
               <img
                 className="img-profile rounded-circle"
                 alt="profile"
-                src={profileDefault}
+                src={`${process.env.REACT_APP_HOST}${getWithExpiry("picture")}`}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = profileDefault;
+                }}
               ></img>
             </a>
             <div
@@ -234,7 +239,12 @@ export default function Navbar() {
                   >
                     Batal
                   </button>
-                  <button type="button" onClick={edit_password} className="btn btn-primary" data-dismiss="modal">
+                  <button
+                    type="button"
+                    onClick={edit_password}
+                    className="btn btn-primary"
+                    data-dismiss="modal"
+                  >
                     Ubah
                   </button>
                 </div>

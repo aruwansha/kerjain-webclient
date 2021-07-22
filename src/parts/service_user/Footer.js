@@ -16,12 +16,12 @@ export default function Footer() {
             </div>
             <div className="col-4 d-none d-lg-block">
               <h5 className="text-center">About Us</h5>
-              <Button type="link" href="/">
+              <Button type="link" href="/privacy">
                 <p className="text-center text-gray-800" style={{ margin: 0 }}>
                   Kebijakan Privasi
                 </p>
               </Button>
-              <Button type="link" href="/">
+              <Button type="link" href="/term">
                 <p className="text-center text-gray-800" style={{ margin: 0 }}>
                   Syarat dan Ketentuan
                 </p>

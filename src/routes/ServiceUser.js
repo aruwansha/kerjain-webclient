@@ -15,6 +15,8 @@ import OrderDetailPage from "pages/service_user/OrderDetailPage";
 import ChatPage from "pages/service_user/ChatPage";
 import ChatDetailPage from "pages/service_user/ChatDetailPage";
 import ProfilePage from "pages/service_user/ProfilePage";
+import PrivacyPage from "pages/service_user/PrivacyPage";
+import TermPage from "pages/service_user/TermPage";
 
 export default function ServiceUser() {
   return (
@@ -32,6 +34,8 @@ export default function ServiceUser() {
       <Route exact path="/chat" component={ChatPage} />
       <Route path="/chat/:id" component={ChatDetailPage} />
       <Route path="/profile" component={ProfilePage} />
+      <Route path="/privacy" component={PrivacyPage} />
+      <Route path="/term" component={TermPage} />
     </>
   );
 }
