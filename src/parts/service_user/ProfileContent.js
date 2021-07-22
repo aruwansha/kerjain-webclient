@@ -44,7 +44,7 @@ export default function ProfileContent({ data }) {
         birthdate: profile.birthdate,
         phone: profile.phone,
       };
-      dispatch(editProfile(payload, getWithExpiry('token')));
+      dispatch(editProfile(payload, getWithExpiry("token")));
     }
   };
 
@@ -182,6 +182,9 @@ export default function ProfileContent({ data }) {
               </button>
               <Button type="link" className="btn btn-light px-4 ml-3" href="/">
                 Kembali
+              </Button>
+              <Button type="link" href="/change-password" className="ml-4">
+                Edit Password
               </Button>
             </div>
           </div>
