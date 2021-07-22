@@ -69,9 +69,6 @@ class OrderDetailPage extends Component {
   };
 
   _review = (event) => {
-    this.setState({
-      submitted: true,
-    });
     const { rating, description } = this.state;
     if (rating === "" || description === "") {
       toast.error("Tolong isi fieldnya!", {
@@ -86,9 +83,12 @@ class OrderDetailPage extends Component {
       };
       this.props.review(
         payload,
-        page[match.params.id][0].freelancerId,
+        page[match.params.id][0].freelancerId[0]._id,
         getWithExpiry("token")
       );
+      this.setState({
+        submitted: true,
+      });
     }
     event.preventDefault();
   };
